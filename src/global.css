@@ -1,8 +1,24 @@
 
 html, body, #root {
   height: 100%;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+ul li {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+}
+
+blockquote, body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, table, td, textarea, th, ul {
+  margin: 0;
+  padding: 0;
 }

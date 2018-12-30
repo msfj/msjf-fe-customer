@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styles from './index.scss';
+import Link from 'umi/link';
 
 export default function () {
 	return (
-		<React.Fragment>
+		<Fragment>
 			<div className={styles.viewpage}>
 				<div className={styles.head}>
 					<div className={styles.container}>
@@ -17,7 +18,7 @@ export default function () {
 							<li>首页</li>
 							<li>行业咨询</li>
 							<li>帮助中心</li>
-							<li>关于我们</li>
+							<li><Link to="/aboutus">关于我们</Link></li>
 						</ul>
 						<div className={styles.right}>
 							<img src={require("../assets/qrcode.svg")} alt="" />
@@ -42,7 +43,7 @@ export default function () {
 					</div>
 				</div>
 				<div className={styles.itemBlock}>
-					<Title chnName={"共享计划"} engName={"SHARING PLAN"} chnNameColor={"#FFFFFF"} engNameColor={"#FFFFFF"} opacity={0.8}/>
+					<Title chnName={"共享计划"} engName={"SHARING PLAN"} chnNameColor={"#FFFFFF"} engNameColor={"#FFFFFF"} opacity={0.8} />
 					<ul>
 						<li className={styles.desBlock}>
 							<img src={require('../assets/enterpriseService.png')} alt="" />
@@ -63,7 +64,7 @@ export default function () {
 					</ul>
 				</div>
 				<div className={styles.regionalStatus}>
-					<Title chnName={"地区现状"} engName={"REGIONAL STATUS"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1}/>
+					<Title chnName={"地区现状"} engName={"REGIONAL STATUS"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1} />
 					<div className={styles.regionalNumber}>
 						<div className={styles.leftNumber}>
 							<h2>25000+</h2>
@@ -76,16 +77,22 @@ export default function () {
 						</div>
 					</div>
 				</div>
-				<div></div>
+				<div className={styles.enterWelcome}>
+					<div className={styles.gradient} />
+					<div className={styles.TagsBlock}>
+						<Title chnName={"地区现状"} engName={"REGIONAL STATUS"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1} />
+						<TagsBlock />
+					</div>
+				</div>
 			</div>
-		</React.Fragment>
+		</Fragment>
 	);
 }
 
-function Title({ chnName, engName, chnNameColor, engNameColor, opacity}) {
-	
-	const chnNameStyle={color:chnNameColor};
-	const engNameStyle={color:engNameColor,opacity:opacity};
+function Title({ chnName, engName, chnNameColor, engNameColor, opacity }) {
+
+	const chnNameStyle = { color: chnNameColor };
+	const engNameStyle = { color: engNameColor, opacity: opacity };
 	return (
 		<div>
 			<div style={chnNameStyle} className={styles.chnName}>{chnName}</div>
@@ -93,3 +100,24 @@ function Title({ chnName, engName, chnNameColor, engNameColor, opacity}) {
 		</div>
 	);
 }
+
+function TagsBlock() {
+	return (
+		<Fragment>
+
+		</Fragment>
+	)
+}
+
+function TagsItem() {
+	const style = {
+
+	};
+	return (
+		<div style={style}>
+
+		</div>
+	)
+}
+
+
