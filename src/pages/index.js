@@ -102,20 +102,55 @@ function Title({ chnName, engName, chnNameColor, engNameColor, opacity }) {
 }
 
 function TagsBlock() {
+	const itemsStyleData = [
+		{ width: "179px", height: "56px", borderRadius: "27.5px", text: "融资租赁", top: 188, left: 300, opacity: 0.4 },
+		{ width: "294px", height: "56px", borderRadius: "27.5px", text: "基金项目产品企业", top: 214, right: 200, filter: 'blur(1px)' },
+		{ width: "283.2px", height: "67.2px", borderRadius: "33px", text: "企业持股平台", top: 280, fontSize: "31.2px", left: 397 },
+		{ width: "287px", height: "56px", borderRadius: "27.5px", text: "企业自有资金投顾", top: 326, left: 30, filter: 'blur(1px)' },
+		{ width: "287px", height: "56px", borderRadius: "27.5px", text: "私募基金管理企业", top: 326, right: 90, opacity: 0.6 },
+		{ width: "160px", height: "56px", borderRadius: "27.5px", text: "其他类", top: 382, right: 370, opacity: 0.2 },
+		{ width: "258px", height: "56px", borderRadius: "27.5px", text: "个人自由资产投资", top: 428, left: 337, opacity: 0.3, filter: 'blur(2px)' },
+	];
 	return (
 		<Fragment>
-
+			{itemsStyleData.map((item) => <TagsItem {...item} />)}
 		</Fragment>
 	)
 }
 
-function TagsItem() {
+function TagsItem(props) {
+	const { width, height, borderRadius, top, fontSize, text, left, right, opacity, filter } = props;
 	const style = {
-
+		width: width,
+		height: height,
+		borderRadius: borderRadius,
+		lineHeight: height,
+		fontSize: fontSize ? fontSize : "26px",
+		textalign: "center",
+		backgroundColor: "#0072D2",
+		color: "#ffffff",
+		position: "absolute",
+		top: top,
+		left: left && left,
+		right: right && right,
+		filter: filter ? filter : 'blur(0px)',
+		boxShadow: '0 10px 20px 0 rgba(0,114,210,0.20)',
+		animation: 'mymove 1.3s ease-in-out 2.7s infinite alternate'
 	};
+	const opacityStyle = {
+		width: width,
+		height: height,
+		borderRadius: borderRadius,
+		position: "absolute",
+		top: 0,
+		left: 0,
+		backgroundColor: "#ffffff",
+		opacity: opacity ? opacity : 0
+	}
 	return (
 		<div style={style}>
-
+			<div style={opacityStyle}></div>
+			{text}
 		</div>
 	)
 }

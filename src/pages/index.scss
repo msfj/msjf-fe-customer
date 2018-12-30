@@ -1,3 +1,8 @@
+@keyframes mymove
+{
+  from {top:188px;}
+  to {top:300px;}
+}
 
 .viewpage {
   position: relative;
@@ -214,6 +219,8 @@
     }
     .TagsBlock{
       position: relative;
+      width: 1200px;
+      margin: 0 auto;
     }
   }
 }
