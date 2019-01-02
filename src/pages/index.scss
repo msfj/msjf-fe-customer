@@ -4,12 +4,23 @@ $W1440: 'screen and (max-width: 1440px)';
 $W1366: 'screen and (max-width: 1366px)';
 $W1280: 'screen and (max-width: 1280px)';
 
-@mixin mq($mqString) {
-  @media #{$mqString} {
-    @content;
+@mixin mq($attr,$num) {
+  @media #{$W1920} {
+    #{$attr} : #{$num}
+  }
+  @media #{$W1680} {
+    #{$attr} : ($num/1.5*1.3125)
+  }
+  @media #{$W1440} {
+    #{$attr} : ($num/1.5*1.1125)
+  }
+  @media #{$W1366} {
+    #{$attr} : ($num/1.5*1.0671)
+  }
+  @media #{$W1280} {
+    #{$attr} : ($num/1.5*1)
   }
 }
-
 .viewpage {
   position: relative;
   width: 100%;
@@ -87,58 +98,38 @@ $W1280: 'screen and (max-width: 1280px)';
   .wrap {
     position: relative;
     background-color: white;
-    margin-bottom: 100px;
+    @include mq(margin-bottom,100px);
     .banner {
       width: 100%;
       background: url(../assets/banner.png) center 0 no-repeat;
       background-size: cover;
       .bannerContainer {
+        position: relative;
         margin: 0 auto;
         text-align: center;
-        @include mq($W1920) {padding-top: 332px;}
-        @include mq($W1680) {padding-top: 290.5px;}
-        @include mq($W1440) {padding-top: 246.23333333333335px;}
-        @include mq($W1366) {padding-top: 236.1848px;}
-        @include mq($W1280) {padding-top: 221.33333333333334px;}
+        @include mq(padding-top,300px);
         h2 {
-          @include mq($W1920) {font-size: 60px;}
-          @include mq($W1680) {font-size: 52.5px;}
-          @include mq($W1440) {font-size: 44.5px;}
-          @include mq($W1366) {font-size: 42.684px;}
-          @include mq($W1280) {font-size: 40px;}
+          @include mq(font-size,60px);
           color: #ffffff;
         }
         .silkRoad {
-          @include mq($W1920) {height: 93px;margin-top: 65px;}
-          @include mq($W1680) {height: 81.375px;margin-top: 56.875px;}
-          @include mq($W1440) {height: 68.97500000000001px;margin-top: 48.208333333333336px;}
-          @include mq($W1366) {height: 66.1602px;margin-top: 46.241px;}
-          @include mq($W1280) {height: 62px;margin-top: 43.333333333333336px;}
+          @include mq(height,93px);
+          @include mq(margin-top,65px);
         }
         .gradual {
           background: url(../assets/gradual.png) center 0 no-repeat;
           color: #ffffff;
-          @include mq($W1920) {margin-top: 40px;height: 34px;line-height: 34px;}
-          @include mq($W1680) {margin-top: 35px;height: 29.75px;line-height: 29.75px;}
-          @include mq($W1440) {margin-top: 29.666666666666668px;height: 25.21666666666667px;line-height: 25.21666666666667px;}
-          @include mq($W1366) {margin-top: 28.456px;height: 24.1876px;line-height: 24.1876px;}
-          @include mq($W1280) {margin-top: 26.666666666666668px;height: 22.666666666666668px;line-height: 22.666666666666668px;}
+          @include mq(margin-top,40px);
+          @include mq(height,34px);
+          @include mq(line-height,34px);
         }
         .samllFont {
           font-size: 14px;
           color: #ffffff;
-          @include mq($W1920) {margin-top: 20px;}
-          @include mq($W1680) {margin-top: 17.5px;}
-          @include mq($W1440) {margin-top: 14.833333333333334px;}
-          @include mq($W1366) {margin-top: 14.228px;}
-          @include mq($W1280) {margin-top: 13.333333333333334px;}
+          @include mq(margin-top,20px);
         }
         .loginContainer {
-          @include mq($W1920) {margin-top: 104px;}
-          @include mq($W1680) {margin-top: 91px;}
-          @include mq($W1440) {margin-top: 77.13333333333333px;}
-          @include mq($W1366) {margin-top: 73.98559999999999px;}
-          @include mq($W1280) {margin-top: 69.33333333333333px;}
+          @include mq(margin-top,104px);
           .indexButt {
             padding: 12px 52px 11px 52px;
             background-color: #ffffff;
@@ -150,12 +141,44 @@ $W1280: 'screen and (max-width: 1280px)';
             margin-right: 40px;
           }
           .mouse {
-            height: 24px;
-            @include mq($W1920) {margin-top: 114px;margin-bottom: 550px;}
-            @include mq($W1680) {margin-top: 99.75px;margin-bottom: 481.25px;}
-            @include mq($W1440) {margin-top: 84.55px;margin-bottom: 407.9166666666667px;}
-            @include mq($W1366) {margin-top: 81.0996px;margin-bottom: 391.27px;}
-            @include mq($W1280) {margin-top: 76px;margin-bottom: 366.6666666666667px;}
+            @include mq(margin-top,114px);
+            @include mq(margin-bottom,83px);
+          }
+        }
+        .itemBlock {
+          margin: 0 auto;
+          width: 1200px;
+          position: relative;
+          z-index: 100;
+          ul {
+            margin-top: 34px;
+          }
+          .desBlock {
+            width: 350px;
+            height: 313px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding-left: 55px;
+            padding-right: 55px;
+            margin-right: 35px;
+            display: inline-block;
+            &:last-child {
+              margin-right: 0px;
+            }
+            img {
+              margin-bottom: 42px;
+              padding-top: 80px;
+            }
+            h2 {
+              font-size: 24px;
+              color: #212121;
+            }
+            p {
+              font-size: 16px;
+              color: #6F7479;
+              line-height: 24px;
+              margin-top: 31px;
+            }
           }
         }
       }
@@ -165,45 +188,6 @@ $W1280: 'screen and (max-width: 1280px)';
       width: 100%;
       left: 0;
       bottom: 0px;
-    }
-  }
-  .itemBlock {
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    margin: 0 auto;
-    width: 1200px;
-    left: 0;
-    right: 0;
-    ul {
-      margin-top: 34px;
-    }
-    .desBlock {
-      width: 350px;
-      height: 313px;
-      background-color: #ffffff;
-      border-radius: 5px;
-      padding-left: 55px;
-      padding-right: 55px;
-      margin-right: 35px;
-      display: inline-block;
-      &:last-child {
-        margin-right: 0px;
-      }
-      img {
-        margin-bottom: 42px;
-        padding-top: 80px;
-      }
-      h2 {
-        font-size: 24px;
-        color: #212121;
-      }
-      p {
-        font-size: 16px;
-        color: #6F7479;
-        line-height: 24px;
-        margin-top: 31px;
-      }
     }
   }
   .regionalStatus{

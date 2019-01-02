@@ -9,7 +9,7 @@ export default {
       dynamicImport: true,
       title: 'msjf-fe-customer',
       dll: false,
-      hardSource: true,
+      hardSource: false,
       routes: {
         exclude: [
           /components/,

@@ -30,7 +30,7 @@ export default function () {
 					<div className={styles.banner}>
 						<div className={styles.bannerContainer}>
 							<h2>防范金融风险&nbsp;&nbsp;打造金融生态圈</h2>
-							<img class={styles.silkRoad} src={require("../assets/silk-road.png")} alt="" />
+							<img className={styles.silkRoad} src={require("../assets/silk-road.png")} alt="" />
 							<div className={styles.gradual}>
 								<span className={styles.samllFont}>打造产业与资本对接撮合的APP平台，形成私募基金管理人募投管退的生态圈</span>
 							</div>
@@ -39,7 +39,6 @@ export default function () {
 								<a className={styles.indexButt}>企业账户登录</a><br />
 								<img alt="" className={styles.mouse} src={require("../assets/mouse.svg")} />
 							</div>
-							<img src={require("../assets/triangle.png")} alt="" className={styles.triangle} />
 							<div className={styles.itemBlock}>
 								<Title chnName={"共享计划"} engName={"SHARING PLAN"} chnNameColor={"#FFFFFF"} engNameColor={"#FFFFFF"} opacity={0.8} />
 								<ul>
@@ -60,6 +59,7 @@ export default function () {
 									</li>
 								</ul>
 							</div>
+							<img src={require("../assets/triangle.png")} alt="" className={styles.triangle} />
 						</div>
 					</div>
 				</div>
@@ -113,7 +113,7 @@ function TagsBlock() {
 	];
 	return (
 		<Fragment>
-			{itemsStyleData.map((item) => <TagsItem {...item} />)}
+			{itemsStyleData.map((item,index) => <TagsItem key={`${index}TagsBlock`} {...item} />)}
 		</Fragment>
 	)
 }
@@ -135,7 +135,8 @@ function TagsItem(props) {
 		right: right && right,
 		filter: filter ? filter : 'blur(0px)',
 		boxShadow: '0 10px 20px 0 rgba(0,114,210,0.20)',
-		animation: 'mymove 1.3s ease-in-out 2.7s infinite alternate'
+		animation: 'mymove 1.3s ease-in-out 2.7s infinite alternate',
+		textAlign: 'center'
 	};
 	const opacityStyle = {
 		width: width,
