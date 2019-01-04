@@ -1,0 +1,101 @@
+.des {
+    color: #6F7479;
+    font-size: 14px;
+}
+
+.medium {
+    font-size: 24px;
+    color: #212121;
+    letter-spacing: 0;
+}
+
+.small {
+    font-size: 16px;
+    color: #212121;
+    line-height: 24px;
+}
+
+.title {
+    opacity: 0.85;
+    font-size: 38px;
+    color: #000000;
+    text-align: center;
+    line-height: 46px;
+    padding-top: 110px;
+    padding-bottom: 60px;
+}
+
+li:before {
+    content: "";
+    background: rgba(0, 114, 210, 0.5);
+    border: 1px solid #0072D2;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.button {
+    background-image: linear-gradient(-132deg, #008DE1 0%, #0054C0 100%);
+    box-shadow: 0 10px 10px 0 rgba(0, 126, 217, 0.2);
+    border-radius: 4px;
+    height: 40px;
+    width: 277px;
+    opacity: 0.85;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 24px;
+}
+
+.separation {
+    height: 489px;
+    width: 1px;
+		background: #D0D3D5;
+		position: absolute;
+		top: 100px;
+		left: 50%;
+}
+
+.block {
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+    height: 689px;
+    position: relative;
+
+    .left, .right {
+        float: left;
+        width: 50%;
+        text-align: center;
+
+        .headPortrait {
+            height: 100px;
+            margin: 100px 0px 30px 0px;
+        }
+
+        .subhead {
+            padding: 10px 0 40px 0;
+            width: 399px;
+            margin: 0 auto;
+            border-bottom: 1px dashed #D0D3D5;
+        }
+
+        .desTitle {
+            padding: 40px 0 20px 0;
+        }
+
+        .desBlock {
+            padding-bottom: 50px;
+            padding-left: 135px;
+            text-align: left;
+
+            .desItem {
+                padding-bottom: 10px;
+            }
+        }
+    }
+}

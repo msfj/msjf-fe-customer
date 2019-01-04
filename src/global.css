@@ -8,6 +8,17 @@ body {
   margin: 0;
 }
 
+.container {
+  background-color: #f0f2f5;
+  width: 100%;
+}
+
+.content {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
