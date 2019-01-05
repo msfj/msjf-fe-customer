@@ -16,6 +16,17 @@
             box-shadow: none;
             padding: 4px 0;
         }
+        .has-error .ant-input:focus {
+            box-shadow: none;
+        }
+        .ant-input-group.ant-input-group-compact > *:last-child {
+            border-radius: 0;
+        }
+        .ant-input-group.ant-input-group-compact > .ant-select:first-child > .ant-select-selection {
+            border-radius: 0;
+            border-top: none;
+            border-left: none;
+        }
         .ant-modal-close {
             right: -60px;
             .anticon {
@@ -67,6 +78,10 @@
         height: 108px;
         right: 1px;
         top: 1px;
+        cursor: pointer;
         background: url(../assets/login-bar2.png);
+    }
+    .loginBar1 {
+        background: url(../assets/login-bar1.png);
     }
 }
