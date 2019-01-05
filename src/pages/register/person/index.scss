@@ -1,125 +1,140 @@
-// 表单input扩展
-.formExtend {
-    width: 388px;
-    margin: 0 auto;
-    padding-bottom: 15px;
-    text-align: left;
+.registerPerson {
+    // 表单input扩展
+    .formExtend {
+        width: 388px;
+        margin: 0 auto;
+        padding-bottom: 15px;
+        text-align: left;
 
-    label {
-        font-size: 12px;
-        color: #000000;
-        line-height: 20px;
-    }
-
-    .select {
-        svg {
-            color: black;
-        }
-    }
-
-    .noLeftBorder {
-        border-left: 0px;
-    }
-
-    .msgCode {
-        font-size: 12px;
-        color: #0072D2;
-        text-align: center;
-        line-height: 22px;
-        border-bottom: 1px solid #0072D2;
-        margin: 0px;
-    }
-}
-
-.title {
-    opacity: 0.85;
-    font-size: 38px;
-    color: #000000;
-    text-align: center;
-    line-height: 46px;
-    padding-top: 110px;
-    padding-bottom: 60px;
-}
-
-.block {
-    width: 100%;
-    background: #FFFFFF;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
-    height: 719px;
-    position: relative;
-
-    .stepBlock {
-        padding: 70px 183px 28px 183px;
-    }
-
-    .formBlock {
-        padding: 50px 0 0 0;
-    }
-
-    .buttonBlock {
-        text-align: center;
-        padding: 30px 0 0 0;
-        .button {
-            width: 388px;
-            height: 40px;
-            background: #0072D2;
-            border-radius: 4px;
-        }
-
-        .defaultButton {
-            width: 388px;
-            height: 40px;
-            border-radius: 4px;
-        }
-
-        .checkbox {
-            font-size: 14px;
-            color: #212121;
-            position: absolute;
-            bottom: 50px;
-            width: 100%;
-            .checkboxTitle {
-                display: inline-block;
-                border-bottom: 1px #212121 solid;
-            }
-
-            a {
-                display: inline-block;
-                border-bottom: 1px #0072D2 solid;
-                color: #0072D2;
-            }
-        }
-    }
-
-    .successBlock {
-        padding: 90px 0 0 0;
-        text-align: center;
-
-        i {
-            height: 30px;
-            width: 30px;
-            background: url(../../../assets/green-check.svg) center 0 no-repeat;
-            background-size: cover;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 10px;
-            margin-bottom: 5px;
-        }
-
-        .successBlockTitle {
-            opacity: 0.85;
-            font-size: 20px;
+        label {
+            font-size: 12px;
             color: #000000;
-            line-height: 30px;
+            line-height: 20px;
         }
 
-        p {
-            margin: 0px;
-            padding-top: 21px;
-            font-size: 14px;
-            color: #6F7479;
-            letter-spacing: 0;
+        .select {
+            svg {
+                color: black;
+            }
+        }
+
+        .noLeftBorder {
+            border-left: 0px;
+        }
+
+        .msgCode {
+            font-size: 12px;
+            color: #0072D2;
             text-align: center;
+            line-height: 22px;
+            border-bottom: 1px solid #0072D2;
+            margin: 0px;
+        }
+    }
+
+    .container {
+        background-color: #f0f2f5;
+        width: 100%;
+
+        .content {
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+    }
+
+    .title {
+        opacity: 0.85;
+        font-size: 38px;
+        color: #000000;
+        text-align: center;
+        line-height: 46px;
+        padding-top: 110px;
+        padding-bottom: 60px;
+    }
+
+    .block {
+        width: 100%;
+        background: #FFFFFF;
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+        height: 719px;
+        position: relative;
+
+        .stepBlock {
+            padding: 70px 183px 28px 183px;
+        }
+
+        .formBlock {
+            padding: 50px 0 0 0;
+        }
+
+        .buttonBlock {
+            text-align: center;
+            padding: 30px 0 0 0;
+
+            .button {
+                width: 388px;
+                height: 40px;
+                background: #0072D2;
+                border-radius: 4px;
+            }
+
+            .defaultButton {
+                width: 388px;
+                height: 40px;
+                border-radius: 4px;
+            }
+
+            .checkbox {
+                font-size: 14px;
+                color: #212121;
+                position: absolute;
+                bottom: 50px;
+                width: 100%;
+
+                .checkboxTitle {
+                    display: inline-block;
+                    border-bottom: 1px #212121 solid;
+                }
+
+                a {
+                    display: inline-block;
+                    border-bottom: 1px #0072D2 solid;
+                    color: #0072D2;
+                }
+            }
+        }
+
+        .successBlock {
+            padding: 90px 0 0 0;
+            text-align: center;
+
+            i {
+                height: 30px;
+                width: 30px;
+                background: url(../../../assets/green-check.svg) center 0 no-repeat;
+                background-size: cover;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+                margin-bottom: 5px;
+            }
+
+            .successBlockTitle {
+                opacity: 0.85;
+                font-size: 20px;
+                color: #000000;
+                line-height: 30px;
+            }
+
+            p {
+                margin: 0px;
+                padding-top: 21px;
+                font-size: 14px;
+                color: #6F7479;
+                letter-spacing: 0;
+                text-align: center;
+            }
         }
     }
 }
