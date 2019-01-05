@@ -45,17 +45,17 @@ export default function () {
 									<li className={styles.desBlock}>
 										<img src={require('../assets/enterpriseService.png')} alt="" />
 										<h2>企业服务</h2>
-										{/* <p>提供一站式电子化企业设立，企业迁入，企业变更，企业税务等全流程服务</p> */}
+										<p>提供一站式电子化企业设立，企业迁入，企业变更，企业税务等全流程服务</p>
 									</li>
 									<li className={styles.desBlock}>
 										<img src={require('../assets/informationSecurity.png')} alt="" />
 										<h2>信息安全</h2>
-										{/* <p>提供系统化数据安全保障机制，保障数据安全防泄漏，让企业信息更安全</p> */}
+										<p>提供系统化数据安全保障机制，保障数据安全防泄漏，让企业信息更安全</p>
 									</li>
 									<li className={styles.desBlock}>
 										<img src={require('../assets/enterpriseFigure.png')} alt="" />
 										<h2>企业画像</h2>
-										{/* <p>提供360度全方位企业画像，为加强金融基础设施的统筹监管和互联互通</p> */}
+										<p>提供360度全方位企业画像，为加强金融基础设施的统筹监管和互联互通</p>
 									</li>
 								</ul>
 							</div>

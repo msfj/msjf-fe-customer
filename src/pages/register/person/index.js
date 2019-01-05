@@ -31,8 +31,9 @@ export default class PersonRegisterComponent extends Component {
     const nextButtonStyle = step > 0 ? { width: '184px' } : {};
     const buttonDisplay = step === 3 ? { display: 'none' } : { display: 'block' };
     return (
-      <div className="container">
-        <div className="content">
+      <div className={styles.registerPerson}>
+      <div className={styles.container}>
+        <div className={styles.content}>
           <div className={styles.title}>个人账号注册</div>
           <div className={styles.block}>
             {/* 步骤条 */}
@@ -63,6 +64,7 @@ export default class PersonRegisterComponent extends Component {
             <SuccessBlock visible={step === 3}/>
           </div>
         </div>
+      </div>
       </div>
     );
   }
@@ -162,7 +164,7 @@ function MSGCode() {
 
 function BankIcon() {
   return (
-    <img></img>
+    <img alt=""></img>
   )
 }
 
