@@ -1,0 +1,72 @@
+.loginmd {
+    :global{
+        .ant-form-item-label label {
+            font-size: 16px;
+            color: #212121;
+        }
+        .ant-form-item-required:before {
+            display: none;
+        }
+        .ant-input {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+            font-family: "PingFangSC-Regular";
+            box-shadow: none;
+            padding: 4px 0;
+        }
+        .ant-modal-close {
+            right: -60px;
+            .anticon {
+                font-size: 32px;
+                color: #fff;
+            }
+        }
+        
+    }
+    .loginBox {
+        padding: 30px 20px;
+        .loginTitle {
+            strong {
+                font-size: 36px;
+                color: #212121;
+                font-weight: normal;
+            }
+            small {
+                font-size: 18px;
+                color: #91989E;
+                margin-left: 20px;
+                font-weight: normal;
+            }
+        }
+        .loginForm {
+            padding-top: 50px;
+            .loginForgot {
+                float: right;
+            }
+            .loginBtn {
+                display: block;
+                height: 60px;
+                width: 100%;
+                font-size: 24px;
+                background-image: linear-gradient(-132deg, #008DE1 0%, #0054C0 100%);
+                box-shadow: 0 10px 10px 0 rgba(0,126,217,0.20);
+                border-radius: 4px;
+            }
+            .loginInfo {
+                margin-top: 30px;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+    }
+    .loginBar {
+        position: absolute;
+        width: 108px;
+        height: 108px;
+        right: 1px;
+        top: 1px;
+        background: url(../assets/login-bar2.png);
+    }
+}

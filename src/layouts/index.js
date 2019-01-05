@@ -3,27 +3,27 @@ import Link from 'umi/link';
 
 function BasicLayout(props) {
   return (
-    <div className={css.main}>
+    <div className={`${css.main} root`}>
       { props.children }
       <div className={css.footer}>
-        <div className={`${css.container} clearfix`}>
-          <div className={css.col1}>
-            <div className={css.title}>电话&邮箱<i className={css.line}></i></div>
-            <div className={css.content}>
-              <img className={css.icon} src={require("../assets/ic-phone.svg")} alt="" />
+        <div className={`${css.footercontainer} clearfix`}>
+          <div className={css.footercol1}>
+            <div className={css.footertitle}>电话&邮箱<i className={css.footerline}></i></div>
+            <div className={css.footercontent}>
+              <img className={css.footericon} src={require("../assets/ic-phone.svg")} alt="" />
               <span>0574-86708719</span>
-              <img className={`${css.icon} ${css.ml28}`} src={require("../assets/ic-email.svg")} alt="" />
+              <img className={`${css.footericon} ${css.ml28}`} src={require("../assets/ic-email.svg")} alt="" />
               <span>jinfu512@163.com</span>
             </div>
-            <div className={`${css.title} ${css.mt30}`}>地址<i className={css.line}></i></div>
-            <div className={css.content}>
-              <img className={css.icon} src={require("../assets/ic-location.svg")} alt="" />
+            <div className={`${css.footertitle} ${css.mt30}`}>地址<i className={css.footerline}></i></div>
+            <div className={css.footercontent}>
+              <img className={css.footericon} src={require("../assets/ic-location.svg")} alt="" />
               <span>浙江省·宁波市北仑区梅山保税港区行政商务中心512室</span>
             </div>
           </div>
-          <div className={css.col2}>
-            <div className={css.title}>友情链接<i className={css.line}></i></div>
-            <ul className={`${css.content} clearfix`}>
+          <div className={css.footercol2}>
+            <div className={css.footertitle}>友情链接<i className={css.footerline}></i></div>
+            <ul className={`${css.footercontent} clearfix`}>
               <li className={css.li}>
                 <Link to="#">中国证券监督管理委员会宁波监管局</Link>
               </li>
@@ -50,22 +50,22 @@ function BasicLayout(props) {
               </li>
             </ul>
           </div>
-          <div className={css.col3}>
-            <div className={css.title}>公众号<i className={css.line}></i></div>
+          <div className={css.footercol3}>
+            <div className={css.footertitle}>公众号<i className={css.footerline}></i></div>
           </div>
         </div>
-        <div className={css.bar}>
+        <div className={css.footerbar}>
           <div className={`warp clearfix`}>
-            <div className={css.link}>
+            <div className={css.footerlink}>
               <Link to="/aboutus">关于我们</Link>
-              <i className={css.split}>|</i>
+              <i className={css.footersplit}>|</i>
               <Link to="/aboutus">服务协议</Link>
-              <i className={css.split}>|</i>
+              <i className={css.footersplit}>|</i>
               <Link to="/aboutus">操作指南</Link>
-              <i className={css.split}>|</i>
+              <i className={css.footersplit}>|</i>
               <Link to="/aboutus">常见问题</Link>
             </div>
-            <div className={css.copy}>
+            <div className={css.footercopy}>
               2018版权所有@金服科技  浙ICP备18030914号
             </div>
           </div>

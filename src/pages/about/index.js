@@ -1,5 +1,8 @@
 import css from './about.scss';
 import React from 'react';
+import Loginmd from '../../component/loginMD';
+
+let visible = true;
 
 export default function() {
   return (
@@ -45,6 +48,7 @@ export default function() {
             <li></li>
           </ul> */}
         </div>
+        <Loginmd visible={visible} />
       </div>
     </React.Fragment>
   );
