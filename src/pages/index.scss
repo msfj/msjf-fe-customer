@@ -1,249 +1,333 @@
-$W1920: 'screen and (max-width: 1920px)';
-$W1680: 'screen and (max-width: 1680px)';
-$W1440: 'screen and (max-width: 1440px)';
-$W1366: 'screen and (max-width: 1366px)';
-$W1280: 'screen and (max-width: 1280px)';
+$W1920: "screen and (max-width: 1920px)";
+$W1680: "screen and (max-width: 1680px)";
+$W1440: "screen and (max-width: 1440px)";
+$W1366: "screen and (max-width: 1366px)";
+$W1280: "screen and (max-width: 1280px)";
 
-@mixin mq($attr,$num) {
-  @media #{$W1920} {
-    #{$attr} : #{$num}
-  }
-  @media #{$W1680} {
-    #{$attr} : ($num/1.5*1.3125)
-  }
-  @media #{$W1440} {
-    #{$attr} : ($num/1.5*1.1125)
-  }
-  @media #{$W1366} {
-    #{$attr} : ($num/1.5*1.0671)
-  }
-  @media #{$W1280} {
-    #{$attr} : ($num/1.5*1)
-  }
+@mixin mq($attr, $num) {
+    @media #{$W1920} {
+        #{$attr}: #{$num};
+    }
+
+    @media #{$W1680} {
+        #{$attr}: $num / 1.5 * 1.3125;
+    }
+
+    @media #{$W1440} {
+        #{$attr}: $num / 1.5 * 1.1125;
+    }
+
+    @media #{$W1366} {
+        #{$attr}: $num / 1.5 * 1.0671;
+    }
+
+    @media #{$W1280} {
+        #{$attr}: $num / 1.5 * 1;
+    }
 }
+
 .viewpage {
-  position: relative;
-  width: 100%;
-  .chnName {
-    font-size: 40px;
-    color: #ffffff;
-  }
-  .engName {
-    font-size: 20px;
-    color: #ffffff;
-    opacity: 0.8;
-  }
-  .head {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 60px;
-    background:rgba(0,0,0,0.10);
-    top: 0;
-    z-index: 100;
-    left: 0;
-    span {
-      opacity: 0.8;
-      font-size: 14px;
-    }
-    .container {
-      width: 1120px;
-      height: 100%;
-      position: relative;
-      margin: 0 auto;
-      color: #ffffff;
-      line-height: 60px;
-      .logo {
-        float: left;
-        .iconLogo {
-          background: url(../assets/logo.png);
-          width: 30px;
-          height: 32px;
-          display: inline-block;
-          vertical-align: middle;
-          margin-right: 10px;
-        }
-        .break {
-          height: 16px;
-          background-color: 1px;
-          width: 1px;
-          display: inline-block;
-          vertical-align: middle;
-          background-color: #ffffff;
-          opacity: 0.5;
-          margin-left: 10px;
-          margin-right: 10px;
-          margin-bottom: 2px;
-        }
-      }
-      .nav {
-        float: left;
-        margin-left: 14.3%;
-        font-size: 16px;
-        li {
-          float: left;
-          margin-right: 50px;
-        }
-      }
-      .right {
-        float: right;
-        img {
-          vertical-align: middle;
-          margin-right: 5px;
-          margin-bottom: 4px;
-        }
-      }
+
+    .chnName {
+        font-size: 40px;
+        color: #ffffff;
     }
 
-  }
-  .wrap {
-    position: relative;
-    background-color: white;
-    @include mq(margin-bottom,100px);
-    .banner {
-      width: 100%;
-      background: url(../assets/banner.png) center 0 no-repeat;
-      background-size: cover;
-      .bannerContainer {
+    .engName {
+        font-size: 20px;
+        color: #ffffff;
+        opacity: 0.8;
+    }
+
+    .head {
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.1);
+        top: 0;
+        z-index: 100;
+        left: 0;
+
+        span {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 1120px;
+            height: 100%;
+            position: relative;
+            margin: 0 auto;
+            color: #ffffff;
+            line-height: 60px;
+
+            .logo {
+                float: left;
+
+                .iconLogo {
+                    background: url(../assets/logo.png);
+                    width: 30px;
+                    height: 32px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                }
+
+                .break {
+                    height: 16px;
+                    background-color: 1px;
+                    width: 1px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    background-color: #ffffff;
+                    opacity: 0.5;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    margin-bottom: 2px;
+                }
+            }
+
+            .nav {
+                float: left;
+                margin-left: 14.3%;
+                font-size: 16px;
+
+                li {
+                    float: left;
+                    margin-right: 50px;
+                }
+            }
+
+            .right {
+                float: right;
+
+                img {
+                    vertical-align: middle;
+                    margin-right: 5px;
+                    margin-bottom: 4px;
+                }
+            }
+        }
+    }
+
+    .wrap {
         position: relative;
-        margin: 0 auto;
+        background-color: white;
+
+        @include mq(margin-bottom, 100px);
+
+        .banner {
+            width: 100%;
+            background: url(../assets/banner.png) center 0 no-repeat;
+            background-size: cover;
+
+            .bannerContainer {
+                position: relative;
+                margin: 0 auto;
+                text-align: center;
+
+                @include mq(padding-top, 300px);
+
+                h2 {
+                    @include mq(font-size, 60px);
+
+                    color: #ffffff;
+                }
+
+                .silkRoad {
+                    @include mq(height, 93px);
+                    @include mq(margin-top, 65px);
+                }
+
+                .gradual {
+                    background: url(../assets/gradual.png) center 0 no-repeat;
+                    color: #ffffff;
+
+                    @include mq(margin-top, 40px);
+                    @include mq(height, 34px);
+                    @include mq(line-height, 34px);
+                }
+
+                .samllFont {
+                    font-size: 14px;
+                    color: #ffffff;
+
+                    @include mq(margin-top, 20px);
+                }
+
+                .loginContainer {
+                    @include mq(margin-top, 104px);
+
+                    .indexButt {
+                        padding: 12px 52px 11px 52px;
+                        background-color: #ffffff;
+                        font-size: 16px;
+                        color: #0054C0;
+                        border-radius: 25px;
+                    }
+
+                    .personLogin {
+                        margin-right: 40px;
+                    }
+
+                    .mouse {
+                        @include mq(margin-top, 114px);
+                        @include mq(margin-bottom, 83px);
+                    }
+                }
+
+                .itemBlock {
+                    margin: 0 auto;
+                    width: 1200px;
+                    position: relative;
+                    z-index: 100;
+
+                    ul {
+                        @include mq(margin-top, 34px);
+                    }
+
+                    .desBlock {
+                        @include mq(height, 313px);
+
+                        width: 350px;
+                        background-color: #ffffff;
+                        border-radius: 5px;
+                        padding-left: 55px;
+                        padding-right: 55px;
+                        margin-right: 35px;
+                        display: inline-block;
+
+                        &:last-child {
+                            margin-right: 0px;
+                        }
+
+                        img {
+                            @include mq(margin-bottom, 42px);
+                            @include mq(padding-top, 80px);
+                        }
+
+                        h2 {
+                            @include mq(font-size, 24px);
+
+                            color: #212121;
+                        }
+
+                        p {
+                            @include mq(font-size, 16px);
+
+                            color: #6F7479;
+
+                            @include mq(line-height, 24px);
+                            @include mq(margin-top, 34px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .triangle {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0px;
+        }
+    }
+
+    .regionalStatus {
+        background: url(../assets/regionalStatus.png) center 0 no-repeat;
+        width: 100%;
+        position: relative;
+        z-index: 200;
+        @include mq(height, 420px);
+        @include mq(padding-top, 43px);
+
         text-align: center;
-        @include mq(padding-top,300px);
-        h2 {
-          @include mq(font-size,60px);
-          color: #ffffff;
-        }
-        .silkRoad {
-          @include mq(height,93px);
-          @include mq(margin-top,65px);
-        }
-        .gradual {
-          background: url(../assets/gradual.png) center 0 no-repeat;
-          color: #ffffff;
-          @include mq(margin-top,40px);
-          @include mq(height,34px);
-          @include mq(line-height,34px);
-        }
-        .samllFont {
-          font-size: 14px;
-          color: #ffffff;
-          @include mq(margin-top,20px);
-        }
-        .loginContainer {
-          @include mq(margin-top,104px);
-          .indexButt {
-            padding: 12px 52px 11px 52px;
-            background-color: #ffffff;
-            font-size: 16px;
-            color: #0054C0;
-            border-radius: 25px;
-          }
-          .personLogin {
-            margin-right: 40px;
-          }
-          .mouse {
-            @include mq(margin-top,114px);
-            @include mq(margin-bottom,83px);
-          }
-        }
-        .itemBlock {
-          margin: 0 auto;
-          width: 1200px;
-          position: relative;
-          z-index: 100;
-          ul {
-            @include mq(margin-top,34px);
-          }
-          .desBlock {
-            @include mq(height,313px);
-            width: 350px;
-            background-color: #ffffff;
-            border-radius: 5px;
-            padding-left: 55px;
-            padding-right: 55px;
-            margin-right: 35px;
-            display: inline-block;
-            &:last-child {
-              margin-right: 0px;
+
+        .regionalNumber {
+            position: relative;
+
+            @include mq(padding-top, 44px);
+            @include mq(height, 160px);
+
+            width: 1000px;
+            margin: 0 auto;
+
+            div {
+                display: inline-block;
+
+                &.leftNumber {
+                    position: absolute;
+                    left: 0;
+                }
+
+                &.rightNumber {
+                    position: absolute;
+                    right: 0;
+                }
             }
-            img {
-              @include mq(margin-bottom,42px);
-              @include mq(padding-top,80px);
-            }
+
             h2 {
-              @include mq(font-size,24px);
-              color: #212121;
+                @include mq(font-size, 90px);
+
+                color: #212121;
             }
+
             p {
-              @include mq(font-size,16px);
-              color: #6F7479;
-              @include mq(line-height,24px);
-              @include mq(margin-top,34px);
+                @include mq(font-size, 18px);
+                @include mq(padding-top, 15px);
+
+                color: #6F7479;
             }
-          }
+
+            .line {
+                background: #6F7479;
+
+                @include mq(height, 160px);
+
+                width: 1px;
+            }
         }
-      }
     }
-    .triangle {
-      position: absolute;
-      width: 100%;
-      left: 0;
-      bottom: 0px;
-    }
-  }
-  .regionalStatus{
-    background: url(../assets/regionalStatus.png) center 0 no-repeat;
-    width: 100%;
-    @include mq(height,420px);
-    @include mq(padding-top,43px);
-    text-align: center;
-    .regionalNumber{
-      position: relative;
-      @include mq(padding-top,44px);
-      @include mq(height,160px);
-      width: 1000px;
-      margin: 0 auto;
-      div{
-        display: inline-block;
-        &.leftNumber{
-          position: absolute;
-          left: 0;
+
+    .enterWelcome {
+        width: 100%;
+        height: 718px;
+
+        .gradientBlock {
+            width: 100%;
+            margin-bottom: 43px;
+            @include mq(height, 100px);
+            position: relative;
+            .gradient {
+                background-image: radial-gradient(60% 76%, #E0E0E0 0%, rgba(255,255,255,0.00) 77%);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                right: 0;
+                @include mq(top, -45px);
+                opacity: 0.5;
+                filter: blur(12px);
+            }
         }
-        &.rightNumber{
-          position: absolute;
-          right: 0;
+
+        .TagsBlock {
+            position: relative;
+            width: 1200px;
+            margin: 0 auto;
         }
-      }
-      h2{
-        @include mq(font-size,90px);
-        color: #212121;
-      }
-      p{
-        @include mq(font-size,18px);
-        @include mq(padding-top,15px);
-        color: #6F7479;
-      }
-      .line{
-        background: #6F7479;
-        @include mq(height,160px);
-        width: 1px;
-      }
     }
-  }
-  .enterWelcome{
-    width: 100%;
-    height: 718px;
-    .gradient{
-      width: 100%;
-      height: 100px;
-      background-image: radial-gradient(50% 76%, #E0E0E0 0%, rgba(255,255,255,0.00) 77%);
-      margin-bottom: 43px;
-    }
-    .TagsBlock{
-      position: relative;
-      width: 1200px;
-      margin: 0 auto;
-    }
-  }
 }
 
+// @keyframes mymove {
+//     from {
+//         top: 0px;
+//     }
+
+//     to {
+//         top: 200px;
+//     }
+// }
 

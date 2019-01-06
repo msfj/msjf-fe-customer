@@ -78,7 +78,9 @@ export default function () {
 					</div>
 				</div>
 				<div className={styles.enterWelcome}>
-					<div className={styles.gradient} />
+					<div className={styles.gradientBlock}>
+						<div className={styles.gradient} />
+					</div>
 					<div className={styles.TagsBlock}>
 						<Title chnName={"地区现状"} engName={"REGIONAL STATUS"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1} />
 						<TagsBlock />
@@ -94,7 +96,7 @@ function Title({ chnName, engName, chnNameColor, engNameColor, opacity }) {
 	const chnNameStyle = { color: chnNameColor };
 	const engNameStyle = { color: engNameColor, opacity: opacity };
 	return (
-		<div>
+		<div style={{textAlign:'center'}}>
 			<div style={chnNameStyle} className={styles.chnName}>{chnName}</div>
 			<div style={engNameStyle} className={styles.engName}>{engName}</div>
 		</div>
@@ -111,15 +113,30 @@ function TagsBlock() {
 		{ width: "160px", height: "56px", borderRadius: "27.5px", text: "其他类", top: 382, right: 370, opacity: 0.2 },
 		{ width: "258px", height: "56px", borderRadius: "27.5px", text: "个人自由资产投资", top: 428, left: 337, opacity: 0.3, filter: 'blur(2px)' },
 	];
+	const keyframesCollection = itemsStyleData.reduce((pre,next,currentIndex) => {
+		function judgeLeft(obj) {
+			return obj.left ? "left" : "right";
+		}
+		if (currentIndex === 1) {
+			return `@keyframes Keyframes0 { from { ${judgeLeft(pre)}: ${pre.left || pre.right}px;} to { ${judgeLeft(pre)}: ${(pre.left || pre.right) -2}px;} }
+			@keyframes Keyframes${currentIndex} { from { ${judgeLeft(next)}: ${next.left || next.right}px;} to { ${judgeLeft(next)}: ${(next.left || next.right) -2}px;} }`;
+		}
+		return `${pre}
+		@keyframes Keyframes${currentIndex} { from { ${judgeLeft(next)}: ${next.left || next.right}px;} to { ${judgeLeft(next)}: ${(next.left || next.right) -2}px;} }`;
+	});
+	var newHead=document.getElementsByTagName('head')[0];
+	var newStyle=document.createElement('style');
+	newHead.appendChild(newStyle);
+	newStyle.innerHTML = keyframesCollection;
 	return (
 		<Fragment>
-			{itemsStyleData.map((item,index) => <TagsItem key={`${index}TagsBlock`} {...item} />)}
+			{itemsStyleData.map((item,index) => <TagsItem key={`${index}TagsBlock`} keyframesName={`Keyframes${index}`} {...item} />)}
 		</Fragment>
 	)
 }
 
 function TagsItem(props) {
-	const { width, height, borderRadius, top, fontSize, text, left, right, opacity, filter } = props;
+	const { width, height, borderRadius, top, fontSize, text, left, right, opacity, filter, keyframesName } = props;
 	const style = {
 		width: width,
 		height: height,
@@ -135,7 +152,7 @@ function TagsItem(props) {
 		right: right && right,
 		filter: filter ? filter : 'blur(0px)',
 		boxShadow: '0 10px 20px 0 rgba(0,114,210,0.20)',
-		animation: 'mymove 1.3s ease-in-out 2.7s infinite alternate',
+		animation: `${keyframesName} 1s ease-in-out 3s infinite alternate`,
 		textAlign: 'center'
 	};
 	const opacityStyle = {
