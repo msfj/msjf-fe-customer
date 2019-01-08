@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component }  from 'react';
 import { Modal, Form, Input, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, } from 'antd';
 import './login.scss';
 import PasswordInput from './PasswordInput'
@@ -7,7 +7,7 @@ const { Group } = Input;
 const { Option } = Select;
 const { Item } = Form;
 
-class NormalLoginForm extends React.Component {
+class NormalLoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -19,9 +19,11 @@ class NormalLoginForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const opts = this.props.options;
+
     return (
       <Form onSubmit={this.handleSubmit} className="loginForm" layout="vertical">
-        <Item label="证件号">
+        <Item label={opts.accLabel}>
           {getFieldDecorator('cardID', {
             rules: [{ required: true, message: '请输入身份证/港澳通行证/护照/台胞证号码' }],
           })(
@@ -61,7 +63,7 @@ class NormalLoginForm extends React.Component {
   }
 }
 
-class MobileLoginForm extends React.Component {
+class MobileLoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -73,10 +75,11 @@ class MobileLoginForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const opts = this.props.options;
     return (
       <Form onSubmit={this.handleSubmit} className="loginForm" layout="vertical">
-        <Item label="手机号">
-          {getFieldDecorator('cardID', {
+        <Item label={opts.mbLabel}>
+          {getFieldDecorator('mobile', {
             rules: [{ required: true, message: '请输入手机号' }],
           })(
             <Group compact>
@@ -115,10 +118,40 @@ class MobileLoginForm extends React.Component {
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 const WrappedMobileLoginForm = Form.create()(MobileLoginForm);
 
-class Loginmd extends React.Component {
+const lgobj = {
+  '0': {
+    title: '个人账户登录',
+    small: 'PERSONAL ACCOUNT',
+    accLabel: '证件号',
+    mbLabel: '手机号'
+  },
+  '1': {
+    title: '企业账户登录',
+    small: 'CORPORATE ACCOUNT',
+    accLabel: '企业证件号',
+    mbLabel: '企业法人手机号'
+  }
+};
+
+class Loginmd extends Component {
   state = {
     visible: this.props.visible,
-    type: 0
+    type: 0,
+    loginType: this.props.loginType
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { visible, loginType } = this.state;
+    if(visible !== nextProps.visible) {
+      this.setState({
+        visible: nextProps.visible,
+      })
+    }
+    if(loginType !== nextProps.loginType) {
+      this.setState({
+        loginType: nextProps.loginType,
+      })
+    }
   }
 
   handleCancel = () => {
@@ -130,12 +163,14 @@ class Loginmd extends React.Component {
 
   changeType = () => {
     let type = this.state.type === 0 ? 1 : 0;
-    this.setState({ type: type });
+    this.setState({ type });
   };
 
   render() {
-    const { visible, type } = this.state;
+    const { visible, type, loginType=0 } = this.state;
     const isAcc = type === 0;
+    const opts = lgobj[loginType];
+
     return (
       <div>
         <Modal
@@ -147,8 +182,8 @@ class Loginmd extends React.Component {
         >
           <div className={isAcc ? "loginBar" : "loginBar loginBar1"} onClick={this.changeType}></div>
           <div className="loginBox">
-            <h2 className="loginTitle"><strong>个人账户登录</strong><small>PERSONAL ACCOUNT</small></h2>
-            {isAcc? <WrappedNormalLoginForm /> : <WrappedMobileLoginForm />}
+            <h2 className="loginTitle"><strong>{opts.title}</strong><small>{opts.small}</small></h2>
+            {isAcc? <WrappedNormalLoginForm options={opts} /> : <WrappedMobileLoginForm options={opts} />}
           </div>
         </Modal>
       </div>
