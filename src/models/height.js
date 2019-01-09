@@ -1,26 +1,30 @@
 export default {
-  namespace: 'heigth',
+  namespace: 'index',
   state: {
-    height: window.innerHeight,
-    width: window.innerWidth
+    headerStyle: false,
   },
   reducers: {
-    changeHeight(state, { payload: { height, width } }) {
-      return { ...state, height, width }
+    setHeaderStyle(state, { payload: { headerStyle } }) {
+      return { ...state, headerStyle }
     }
   },
   effects: {
-    *resize({ payload: { height, width } }, { call, put}) {
+    *resize({ payload: { headerStyle } }, { call, put }) {
       yield put({
-        type: 'changeHeight',
-        payload: { height, width }
+        type: 'setHeaderStyle',
+        payload: { headerStyle }
       });
     }
   },
   subscriptions: {
     setup({ dispatch }) {
-      return window.onresize = () => {
-        dispatch({ type:'resize', payload: { height: window.innerHeight, width: window.innerWidth }})
+      return window.onscroll = () => {
+        if(!document.querySelectorAll(".bannerContainer h2")[0]) return false;
+        if(document.querySelectorAll(".bannerContainer h2")[0].offsetTop < document.documentElement.scrollTop + 60){
+          dispatch({ type: 'resize', payload: { headerStyle : true } })
+        }else{
+          dispatch({ type: 'resize', payload: { headerStyle : false } })
+        }
       }
     }
   }

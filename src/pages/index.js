@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'dva';
+import { Popover } from 'antd';
 import styles from './index.scss';
 import Link from 'umi/link';
 import Loginmd from '../component/loginMD';
 
 class Index extends Component {
 	state = {
-	  loginmd: false,
-	  loginType: 0
+		loginmd: false,
+		loginType: 0
 	};
 	login = (type) => {
 		this.setState({
@@ -18,26 +20,7 @@ class Index extends Component {
 		return (
 			<Fragment>
 				<div className={styles.viewpage}>
-					<div className={styles.head}>
-						<div className={styles.container}>
-							<div className={styles.logo}>
-								<i className={styles.iconLogo}></i>
-								<span>宁波梅山金服科技</span>
-								<span className={styles.break}></span>
-								<span>宁波市类金融企业管理服务平台</span>
-							</div>
-							<ul className={styles.nav}>
-								<li>首页</li>
-								<li>行业咨询</li>
-								<li>帮助中心</li>
-								<li><Link to="/about">关于我们</Link></li>
-							</ul>
-							<div className={styles.right}>
-								<img src={require("../assets/qrcode.svg")} alt="" />
-								<span>关注二维码</span>
-							</div>
-						</div>
-					</div>
+					<Header headerStyle={this.props.headerStyle} />
 					<div className={styles.wrap}>
 						<div className={styles.banner}>
 							<div className={styles.bannerContainer}>
@@ -94,7 +77,7 @@ class Index extends Component {
 							<div className={styles.gradient} />
 						</div>
 						<div className={styles.TagsBlock}>
-							<Title chnName={"地区现状"} engName={"REGIONAL STATUS"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1} />
+							<Title chnName={"欢迎入驻"} engName={"WELCOME TO SETTLE IN"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1} />
 							<TagsBlock />
 						</div>
 					</div>
@@ -105,12 +88,41 @@ class Index extends Component {
 	}
 }
 
+function Header(props) {
+	const pic = props.headerStyle ? require("../assets/qrcodegray.svg") : require("../assets/qrcode.svg");
+	return (
+		<div className={`${styles.head} ${props.headerStyle && `addbackground`}`}>
+			<div className={styles.headContainer}>
+				<div className={styles.logo}>
+					<i className={styles.iconLogo}></i>
+					<span>宁波梅山金服科技</span>
+					<span className={styles.break}></span>
+					<span>宁波市类金融企业管理服务平台</span>
+				</div>
+				<ul className={styles.nav}>
+					<li className={'active'}><Link to="/">首页</Link></li>
+					<li><Link to="/">行业咨询</Link></li>
+					<li><Link to="/">帮助中心</Link></li>
+					<li><Link to="/about">关于我们</Link></li>
+				</ul>
+				<div className={styles.right}>
+					<Popover placement="bottom" content={<img className={styles.hoverPic} src={require("../assets/qrcode.png")} alt="" />}>
+						<img src={pic} alt="" />
+						<span>关注二维码</span>
+					</Popover>
+
+				</div>
+			</div>
+		</div>
+	);
+}
+
 function Title({ chnName, engName, chnNameColor, engNameColor, opacity }) {
 
 	const chnNameStyle = { color: chnNameColor };
 	const engNameStyle = { color: engNameColor, opacity: opacity };
 	return (
-		<div style={{textAlign:'center'}}>
+		<div style={{ textAlign: 'center' }}>
 			<div style={chnNameStyle} className={styles.chnName}>{chnName}</div>
 			<div style={engNameStyle} className={styles.engName}>{engName}</div>
 		</div>
@@ -127,24 +139,24 @@ function TagsBlock() {
 		{ width: "160px", height: "56px", borderRadius: "27.5px", text: "其他类", top: 382, right: 370, opacity: 0.2 },
 		{ width: "258px", height: "56px", borderRadius: "27.5px", text: "个人自由资产投资", top: 428, left: 337, opacity: 0.3, filter: 'blur(2px)' },
 	];
-	const keyframesCollection = itemsStyleData.reduce((pre,next,currentIndex) => {
+	const keyframesCollection = itemsStyleData.reduce((pre, next, currentIndex) => {
 		function judgeLeft(obj) {
 			return obj.left ? "left" : "right";
 		}
 		if (currentIndex === 1) {
-			return `@keyframes Keyframes0 { from { ${judgeLeft(pre)}: ${pre.left || pre.right}px;} to { ${judgeLeft(pre)}: ${(pre.left || pre.right) -2}px;} }
-			@keyframes Keyframes${currentIndex} { from { ${judgeLeft(next)}: ${next.left || next.right}px;} to { ${judgeLeft(next)}: ${(next.left || next.right) -2}px;} }`;
+			return `@keyframes Keyframes0 { from { ${judgeLeft(pre)}: ${pre.left || pre.right}px;} to { ${judgeLeft(pre)}: ${(pre.left || pre.right) - 2}px;} }
+			@keyframes Keyframes${currentIndex} { from { ${judgeLeft(next)}: ${next.left || next.right}px;} to { ${judgeLeft(next)}: ${(next.left || next.right) - 2}px;} }`;
 		}
 		return `${pre}
-		@keyframes Keyframes${currentIndex} { from { ${judgeLeft(next)}: ${next.left || next.right}px;} to { ${judgeLeft(next)}: ${(next.left || next.right) -2}px;} }`;
+		@keyframes Keyframes${currentIndex} { from { ${judgeLeft(next)}: ${next.left || next.right}px;} to { ${judgeLeft(next)}: ${(next.left || next.right) - 2}px;} }`;
 	});
-	var newHead=document.getElementsByTagName('head')[0];
-	var newStyle=document.createElement('style');
+	var newHead = document.getElementsByTagName('head')[0];
+	var newStyle = document.createElement('style');
 	newHead.appendChild(newStyle);
 	newStyle.innerHTML = keyframesCollection;
 	return (
 		<Fragment>
-			{itemsStyleData.map((item,index) => <TagsItem key={`${index}TagsBlock`} keyframesName={`Keyframes${index}`} {...item} />)}
+			{itemsStyleData.map((item, index) => <TagsItem key={`${index}TagsBlock`} keyframesName={`Keyframes${index}`} {...item} />)}
 		</Fragment>
 	)
 }
@@ -187,4 +199,11 @@ function TagsItem(props) {
 	)
 }
 
-export default Index;
+function mapStateToProps(state) {
+	const { headerStyle } = state.index;
+	return {
+		headerStyle
+	};
+}
+
+export default connect(mapStateToProps)(Index);
