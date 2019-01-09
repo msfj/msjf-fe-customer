@@ -38,6 +38,15 @@
     }
     .loginBox {
         padding: 30px 20px;
+        .loginBtn {
+            display: block;
+            height: 60px;
+            width: 100%;
+            font-size: 24px;
+            background-image: linear-gradient(-132deg, #008DE1 0%, #0054C0 100%);
+            box-shadow: 0 10px 10px 0 rgba(0,126,217,0.20);
+            border-radius: 4px;
+        }
         .loginTitle {
             strong {
                 font-size: 36px;
@@ -56,15 +65,7 @@
             .loginForgot {
                 float: right;
             }
-            .loginBtn {
-                display: block;
-                height: 60px;
-                width: 100%;
-                font-size: 24px;
-                background-image: linear-gradient(-132deg, #008DE1 0%, #0054C0 100%);
-                box-shadow: 0 10px 10px 0 rgba(0,126,217,0.20);
-                border-radius: 4px;
-            }
+            
             .loginInfo {
                 margin-top: 30px;
                 text-align: center;
@@ -83,5 +84,31 @@
     }
     .loginBar1 {
         background: url(../assets/login-bar1.png);
+    }
+    .loginbs {
+        max-height: 430px;
+        overflow: auto;
+        margin-top: 40px;
+        .loginbsLi {
+            background-color: #F5F5F5;
+            padding: 15px 0;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 10px;
+            border: 1px solid #F5F5F5;
+            .loginbsTx {
+                color: #212121;
+            }
+            .loginbsSm {
+                color: #6F7479;
+                margin-top: 5px;
+            }
+        }
+        .loginbsSel {
+            background-image: url(../assets/ic-select.png);
+            background-position: right bottom;
+            background-repeat: no-repeat;
+            border-color: #0072D2;
+        }
     }
 }

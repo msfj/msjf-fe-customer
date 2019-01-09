@@ -1,0 +1,46 @@
+body {
+    background-color: #f8f8f8;
+}
+.persif-banner {
+    height: 260px;
+    background: url(../../../assets/about-bg.png) center center no-repeat;
+    text-align: center;
+    color: #fff;
+    padding-top: 80px;
+}
+.persif-wela {
+    font-size: 36px;
+}
+.persif-welb {
+    margin-top: 20px;
+}
+
+.persif-form {
+    width: 1200px;
+    position: relative;
+    margin: -50px auto 0;
+    background-color: #fff;
+    padding: 25px 185px 40px;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.10);
+    .ant-form-item {
+        margin-bottom: 10px;
+    }
+}
+.persif-title{ 
+    line-height: 18px;
+    border-bottom: 1px dashed #D0D3D5;
+    padding: 15px 0;
+    margin-bottom: 15px !important;
+    > strong {
+        font-size: 18px;
+        font-weight: normal;
+        color: #212121;
+        display: inline-block;
+        border-left: 3px solid #0072D2;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    > small {
+        color: #91989E;
+    }
+}

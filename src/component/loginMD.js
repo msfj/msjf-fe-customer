@@ -25,9 +25,9 @@ class NormalLoginForm extends Component {
       <Form onSubmit={this.handleSubmit} className="loginForm" layout="vertical">
         <Item label={opts.accLabel}>
           {getFieldDecorator('cardID', {
-            rules: [{ required: true, message: '请输入身份证/港澳通行证/护照/台胞证号码' }],
+            rules: [{ required: true, message: opts.accMsg }],
           })(
-            <Input placeholder="请输入身份证/港澳通行证/护照/台胞证号码" size="large" />
+            <Input placeholder={opts.accMsg} size="large" />
           )}
         </Item>
         <Item label="账号密码">
@@ -71,6 +71,7 @@ class MobileLoginForm extends Component {
         console.log('Received values of form: ', values);
       }
     });
+    this.props.bschioce(true);
   }
 
   render() {
@@ -123,12 +124,14 @@ const lgobj = {
     title: '个人账户登录',
     small: 'PERSONAL ACCOUNT',
     accLabel: '证件号',
+    accMsg: '请输入身份证/港澳通行证/护照/台胞证号码',
     mbLabel: '手机号'
   },
   '1': {
     title: '企业账户登录',
     small: 'CORPORATE ACCOUNT',
     accLabel: '企业证件号',
+    accMsg: '请输入企业统一信用代码',
     mbLabel: '企业法人手机号'
   }
 };
@@ -137,7 +140,9 @@ class Loginmd extends Component {
   state = {
     visible: this.props.visible,
     type: 0,
-    loginType: this.props.loginType
+    loginType: this.props.loginType,
+    bsvisible: false,
+    bsindex: 0
   }
 
   componentWillReceiveProps(nextProps) {
@@ -166,8 +171,16 @@ class Loginmd extends Component {
     this.setState({ type });
   };
 
+  bschioceShow = () => {
+    this.setState( {bsvisible: true, visible: false });
+  }
+
+  bsSelect = (i) => {
+    this.setState( {bsindex: i });
+  }
+
   render() {
-    const { visible, type, loginType=0 } = this.state;
+    const { visible, type, loginType=0, bsvisible, bsindex } = this.state;
     const isAcc = type === 0;
     const opts = lgobj[loginType];
 
@@ -183,7 +196,37 @@ class Loginmd extends Component {
           <div className={isAcc ? "loginBar" : "loginBar loginBar1"} onClick={this.changeType}></div>
           <div className="loginBox">
             <h2 className="loginTitle"><strong>{opts.title}</strong><small>{opts.small}</small></h2>
-            {isAcc? <WrappedNormalLoginForm options={opts} /> : <WrappedMobileLoginForm options={opts} />}
+            {isAcc? <WrappedNormalLoginForm options={opts} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} />}
+          </div>
+        </Modal>
+
+        <Modal
+          visible={bsvisible}
+          className="loginmd"
+          footer={null}
+          width={570}
+          onCancel={()=>{this.setState({ bsvisible: false })}}
+        >
+          <div className="loginBox">
+            <h2 className="loginTitle"><strong>企业选择</strong><small>BUSINESS CHOICE</small></h2>
+            <ul className="loginbs">
+            { 
+              (() => {
+                // while (++i < 10) {
+                let rows = [];
+                for(let i = 0; i < 10; i++) {
+                 rows.push(
+                 <li className={i===bsindex?'loginbsLi loginbsSel':'loginbsLi'} key={i} onClick={()=>{this.bsSelect(i)}}>
+                  <div className="loginbsTx">梅山（宁波）金服科技有限公司</div>
+                  <div className="loginbsSm">123456789123456789</div>
+                </li>
+               )
+                }
+                return rows;
+               })()
+            }
+            </ul>
+            <Button type="primary" className="loginBtn">确定</Button>
           </div>
         </Modal>
       </div>
