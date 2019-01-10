@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
-import { Modal, Form, Input, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, } from 'antd';
+import Link from 'umi/link';
+import { Modal, Form, Input, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete} from 'antd';
 import './login.scss';
 import PasswordInput from './PasswordInput'
 
@@ -52,11 +53,11 @@ class NormalLoginForm extends Component {
           })(
             <Checkbox>记住账号</Checkbox>
           )}
-          <a className="loginForgot" href="">忘记密码</a>
+          <Link className="loginForgot" to="/register/passwordreset">忘记密码</Link>
         </Item>
         <Button type="primary" htmlType="submit" className="loginBtn">登录</Button>
         <div className="loginInfo">
-          还没有账号？ <a href="">立即注册</a>
+          还没有账号？ <Link to={this.props.options.link}>立即注册</Link>
         </div>
       </Form>
     );
@@ -105,11 +106,11 @@ class MobileLoginForm extends Component {
           })(
             <Checkbox>记住账号</Checkbox>
           )}
-          <a className="loginForgot" href="">忘记密码</a>
+          <Link className="loginForgot" to="/register/passwordreset">忘记密码</Link>
         </Item>
         <Button type="primary" htmlType="submit" className="loginBtn">登录</Button>
         <div className="loginInfo">
-          还没有账号？ <a href="">立即注册</a>
+          还没有账号？ <Link to={this.props.options.link}>立即注册</Link>
         </div>
       </Form>
     );
@@ -125,14 +126,16 @@ const lgobj = {
     small: 'PERSONAL ACCOUNT',
     accLabel: '证件号',
     accMsg: '请输入身份证/港澳通行证/护照/台胞证号码',
-    mbLabel: '手机号'
+    mbLabel: '手机号',
+    link: '/register/person'
   },
   '1': {
     title: '企业账户登录',
     small: 'CORPORATE ACCOUNT',
     accLabel: '企业证件号',
     accMsg: '请输入企业统一信用代码',
-    mbLabel: '企业法人手机号'
+    mbLabel: '企业法人手机号',
+    link: '/register/enterprise'
   }
 };
 
