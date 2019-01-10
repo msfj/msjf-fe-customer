@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
-import { Popover } from 'antd';
 import styles from './index.scss';
-import Link from 'umi/link';
 import Loginmd from '../component/loginMD';
 
 class Index extends Component {
@@ -20,7 +18,6 @@ class Index extends Component {
 		return (
 			<Fragment>
 				<div className={styles.viewpage}>
-					<Header headerStyle={this.props.headerStyle} />
 					<div className={styles.wrap}>
 						<div className={styles.banner}>
 							<div className={styles.bannerContainer}>
@@ -86,35 +83,6 @@ class Index extends Component {
 			</Fragment>
 		);
 	}
-}
-
-function Header(props) {
-	const pic = props.headerStyle ? require("../assets/qrcodegray.svg") : require("../assets/qrcode.svg");
-	return (
-		<div className={`${styles.head} ${props.headerStyle && `addbackground`}`}>
-			<div className={styles.headContainer}>
-				<div className={styles.logo}>
-					<i className={styles.iconLogo}></i>
-					<span>宁波梅山金服科技</span>
-					<span className={styles.break}></span>
-					<span>宁波市类金融企业管理服务平台</span>
-				</div>
-				<ul className={styles.nav}>
-					<li className={'active'}><Link to="/">首页</Link></li>
-					<li><Link to="/">行业咨询</Link></li>
-					<li><Link to="/">帮助中心</Link></li>
-					<li><Link to="/about">关于我们</Link></li>
-				</ul>
-				<div className={styles.right}>
-					<Popover placement="bottom" content={<img className={styles.hoverPic} src={require("../assets/qrcode.png")} alt="" />}>
-						<img src={pic} alt="" />
-						<span>关注二维码</span>
-					</Popover>
-
-				</div>
-			</div>
-		</div>
-	);
 }
 
 function Title({ chnName, engName, chnNameColor, engNameColor, opacity }) {
