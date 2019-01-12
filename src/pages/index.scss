@@ -57,7 +57,10 @@ $W1280: "screen and (max-width: 1280px)";
             width: 100%;
             background: url(../assets/banner.png) center 0 no-repeat;
             background-size: cover;
-
+            position: relative;
+            .canvas {
+                position: absolute;
+            }
             .bannerContainer {
                 position: relative;
                 margin: 0 auto;
@@ -284,6 +287,26 @@ $W1280: "screen and (max-width: 1280px)";
             position: relative;
             width: 1200px;
             margin: 0 auto;
+        }
+        .tagsBall {
+            width: 1200px;
+            height: 350px;
+            margin: 0 auto;
+            position: relative;
+
+            .tagsItem {
+                display: block;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                color: #fff;
+                text-decoration: none;
+                font-size: 14px;
+                padding: .5em 2em;
+                background-color: #0072D2;
+                border-radius: 14px;
+                will-change: transform;
+            }
         }
     }
 }

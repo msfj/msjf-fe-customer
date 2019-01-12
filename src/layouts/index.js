@@ -39,8 +39,7 @@ class BasicLayout extends Component {
             <div className={css.footercol1}>
               <div className={css.footertitle}>电话&邮箱<i className={css.footerline}></i></div>
               <div className={css.footercontent}>
-                <Icon className={css.footericon} style={{ fontSize: '20px' }} type="phone" />
-                {/* <img  src={require("../assets/ic-phone.svg")} alt="" /> */}
+                <img className={css.footericon} src={require("../assets/ic-phone.svg")} alt="" />
                 <span>0574-86708719</span>
                 <img className={`${css.footericon} ${css.ml28}`} src={require("../assets/ic-email.svg")} alt="" />
                 <span>jinfu512@163.com</span>
@@ -113,23 +112,22 @@ function Header(props) {
     <div className={`${css.head} ${props.headerStyle && `addbackground`}`}>
       <div className={css.headContainer}>
         <div className={css.logo}>
-          <i className={css.iconLogo}></i>
-          <span>宁波梅山金服科技</span>
-          <span className={css.break}></span>
-          <span>宁波市类金融企业管理服务平台</span>
+            <i className={css.iconLogo}></i>
+            <span>宁波梅山金服科技</span>
+            <span className={css.break}></span>
+            <span>宁波市类金融企业管理服务平台</span>
         </div>
         <ul className={css.nav}>
-          <li className={`${props.pathname === "/" && `active`}`}><Link to="/">首页</Link></li>
-          <li><Link to="/">行业咨询</Link></li>
-          <li><Link to="/">帮助中心</Link></li>
-          <li className={`${props.pathname === "/about" && `active`}`}><Link to="/about">关于我们</Link></li>
+            <li className={`${props.pathname === "/" && `active`}`}><Link to="/">首页</Link></li>
+            <li><Link to="/">行业咨询</Link></li>
+            <li><Link to="/">帮助中心</Link></li>
+            <li className={`${props.pathname === "/about" && `active`}`}><Link to="/about">关于我们</Link></li>
         </ul>
         <div className={css.right}>
-          <Popover placement="bottom" content={<img className={css.hoverPic} src={require("../assets/qrcode.png")} alt="" />}>
-            <img src={pic} alt="" />
-            <span>关注二维码</span>
-          </Popover>
-
+            <Popover placement="bottom" content={<img className={css.hoverPic} src={require("../assets/qrcode.png")} alt="" />}>
+                <img src={pic} alt="" />
+                <span>关注二维码</span>
+            </Popover>
         </div>
       </div>
     </div>
