@@ -88,8 +88,7 @@ function Footer() {
         <div className={css.footercol1}>
           <div className={css.footertitle}>电话&邮箱<i className={css.footerline}></i></div>
           <div className={css.footercontent}>
-            <Icon className={css.footericon} style={{ fontSize: '20px' }} type="phone" />
-            {/* <img  src={require("../assets/ic-phone.svg")} alt="" /> */}
+            <img className={css.footericon} src={require("../assets/ic-phone.svg")} alt="" />
             <span>0574-86708719</span>
             <img className={`${css.footericon} ${css.ml28}`} src={require("../assets/ic-email.svg")} alt="" />
             <span>jinfu512@163.com</span>
