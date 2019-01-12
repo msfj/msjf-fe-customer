@@ -19,5 +19,8 @@ export default {
   ],
   cssLoaderOptions:{
     localIdentName:'[local]'
+  },
+  targets: {
+    ie: 9
   }
 }

@@ -52,6 +52,9 @@ function BasicLayout(props) {
           </div>
           <div className={css.footercol3}>
             <div className={css.footertitle}>公众号<i className={css.footerline}></i></div>
+            <div className={css.footercontent}>
+              <img src={require('../assets/footer-qr.png')} alt=""/>
+            </div>
           </div>
         </div>
         <div className={css.footerbar}>
