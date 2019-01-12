@@ -2,24 +2,38 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
 import styles from './index.scss';
 import Loginmd from '../component/loginMD';
+import Lxy from '../util/lxy';
+// import Tagball from '../util/tag';
+
+const namespace = 'index';
+
+const mapStateToProps = (state) => {
+  return state[namespace];
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openLogin: (t) => {
+      dispatch({
+		type: `${namespace}/openLogin`,
+		payload: t
+      });
+    },
+  };
+};
 
 class Index extends Component {
-	state = {
-		loginmd: false,
-		loginType: 0
-	};
-	login = (type) => {
-		this.setState({
-			loginmd: true,
-			loginType: type
-		});
-	};
+	componentDidMount() {
+		Lxy.init();
+		// Tagball.innit();
+	}
 	render() {
 		return (
 			<Fragment>
 				<div className={styles.viewpage}>
 					<div className={styles.wrap}>
 						<div className={styles.banner}>
+							<canvas id="canvas" className={styles.canvas}></canvas>
 							<div className={styles.bannerContainer}>
 								<h2>防范金融风险&nbsp;&nbsp;打造金融生态圈</h2>
 								<img className={styles.silkRoad} src={require("../assets/silk-road.png")} alt="" />
@@ -27,8 +41,8 @@ class Index extends Component {
 									<span className={styles.samllFont}>打造产业与资本对接撮合的APP平台，形成私募基金管理人募投管退的生态圈</span>
 								</div>
 								<div className={styles.loginContainer}>
-									<a className={`${styles.indexButt} ${styles.personLogin}`} onClick={this.login.bind(this, 0)}>个人账户登录</a>
-									<a className={styles.indexButt} onClick={this.login.bind(this, 1)}>企业账户登录</a><br />
+									<a className={`${styles.indexButt} ${styles.personLogin}`} onClick={this.props.openLogin.bind(this, 0)}>个人账户登录</a>
+									<a className={styles.indexButt} onClick={this.props.openLogin.bind(this, 1)}>企业账户登录</a><br />
 									<img alt="" className={styles.mouse} src={require("../assets/mouse.svg")} />
 								</div>
 								<div className={styles.itemBlock}>
@@ -76,10 +90,11 @@ class Index extends Component {
 						<div className={styles.TagsBlock}>
 							<Title chnName={"欢迎入驻"} engName={"WELCOME TO SETTLE IN"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1} />
 							<TagsBlock />
+							{/* <TagsBall/> */}
 						</div>
 					</div>
 				</div>
-				<Loginmd visible={this.state.loginmd} loginType={this.state.loginType} />
+				<Loginmd visible={this.props.loginvs} loginType={this.props.loginType} />
 			</Fragment>
 		);
 	}
@@ -95,6 +110,20 @@ function Title({ chnName, engName, chnNameColor, engNameColor, opacity }) {
 			<div style={engNameStyle} className={styles.engName}>{engName}</div>
 		</div>
 	);
+}
+
+function TagsBall() {
+	const items = [
+		'融资租赁', '基金项目产品企业', '企业持股平台', '企业自有资金投顾', '私募基金管理企业', '其他类', '个人自由资产投资'
+	];
+
+	return (
+		<div className={styles.tagsBall} id="tagball">
+			{items.map((it, i) => 
+				<span className={styles.tagsItem} key={i}>{it}</span>
+			)}
+		</div>
+	)
 }
 
 function TagsBlock() {
@@ -167,11 +196,4 @@ function TagsItem(props) {
 	)
 }
 
-function mapStateToProps(state) {
-	const { headerStyle } = state.index;
-	return {
-		headerStyle
-	};
-}
-
-export default connect(mapStateToProps)(Index);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

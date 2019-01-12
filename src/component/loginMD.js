@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import { connect } from 'dva';
 import Link from 'umi/link';
 import { Modal, Form, Input, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete} from 'antd';
 import './login.scss';
@@ -72,7 +73,7 @@ class MobileLoginForm extends Component {
         console.log('Received values of form: ', values);
       }
     });
-    this.props.bschioce(true);
+    this.props.bschioce();
   }
 
   render() {
@@ -121,76 +122,88 @@ const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 const WrappedMobileLoginForm = Form.create()(MobileLoginForm);
 
 const lgobj = {
-  '0': {
-    title: '个人账户登录',
-    small: 'PERSONAL ACCOUNT',
-    accLabel: '证件号',
-    accMsg: '请输入身份证/港澳通行证/护照/台胞证号码',
-    mbLabel: '手机号',
-    link: '/register/person'
-  },
-  '1': {
-    title: '企业账户登录',
-    small: 'CORPORATE ACCOUNT',
-    accLabel: '企业证件号',
-    accMsg: '请输入企业统一信用代码',
-    mbLabel: '企业法人手机号',
-    link: '/register/enterprise'
-  }
+    '0': {
+        title: '个人账户登录',
+        small: 'PERSONAL ACCOUNT',
+        accLabel: '证件号',
+        accMsg: '请输入身份证/港澳通行证/护照/台胞证号码',
+        mbLabel: '手机号',
+        link: '/register/person'
+    },
+    '1': {
+        title: '企业账户登录',
+        small: 'CORPORATE ACCOUNT',
+        accLabel: '企业证件号',
+        accMsg: '请输入企业统一信用代码',
+        mbLabel: '企业法人手机号',
+        link: '/register/enterprise'
+    }
+};
+
+const namespace = 'index';
+
+const mapStateToProps = (state) => {
+    return state[namespace];
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        closeLogin() {
+            dispatch({
+                type: `${namespace}/closeLogin`
+            });
+        },
+        changeLoginmd() {
+            dispatch({
+                type: `${namespace}/changeLoginmd`
+            });
+        },
+        openBsmd() {
+            dispatch({
+                type: `${namespace}/openBsmd`
+            });
+        },
+        bsSelect(i) {
+            dispatch({
+                type: `${namespace}/bsSelect`,
+                payload: i
+            });
+        },
+        closeBsmd() {
+            dispatch({
+                type: `${namespace}/closeBsmd`
+            });
+        }
+    };
 };
 
 class Loginmd extends Component {
-  state = {
-    visible: this.props.visible,
-    type: 0,
-    loginType: this.props.loginType,
-    bsvisible: false,
-    bsindex: 0
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { visible, loginType } = this.state;
-    if(visible !== nextProps.visible) {
-      this.setState({
-        visible: nextProps.visible,
-      })
-    }
-    if(loginType !== nextProps.loginType) {
-      this.setState({
-        loginType: nextProps.loginType,
-      })
-    }
-  }
 
   handleCancel = () => {
-    console.log('Clicked cancel button');
-    this.setState({
-      visible: false,
-    });
+    this.props.closeLogin();
   }
 
   changeType = () => {
-    let type = this.state.type === 0 ? 1 : 0;
-    this.setState({ type });
+    this.props.changeLoginmd();
   };
 
   bschioceShow = () => {
-    this.setState( {bsvisible: true, visible: false });
+    this.props.openBsmd();
   }
 
   bsSelect = (i) => {
-    this.setState( {bsindex: i });
+    this.props.bsSelect(i);
   }
 
   render() {
-    const { visible, type, loginType=0, bsvisible, bsindex } = this.state;
-    const isAcc = type === 0;
+    const { loginvs, loginModel, loginType=0, bsvisible, bsindex } = this.props;
+    const isAcc = loginModel === 0;
     const opts = lgobj[loginType];
 
     return (
       <div>
         <Modal
-          visible={visible}
+          visible={loginvs}
           className="loginmd"
           footer={null}
           width={570}
@@ -208,7 +221,7 @@ class Loginmd extends Component {
           className="loginmd"
           footer={null}
           width={570}
-          onCancel={()=>{this.setState({ bsvisible: false })}}
+          onCancel={()=>{this.props.closeBsmd()}}
         >
           <div className="loginBox">
             <h2 className="loginTitle"><strong>企业选择</strong><small>BUSINESS CHOICE</small></h2>
@@ -237,4 +250,4 @@ class Loginmd extends Component {
   }
 }
 
-export default Loginmd;
+export default connect(mapStateToProps, mapDispatchToProps)(Loginmd);;
