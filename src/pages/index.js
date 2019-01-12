@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import styles from './index.scss';
 import Loginmd from '../component/loginMD';
 import Lxy from '../util/lxy';
-// import Tagball from '../util/tag';
+import Tagball from '../util/tag';
 
 const namespace = 'index';
 
@@ -24,8 +24,10 @@ const mapDispatchToProps = (dispatch) => {
 
 class Index extends Component {
 	componentDidMount() {
-		Lxy.init();
-		// Tagball.innit();
+		setTimeout(() => {
+			Lxy.init();
+			Tagball.init();
+		}, 500);
 	}
 	render() {
 		return (
@@ -89,8 +91,8 @@ class Index extends Component {
 						</div>
 						<div className={styles.TagsBlock}>
 							<Title chnName={"欢迎入驻"} engName={"WELCOME TO SETTLE IN"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1} />
-							<TagsBlock />
-							{/* <TagsBall/> */}
+							{/* <TagsBlock /> */}
+							<TagsBall/>
 						</div>
 					</div>
 				</div>

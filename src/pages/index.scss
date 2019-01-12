@@ -289,9 +289,9 @@ $W1280: "screen and (max-width: 1280px)";
             margin: 0 auto;
         }
         .tagsBall {
-            width: 1200px;
+            width: 600px;
             height: 350px;
-            margin: 0 auto;
+            margin: 10px auto 0;
             position: relative;
 
             .tagsItem {
@@ -301,10 +301,10 @@ $W1280: "screen and (max-width: 1280px)";
                 top: 0px;
                 color: #fff;
                 text-decoration: none;
-                font-size: 14px;
+                font-size: 16px;
                 padding: .5em 2em;
                 background-color: #0072D2;
-                border-radius: 14px;
+                border-radius: 20px;
                 will-change: transform;
             }
         }
