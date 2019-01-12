@@ -17,16 +17,17 @@ export default {
     }
   },
   subscriptions: {
-    setup({ dispatch }) {
-      return window.onscroll = () => {
-        if(!document.querySelectorAll(".bannerContainer h2")[0]) return false;
-        if(document.querySelectorAll(".bannerContainer h2")[0].offsetTop < document.documentElement.scrollTop + 60){
-          dispatch({ type: 'resize', payload: { headerStyle : true } })
-        }else{
-          dispatch({ type: 'resize', payload: { headerStyle : false } })
-        }
-      }
-    }
+    // setup({ dispatch,history }) {
+    //   window.onscroll = () => {
+    //     if(!document.querySelectorAll(".bannerContainer h2")[0]) return false;
+    //     if(document.querySelectorAll(".bannerContainer h2")[0].offsetTop < document.documentElement.scrollTop + 60){
+    //       dispatch({ type: 'resize', payload: { headerStyle : true } })
+    //     }else{
+    //       dispatch({ type: 'resize', payload: { headerStyle : false } })
+    //     }
+    //   }
+    // },
+
   }
 
 

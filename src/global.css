@@ -38,7 +38,7 @@ body {
 
 ul li {
   list-style-image: none;
-  list-style-position: outside;
+  list-style-position: inside;
   list-style-type: none;
 }
 
