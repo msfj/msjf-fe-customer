@@ -242,7 +242,7 @@ class Loginmd extends Component {
                })()
             }
             </ul>
-            <Button type="primary" className="loginBtn">确定</Button>
+            <Link to="/user/personInfo"><Button type="primary" className="loginBtn">确定</Button></Link>
           </div>
         </Modal>
       </div>

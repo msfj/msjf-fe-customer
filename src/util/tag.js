@@ -281,7 +281,7 @@ var tagcloud = (function(win, doc) { // ns
 })(window, document);
 
 function init() {
-    if(window.tagload) return;
+    // if(window.tagload) return;
     tagcloud({
         selector: "#tagball",  //元素选择器
         fontsize: 16,       //基本字体大小, 单位px
@@ -291,7 +291,7 @@ function init() {
         direction: 135,     //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
         keep: false          //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
     });
-    window.tagload = true;
+    // window.tagload = true;
 };
 
 export default { init }
