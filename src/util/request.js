@@ -1,5 +1,4 @@
 function checkStatus(response) {
-    console.log(response)
     if (response.status >= 200 && response.status < 300) {
       return response;
     }
@@ -7,6 +6,18 @@ function checkStatus(response) {
     const error = new Error(response.statusText);
     error.response = response;
     throw error;
+}
+
+function handleResponse (response) {
+    let contentType = response.headers.get('content-type')
+    if (contentType.includes('application/json')) {
+        return response.json()
+    } else if (contentType.includes('text/html')) {
+        return response.text()
+    } else {
+        // Other response types as necessary. I haven't found a need for them yet though.
+        throw new Error(`Sorry, content-type ${contentType} not supported`)
+    }
 }
   
 /**
@@ -19,5 +30,5 @@ function checkStatus(response) {
 export default async function request(url, options) {
     const response = await fetch(url, options);
     checkStatus(response);
-    return await response.json();
+    return await handleResponse(response);
 }

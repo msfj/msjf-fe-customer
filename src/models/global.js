@@ -13,7 +13,8 @@ export default {
                 text: 'setted dva',
             };
         },
-        signin(state) {
+        signin(state, { payload: lgk }) {
+            console.log(lgk)
             return {
                 ...state,
                 login: true,
@@ -21,8 +22,9 @@ export default {
         },
     },
     effects: {
-        *login(action, { call, put }) {
-            const lgk = yield call(Service.userLoginByAcc);
+        *login({payload: parma}, { call, put }) {
+            console.log(parma);
+            const lgk = yield call(Service.userLoginByAcc, {body: parma});
             yield put({ type: 'signin', payload: lgk });
             // yield put({ type: 'signin' });
         },

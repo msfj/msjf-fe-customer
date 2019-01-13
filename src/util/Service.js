@@ -14,6 +14,15 @@ Object.keys(api).forEach((key) => {
         str += i === 0 ? w : (w.substring(0,1).toUpperCase() + w.substring(1));
     });
     Service[str] = opts => {
+        if(opts) {
+            opts = {
+                method: opts.method || 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(opts)
+            }
+        }
         request(api[key], opts);
     };
 });
