@@ -91,8 +91,8 @@ class Index extends Component {
 						</div>
 						<div className={styles.TagsBlock}>
 							<Title chnName={"欢迎入驻"} engName={"WELCOME TO SETTLE IN"} chnNameColor={"#212121"} engNameColor={"#91989E"} opacity={1} />
-							{/* <TagsBlock /> */}
-							<TagsBall/>
+							<TagsBlock />
+							{/* <TagsBall/> */}
 						</div>
 					</div>
 				</div>
