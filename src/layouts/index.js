@@ -1,7 +1,6 @@
 import css from './index.scss';
 import React, { Component } from 'react';
-import { connect } from 'dva';
-import { Icon, Popover } from 'antd';
+import { Popover } from 'antd';
 import Link from 'umi/link';
 
 class BasicLayout extends Component {

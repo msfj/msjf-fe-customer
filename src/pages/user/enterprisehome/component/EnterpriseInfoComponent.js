@@ -58,11 +58,11 @@ export default class EnterpriseInfoComponent extends Component {
     return (
       <div className={styles.insideContent}>
         <div className={styles.tips}>
-          <img alt="" src={require("../../../assets/icon/back.svg")} />
+          <img alt="" src={require("imgAssets/icon/back.svg")} />
           <span className={styles.font14}>退出/查看详情</span>
         </div>
         <div className={styles.titleBlock}>
-          <img src={require("../../../assets/general-partner.png")} alt="" />
+          <img src={require("imgAssets/general-partner.png")} alt="" />
           <div className={styles.breakLine} />
           <span className={styles.font24}>公司名称公司名称公司名称</span>
           <div className={`${styles.typeBlock} ${styles.font14}`}>拟设立</div>
@@ -113,25 +113,25 @@ export default class EnterpriseInfoComponent extends Component {
             <div className={styles.staffItem}>
               <p className={styles.font16}>联络员</p>
               <div className={styles.staffItemDetail}>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/interface.svg")} /><div className={styles.breakLine}></div><span>身份证 - 430528********4587</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/interface.svg")} /><div className={styles.breakLine}></div><span>身份证 - 430528********4587</span></div>
               </div>
             </div>
             <div className={styles.staffItem}>
               <p className={styles.font16}>财务负责人</p>
               <div className={styles.staffItemDetail}>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/interface.svg")} /><div className={styles.breakLine}></div><span>身份证 - 430528********4587</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/interface.svg")} /><div className={styles.breakLine}></div><span>身份证 - 430528********4587</span></div>
               </div>
             </div>
             <div className={styles.staffItem}>
               <p className={styles.font16}>法定代表人/执行事务合伙人</p>
               <div className={styles.staffItemDetail}>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
-                <div className={styles.items}><img alt="" src={require("../../../assets/icon/interface.svg")} /><div className={styles.breakLine}></div><span>身份证 - 430528********4587</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
+                <div className={styles.items}><img alt="" src={require("imgAssets/icon/interface.svg")} /><div className={styles.breakLine}></div><span>身份证 - 430528********4587</span></div>
               </div>
             </div>
           </div>

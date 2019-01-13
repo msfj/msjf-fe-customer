@@ -56,21 +56,21 @@ class SiderNode extends Component {
           <p className={styles.font10}>个人账户</p>
           <ul>
             <li className={styles.active}>
-              <img alt="" src={require("../../assets/icon/setup-company-active.svg")} />
+              <img alt="" src={require("../../../assets/icon/setup-company-active.svg")} />
               <span className={styles.font18 + " " + styles.active}>企业设立</span>
-              <img alt="" src={require("../../assets/icon/right.svg")} />
+              <img alt="" src={require("../../../assets/icon/right.svg")} />
               <div className={styles.activeTags} />
             </li>
             <li>
-              <img alt="" src={require("../../assets/icon/relate-company.svg")} />
+              <img alt="" src={require("../../../assets/icon/relate-company.svg")} />
               <span className={styles.font18}>相关企业</span>
             </li>
             <li>
-              <img alt="" src={require("../../assets/icon/message.svg")} />
+              <img alt="" src={require("../../../assets/icon/message.svg")} />
               <span className={styles.font18}>我的消息</span>
             </li>
             <li>
-              <img alt="" src={require("../../assets/icon/person.svg")} />
+              <img alt="" src={require("../../../assets/icon/person.svg")} />
               <span className={styles.font18}>个人中心</span>
             </li>
           </ul>
