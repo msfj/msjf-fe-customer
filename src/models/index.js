@@ -1,3 +1,5 @@
+import Service from '../util/Service';
+
 export default {
     namespace: 'index',
     state: {

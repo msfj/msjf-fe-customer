@@ -1,3 +1,5 @@
+import Service from '../util/Service';
+
 export default {
     namespace: 'global',
     state: {
@@ -20,9 +22,9 @@ export default {
     },
     effects: {
         *login(action, { call, put }) {
-            yield put({
-                type: 'signin',
-            });
+            const lgk = yield call(Service.userLoginByAcc);
+            yield put({ type: 'signin', payload: lgk });
+            // yield put({ type: 'signin' });
         },
         *throwError() {
             throw new Error('hi error');

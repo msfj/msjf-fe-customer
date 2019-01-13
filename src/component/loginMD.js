@@ -15,6 +15,7 @@ class NormalLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        this.props.tologin();
       }
     });
   }
@@ -173,6 +174,11 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({
                 type: `${namespace}/closeBsmd`
             });
+        },
+        login() {
+            dispatch({
+                type: 'global/login'
+            });
         }
     };
 };
@@ -212,7 +218,7 @@ class Loginmd extends Component {
           <div className={isAcc ? "loginBar" : "loginBar loginBar1"} onClick={this.changeType}></div>
           <div className="loginBox">
             <h2 className="loginTitle"><strong>{opts.title}</strong><small>{opts.small}</small></h2>
-            {isAcc? <WrappedNormalLoginForm options={opts} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} />}
+            {isAcc? <WrappedNormalLoginForm options={opts} tologin={this.props.login} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} />}
           </div>
         </Modal>
 
