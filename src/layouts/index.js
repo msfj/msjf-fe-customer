@@ -21,12 +21,13 @@ class BasicLayout extends Component {
     });
   }
   render() {
+    const isLoginPage = !['/', '/about'].includes(this.props.location.pathname);
     return (
       <div className={`${css.main} root`}>
-        <Header headerStyle={this.state.headerStyle || this.props.location.pathname !== "/"} pathname={this.props.location.pathname} />
+        <Header isLoginPage={isLoginPage} headerStyle={this.state.headerStyle || this.props.location.pathname !== "/"} pathname={this.props.location.pathname} />
         {this.props.children}
         {
-          this.props.location.pathname !== "/" ? <SimpleFooter /> : <Footer />
+          isLoginPage ? <SimpleFooter /> : <Footer />
         }
       </div>
     )
@@ -43,7 +44,6 @@ function SimpleFooter() {
 
 function Header(props) {
   const pic = props.headerStyle ? require("../assets/qrcodegray.svg") : require("../assets/qrcode.svg");
-  const isLoginPage = !['/', '/about'].includes(props.pathname);
   return (
     <div className={`${css.head} ${props.headerStyle && `addbackground`}`}>
       <div className={css.headContainer}>
@@ -54,7 +54,7 @@ function Header(props) {
           <span>宁波市类金融企业管理服务平台</span>
         </div>
         {
-          !isLoginPage && <ul className={css.nav}>
+          !props.isLoginPage && <ul className={css.nav}>
             <li className={`${props.pathname === "/" && `active`}`}><Link to="/">首页</Link></li>
             <li><Link to="/">行业咨询</Link></li>
             <li><Link to="/">帮助中心</Link></li>
@@ -63,7 +63,7 @@ function Header(props) {
         }
         <div className={css.right}>
           {
-            isLoginPage ? <div className={css.headInfo}>
+            props.isLoginPage ? <div className={css.headInfo}>
               <div>您好，<span className={css.blueFont}>张家辉</span>梅山金服欢迎您！</div>
               <i className={css.compass} />
               <span>指南</span>
