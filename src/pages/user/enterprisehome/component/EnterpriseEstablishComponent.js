@@ -35,7 +35,7 @@ function TabContent() {
 function TabContentInside() {
   return (
     <div className={styles.tabContentInside}>
-        <img src={require("../../../assets/normal-partner.png")} alt=""/>
+        <img src={require("imgAssets/normal-partner.png")} alt=""/>
         <div className={styles.tabContentInsideRight}>
           <div className={styles.tabContentInsideTop}>
             <span className={styles.titleName}>公司名称公司名称公司名称</span>

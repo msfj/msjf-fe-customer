@@ -1,4 +1,4 @@
-
+const path = require('path');
 // ref: https://umijs.org/config/
 export default {
   plugins: [
@@ -22,5 +22,8 @@ export default {
   },
   targets: {
     ie: 9
+  },
+  alias: {
+    imgAssets: path.resolve(__dirname, 'src/assets/'),
   }
 }
