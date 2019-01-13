@@ -142,7 +142,7 @@
         }
 
         i {
-            background: url(imgAssets/icon/checking.svg);
+            background: url(image/icon/checking.svg);
             width: 20px;
             height: 20px;
             margin: 0 5px 0 30px;
@@ -350,9 +350,10 @@
                             height: 20px;
                             margin-right: 5px;
 
-                            &.iconChecking {
-                                background: url(imgAssets/icon/checking.svg);
+                            &.checking {
+                                background: url(image/icon/checking.svg);
                             }
+
                         }
 
                         .checking {
@@ -364,7 +365,8 @@
                     .tabContentInsideBottom {
                         display: flex;
                         padding-top: 30px;
-
+                        align-items: center;
+                        justify-content: space-between;
                         button {
                             background: rgba(111, 116, 121, 0.1);
                             padding: 3px 24px 3px 24px;
@@ -374,10 +376,42 @@
                             color: #6F7479;
                             letter-spacing: 0;
                             text-align: center;
+                            white-space: nowrap;
                         }
 
                         .operateBlock {
                             display: flex;
+                            span {
+                                padding-right: 10px;
+                                margin-right: 10px;
+                                border-right: 1px #D0D3D5 solid;
+                                white-space: nowrap;
+                                &:last-child {
+                                    padding: 0;
+                                    margin: 0;
+                                    border: 0;
+                                }
+                            }
+                            i {
+                                width: 20px;
+                                height: 20px;
+                                margin-right: 5px;
+                                &.edit {
+                                    background: url(image/icon/edit.svg);
+                                }
+                                &.delete {
+                                    background: url(image/icon/delete.svg);
+                                }
+                                &.info {
+                                    background: url(image/icon/info.svg);
+                                }
+                                &.query {
+                                    background: url(image/icon/query.svg);
+                                }
+                                &.refuse {
+                                    background: url(image/icon/refuse.svg);
+                                }
+                            }
                         }
                     }
                 }

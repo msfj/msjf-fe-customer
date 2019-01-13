@@ -24,6 +24,6 @@ export default {
     ie: 9
   },
   alias: {
-    imgAssets: path.resolve(__dirname, 'src/assets/'),
+    image: path.resolve(__dirname, 'src/assets/'),
   }
 }
