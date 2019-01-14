@@ -354,19 +354,46 @@
                                 background: url(image/icon/checking.svg);
                             }
 
+                            &.unsubmit {
+                                background: url(image/icon/unsubmit.svg);
+                            }
+
+                            &.checked {
+                                background: url(image/icon/checked.svg);
+                            }
+
+                            &.done {
+                                background: url(image/icon/done.svg);
+                            }
+
+                            &.checkin {
+                                background: url(image/icon/checkin.svg);
+                            }
                         }
 
-                        .checking {
+                        .statusText {
                             font-size: 16px;
-                            color: #FAAD14;
+
+                            &.checking {
+                                color: #FAAD14;
+                            }
+
+                            &.unsubmit, &.checkin {
+                                color: #6F7479;
+                            }
+
+                            &.done, &.checked {
+                                color: #29C89B;
+                            }
                         }
                     }
 
                     .tabContentInsideBottom {
                         display: flex;
                         padding-top: 30px;
-                        align-items: center;
                         justify-content: space-between;
+                        align-items: center;
+
                         button {
                             background: rgba(111, 116, 121, 0.1);
                             padding: 3px 24px 3px 24px;
@@ -381,33 +408,54 @@
 
                         .operateBlock {
                             display: flex;
+                            align-items: center;
+
                             span {
                                 padding-right: 10px;
                                 margin-right: 10px;
                                 border-right: 1px #D0D3D5 solid;
                                 white-space: nowrap;
+                                cursor: pointer;
+
                                 &:last-child {
                                     padding: 0;
                                     margin: 0;
                                     border: 0;
                                 }
+
+                                &.ensureButt {
+                                    opacity: 0.85;
+                                    color: #FFFFFF;
+                                    text-align: center;
+                                    line-height: 20px;
+                                    background-image: linear-gradient(-132deg, #008DE1 0%, #0054C0 100%);
+                                    box-shadow: 0 10px 10px 0 rgba(0, 126, 217, 0.2);
+                                    border-radius: 15px;
+                                    padding: 3px 15px 3px 15px;
+                                }
                             }
+
                             i {
                                 width: 20px;
                                 height: 20px;
                                 margin-right: 5px;
+
                                 &.edit {
                                     background: url(image/icon/edit.svg);
                                 }
+
                                 &.delete {
                                     background: url(image/icon/delete.svg);
                                 }
+
                                 &.info {
                                     background: url(image/icon/info.svg);
                                 }
+
                                 &.query {
                                     background: url(image/icon/query.svg);
                                 }
+
                                 &.refuse {
                                     background: url(image/icon/refuse.svg);
                                 }
@@ -416,6 +464,106 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.modalContent {
+    display: flex;
+    align-items: center;
+
+    i {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+
+        &.warn {
+            background: url(image/icon/warn.svg);
+        }
+    }
+}
+
+.customModal {
+    width: 640px !important;
+
+    :global {
+        .ant-modal-close {
+            right: 6px;
+
+            .ant-modal-close-x {
+                line-height: 80px;
+            }
+        }
+
+        .ant-modal-header {
+            margin: 0px 30px 0px 30px;
+            padding: 30px 0px 15px 0px;
+
+            .ant-modal-title {
+                font-size: 16px;
+                color: #6F7479;
+                line-height: 24px;
+            }
+        }
+
+        .ant-modal-body {
+            padding: 35px 40px 0px 40px;
+        }
+
+        .ant-modal-footer {
+            border: 0;
+            padding: 45px 40px 40px 40px;
+
+            .ant-btn {
+                opacity: 0.85;
+                font-size: 16px;
+                color: #212121;
+                text-align: center;
+                line-height: 24px;
+                background: #FFFFFF;
+                border-radius: 4px;
+                width: 120px;
+                height: 40px;
+            }
+
+            .ant-btn-primary {
+                color: #FFFFFF;
+                background: #0072D2;
+            }
+
+            button + button {
+                margin-left: 20px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+.flowContent {
+    padding: 40px 30px 40px 30px;
+    width: 460px;
+    .flowTitle {
+        font-size: 14px;
+        color: #212121;
+        letter-spacing: 0;
+    }
+    .flowDes {
+        display: flex;
+        font-size: 12px;
+        color: #91989E;
+        letter-spacing: 0;
+
+        i {
+            width: 14px;
+            height: 14px;
+            &.checking {
+                background: url(image/icon/checking.svg);
+            }
+        }
+    }
+    :global{
+        .ant-steps-dot .ant-steps-item-content {
+            width: 374px;
         }
     }
 }
