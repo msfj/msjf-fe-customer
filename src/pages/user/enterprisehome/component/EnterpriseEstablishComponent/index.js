@@ -1,9 +1,10 @@
 import React, { Component, PureComponent } from 'react';
-import styles from '../index.scss';
+import styles from './index.scss';
+import outStyles from '../../index.scss'
 import { Tabs } from 'antd';
 import { Row, Col } from 'antd';
 import { Steps } from 'antd';
-import CustomModal from '../component/CustomModal';
+import CustomModal from 'component/CustomModal/index';
 import { Popover } from 'antd';
 
 const TabPane = Tabs.TabPane;
@@ -120,13 +121,13 @@ class Flow extends Component {
 
   flowTitle = () => {
     return(
-      <div className={styles.flowTitle}>提交拟设立申请【张家辉】</div>
+      <div className={styles.flowTitle}>提交拟设立申请【张家辉】<span>2018/12/18 09:40:38</span></div>
     );
   }
 
   flowDes = () => {
     return(
-      <div className={styles.flowDes}><i></i><span>提交拟设立申请【张家辉】</span></div>
+      <div className={styles.flowDes}><i className={styles.checking}></i><span>提交拟设立申请【张家辉】</span></div>
     );
   }
 
@@ -165,7 +166,7 @@ export default class EnterpriseInfoComponent extends Component {
     const modalActionCol = { deleteModal };
     return (
       <div className={styles.establish}>
-        <div className={styles.font24}>拟设立详情内容</div>
+        <div className={outStyles.font24}>拟设立详情内容</div>
         <Tabs defaultActiveKey="1">
           <TabPane tab={<TabName type={"全部"} num={"14"} />} key="1"><TabContent {...modalActionCol} /></TabPane>
           <TabPane tab={<TabName type={"拟设立"} num={"4"} />} key="2">Content of Tab Pane 2</TabPane>

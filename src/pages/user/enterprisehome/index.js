@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import styles from './index.scss';
 import { Layout } from 'antd';
-import EnterpriseInfoComponent from './component/EnterpriseInfoComponent';
-import EnterpriseEstablishComponent from './component/EnterpriseEstablishComponent';
+import RelatedCompanyComponent from './component/RelatedCompanyComponent/index';
+import EnterpriseInfoComponent from './component/EnterpriseInfoComponent/index';
+import EnterpriseEstablishComponent from './component/EnterpriseEstablishComponent/index';
 
 const {
-  Header, Footer, Sider, Content,
+  Sider, Content,
 } = Layout;
 
 export default class Enterprise extends Component {
@@ -34,11 +35,11 @@ export default class Enterprise extends Component {
 
   render() {
     return (
-      <div style={{ paddingTop: "60px" }}>
+      <div className={styles.enterpriseHome} style={{ paddingTop: "60px" }}>
         <Layout>
           <Sider width={this.state.sideBarWidth}><SiderNode /></Sider>
           <Layout>
-            <Content><EnterpriseEstablishComponent /></Content>
+            <Content><RelatedCompanyComponent /></Content>
           </Layout>
         </Layout>
       </div>

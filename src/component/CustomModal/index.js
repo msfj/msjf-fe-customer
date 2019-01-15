@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styles from '../index.scss';
+import styles from './index.scss';
 import { Modal } from 'antd';
 
 export default class CustomModal extends PureComponent {

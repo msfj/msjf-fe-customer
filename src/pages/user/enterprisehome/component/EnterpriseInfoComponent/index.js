@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import styles from '../index.scss';
+import styles from './index.scss';
+import outStyles from '../../index.scss';
 import { Row, Col } from 'antd';
 
 export default class EnterpriseInfoComponent extends Component {
@@ -8,7 +9,7 @@ export default class EnterpriseInfoComponent extends Component {
     return (
       <div style={props.style} className={`${styles.infoTitle} ${props.className}`}>
         <i />
-        <span className={styles.font18}>{props.type}</span>
+        <span className={outStyles.font18}>{props.type}</span>
       </div>
     )
   }
@@ -59,17 +60,17 @@ export default class EnterpriseInfoComponent extends Component {
       <div className={styles.insideContent}>
         <div className={styles.tips}>
           <img alt="" src={require("image/icon/back.svg")} />
-          <span className={styles.font14}>退出/查看详情</span>
+          <span className={outStyles.font14}>退出/查看详情</span>
         </div>
         <div className={styles.titleBlock}>
           <img src={require("image/general-partner.png")} alt="" />
           <div className={styles.breakLine} />
-          <span className={styles.font24}>公司名称公司名称公司名称</span>
-          <div className={`${styles.typeBlock} ${styles.font14}`}>拟设立</div>
+          <span className={outStyles.font24}>公司名称公司名称公司名称</span>
+          <div className={`${styles.typeBlock} ${outStyles.font14}`}>拟设立</div>
           <i />
           <p>审批中</p>
         </div>
-        <div className={styles.font24}>拟设立详情内容</div>
+        <div className={outStyles.font24}>拟设立详情内容</div>
         <div className={styles.detailContent}>
           {/* 登记申请信息 */}
           <this.infoTitle type={"登记申请信息"} />
@@ -111,7 +112,7 @@ export default class EnterpriseInfoComponent extends Component {
           </Row>
           <div className={styles.staffBlock}>
             <div className={styles.staffItem}>
-              <p className={styles.font16}>联络员</p>
+              <p className={outStyles.font16}>联络员</p>
               <div className={styles.staffItemDetail}>
                 <div className={styles.items}><img alt="" src={require("image/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
                 <div className={styles.items}><img alt="" src={require("image/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
@@ -119,7 +120,7 @@ export default class EnterpriseInfoComponent extends Component {
               </div>
             </div>
             <div className={styles.staffItem}>
-              <p className={styles.font16}>财务负责人</p>
+              <p className={outStyles.font16}>财务负责人</p>
               <div className={styles.staffItemDetail}>
                 <div className={styles.items}><img alt="" src={require("image/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
                 <div className={styles.items}><img alt="" src={require("image/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
@@ -127,7 +128,7 @@ export default class EnterpriseInfoComponent extends Component {
               </div>
             </div>
             <div className={styles.staffItem}>
-              <p className={styles.font16}>法定代表人/执行事务合伙人</p>
+              <p className={outStyles.font16}>法定代表人/执行事务合伙人</p>
               <div className={styles.staffItemDetail}>
                 <div className={styles.items}><img alt="" src={require("image/icon/user.svg")} /><div className={styles.breakLine}></div><span>刘辉</span></div>
                 <div className={styles.items}><img alt="" src={require("image/icon/mobile.svg")} /><div className={styles.breakLine}></div><span>187****5789</span></div>
@@ -135,7 +136,7 @@ export default class EnterpriseInfoComponent extends Component {
               </div>
             </div>
           </div>
-          <p className={styles.font16}>投资人信息</p>
+          <p className={outStyles.font16}>投资人信息</p>
           <div className={styles.grayBlock}>
             {
               this.setInfo(false,
@@ -148,40 +149,40 @@ export default class EnterpriseInfoComponent extends Component {
           </div>
           {/*其他信息*/}
           <this.infoTitle type={"其他信息"} style={{ paddingTop: '20px' }} className={styles.rowBorder} />
-          <p className={`${styles.font16} ${styles.mb10}`}>主要负责人（1）从业经历介绍</p>
-          <div className={`${styles.grayBlock} ${styles.font14}`}>
+          <p className={`${outStyles.font16} ${outStyles.mb10}`}>主要负责人（1）从业经历介绍</p>
+          <div className={`${styles.grayBlock} ${outStyles.font14}`}>
             <Row gutter={20} className={styles.row}>
               <Col className={styles.col} span={24}>
                 具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
             </Col>
             </Row>
           </div>
-          <p className={`${styles.font16} ${styles.mb10}`}>主要负责人（2）从业经历介绍</p>
-          <div className={`${styles.grayBlock} ${styles.font14}`}>
+          <p className={`${outStyles.font16} ${outStyles.mb10}`}>主要负责人（2）从业经历介绍</p>
+          <div className={`${styles.grayBlock} ${outStyles.font14}`}>
             <Row gutter={20} className={styles.row}>
               <Col className={styles.col} span={24}>
                 具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
             </Col>
             </Row>
           </div>
-          <p className={`${styles.font16} ${styles.mb10}`}>其他主要负责人介绍</p>
-          <div className={`${styles.grayBlock} ${styles.font14}`}>
+          <p className={`${outStyles.font16} ${outStyles.mb10}`}>其他主要负责人介绍</p>
+          <div className={`${styles.grayBlock} ${outStyles.font14}`}>
             <Row gutter={20} className={styles.row}>
               <Col className={styles.col} span={24}>
                 具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
             </Col>
             </Row>
           </div>
-          <p className={`${styles.font16} ${styles.mb10}`}>股东背景介绍</p>
-          <div className={`${styles.grayBlock} ${styles.font14}`}>
+          <p className={`${outStyles.font16} ${outStyles.mb10}`}>股东背景介绍</p>
+          <div className={`${styles.grayBlock} ${outStyles.font14}`}>
             <Row gutter={20} className={styles.row}>
               <Col className={styles.col} span={24}>
                 具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
             </Col>
             </Row>
           </div>
-          <p className={`${styles.font16} ${styles.mb10}`}>关注的项目阶段</p>
-          <div className={`${styles.grayBlock} ${styles.font14}`}>
+          <p className={`${outStyles.font16} ${outStyles.mb10}`}>关注的项目阶段</p>
+          <div className={`${styles.grayBlock} ${outStyles.font14}`}>
             <Row gutter={20} className={styles.row}>
               <Col className={styles.col} span={24}>
                 具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
@@ -206,8 +207,8 @@ export default class EnterpriseInfoComponent extends Component {
               <div className={styles.right}>方式方式</div>
             </Col>
           </Row>
-          <p className={`${styles.font16} ${styles.mb10}`}>备注</p>
-          <div className={`${styles.grayBlock} ${styles.font14}`}>
+          <p className={`${outStyles.font16} ${outStyles.mb10}`}>备注</p>
+          <div className={`${styles.grayBlock} ${outStyles.font14}`}>
             <Row gutter={20} className={styles.row}>
               <Col className={styles.col} span={24}>
                 具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
@@ -215,7 +216,7 @@ export default class EnterpriseInfoComponent extends Component {
             </Row>
           </div>
         </div>
-        <div className={styles.font24}>确认设立内容</div>
+        <div className={outStyles.font24}>确认设立内容</div>
         <div className={styles.detailContent}>
           <Row gutter={20} className={styles.row}>
             <Col className={styles.col} span={12}>

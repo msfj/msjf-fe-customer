@@ -25,5 +25,6 @@ export default {
   },
   alias: {
     image: path.resolve(__dirname, 'src/assets/'),
+    component: path.resolve(__dirname, 'src/component')
   }
 }
