@@ -24,7 +24,7 @@ export default {
     effects: {
         *login({payload: parma}, { call, put }) {
             console.log(parma);
-            const lgk = yield call(Service.userLoginByAcc, {body: parma});
+            const lgk = yield call(Service.userLoginByAcc, parma);
             yield put({ type: 'signin', payload: lgk });
             // yield put({ type: 'signin' });
         },

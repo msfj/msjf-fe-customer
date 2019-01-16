@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 import RelatedCompanyComponent from './component/RelatedCompanyComponent/index';
 import EnterpriseInfoComponent from './component/EnterpriseInfoComponent/index';
 import EnterpriseEstablishComponent from './component/EnterpriseEstablishComponent/index';
+import EstablishmentComponent from './component/EstablishmentComponent';
 
 const {
   Sider, Content,
@@ -39,7 +40,7 @@ export default class Enterprise extends Component {
         <Layout>
           <Sider width={this.state.sideBarWidth}><SiderNode /></Sider>
           <Layout>
-            <Content><RelatedCompanyComponent /></Content>
+            <Content><EstablishmentComponent /></Content>
           </Layout>
         </Layout>
       </div>

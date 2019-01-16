@@ -13,8 +13,7 @@ class About extends Component {
         <div className={css.about}>
           <div className={css.banner}>
             <div className={`${css.info} warp`}>
-              <h2>About Us</h2>
-              <strong className={css.title}>公司简介</strong>
+              <h2 className={css.title}>公司简介</h2>
               <p>梅山(宁波）金服科技有限公司成立于2017年12月，是由梅山岛开发投资有限公司、西藏麒麟资本管理有限公司等共同出资设立的金融服务科技平台。</p>
               <p>公司的定位“金融、科技”，向政府部门提供大数据风险监测服务，向商业银行、证券公司、私募基金等金融机构提供智能化投行、投融资对接、资产管理等服务，积极推动金融服务实体经济，促进新兴产业发展。</p>
             </div>
