@@ -1,3 +1,100 @@
 .related {
-  
+    padding: 30px 50px 0 50px;
+    display: flex;
+    flex-direction: column;
+
+    .tabName {
+        font-size: 18px;
+        color: #212121;
+        padding-right: 5px;
+    }
+
+    .tabNameNum {
+        font-size: 14px;
+        color: #91989E;
+        border-right: 1px #D0D3D5 solid;
+        padding-right: 15px;
+    }
+
+    .col {
+        margin-bottom: 30px;
+
+        .tabContent {
+            height: 156px;
+            background: #FFFFFF;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+
+            .tabContentInside {
+                display: flex;
+                padding: 28px 30px 28px 30px;
+
+                img {
+                    height: 100px;
+                    padding-right: 30px;
+                    margin-right: 30px;
+                    border-right: 1px #D0D3D5 solid;
+                }
+
+                .tabContentInsideRight {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+
+                    .tabContentInsideTop {
+                        display: flex;
+                        padding-bottom: 15px;
+                        border-bottom: 1px #D0D3D5 dashed;
+                        align-items: center;
+                        height: 40px;
+
+                        .titleName {
+                            font-size: 18px;
+                            color: #212121;
+                            flex: 1;
+                        }
+
+                        .buttonOne {
+                            background: rgba(255, 209, 134, 0.3);
+                            border: 1px solid #FAAD14;
+                            border-radius: 2px;
+                            font-size: 14px;
+                            color: #FAAD14;
+                            text-align: center;
+                            width: 90px;
+                            height: 28px;
+                        }
+
+                        .buttonTwo {
+                            background-image: linear-gradient(-132deg, #008DE1 0%, #0054C0 100%);
+                            box-shadow: 0 10px 10px 0 rgba(0, 126, 217, 0.2);
+                            border-radius: 15px;
+                            width: 104px;
+                            height: 30px;
+                            opacity: 0.85;
+                            font-size: 14px;
+                            color: #FFFFFF;
+                            text-align: center;
+                            line-height: 20px;
+                        }
+                    }
+
+                    .tabContentInsideBottom {
+                        display: flex;
+                        padding-top: 30px;
+                        align-items: center;
+
+                        .items {
+                            padding-right: 20px;
+                            white-space: nowrap;
+
+                            span {
+                                padding-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

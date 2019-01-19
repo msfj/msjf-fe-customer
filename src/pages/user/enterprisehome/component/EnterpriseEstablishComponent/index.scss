@@ -1,4 +1,4 @@
-.establish,.related {
+.establish {
     padding: 30px 50px 0 50px;
     display: flex;
     flex-direction: column;
@@ -14,21 +14,6 @@
         color: #91989E;
         border-right: 1px #D0D3D5 solid;
         padding-right: 15px;
-    }
-
-    .modalContent {
-        display: flex;
-        align-items: center;
-
-        i {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-
-            &.warn {
-                background: url(image/icon/warn.svg);
-            }
-        }
     }
 
     .col {

@@ -1,4 +1,8 @@
 .enterpriseHome {
+    .shadowgray {
+        color: #91989E !important;
+    }
+
     .font24 {
         font-size: 24px;
         color: #212121;
@@ -34,6 +38,10 @@
 
     .mb10 {
         margin-bottom: 10px;
+    }
+
+    .mb20 {
+        margin-bottom: 20px;
     }
 
     .sideContent {
