@@ -417,6 +417,7 @@ const Step3Form = props => {
             <FormTable columns={columns} datas={data} className="mt-20"/>
             <InfoTitle type={"投资人信息"} className="mt-20" />
             <FormTable columns={cols2} datas={data2} className="mt-20"/>
+            <div className="mt-20"><Icon type="exclamation-circle" theme="filled" className="fc-warning mr-10" /><span className="fc-gray fs-12">温馨提示：邀请认证阶段需要所有邀请人注册各自的账号并登录到宁波市类金融企业服务管理平台完成“关注认证”后才能往下继续申请，请联系相关人员完成“关注认证”操作</span></div>
             <div className="mt-24">
                 <Button size="large" className="btn-lg mr-20" onClick={props.goback}>上一步</Button>
                 <Button size="large" className="btn-lg mr-20">保存</Button>
@@ -502,7 +503,7 @@ const Step4Form = props => {
                         <Item label="附件">
                             <Upload {...props2}>
                                 <Button type="primary" size="large" className="mr-20"><Icon type="folder-open" /> 上传文件</Button>
-                                <span className="fc-gray"><Icon type="exclamation-circle" theme="filled" /> 支持扩展：rar. zip. doc. docx. pdf. jpg…</span>
+                                <span className="fc-gray"><Icon type="exclamation-circle" theme="filled" className="fc-warning mr-10" />支持扩展：rar. zip. doc. docx. pdf. jpg…</span>
                             </Upload>
                         </Item>
                     </Col>
