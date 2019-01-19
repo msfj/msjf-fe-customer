@@ -72,27 +72,37 @@ class MobileLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        this.props.tologin({"username":"mobile","password":"mobile"});
       }
     });
-    this.props.bschioce();
+    // this.props.bschioce();
   }
 
   render() {
     const { getFieldDecorator } = this.props.form;
     const opts = this.props.options;
+    const prefixSelector = getFieldDecorator('prefix', {
+      initialValue: '86',
+    })(
+      <Select style={{ width: '28%' }} size="large">
+        <Option value="86">+86</Option>
+        <Option value="87">+87</Option>
+      </Select>
+    );
     return (
       <Form onSubmit={this.handleSubmit} className="loginForm" layout="vertical">
         <Item label={opts.mbLabel}>
-          {getFieldDecorator('mobile', {
-            rules: [{ required: true, message: '请输入手机号' }],
-          })(
             <Group compact>
-              <Select style={{ width: '28%' }} size="large" defaultValue="+86">
-                <Option value="+86">+86</Option>
+              <Select style={{ width: '28%' }} size="large" defaultValue="86">
+                <Option value="86">+86</Option>
+                <Option value="87">+87</Option>
               </Select>
-              <Input style={{ width: '72%' }} size="large" placeholder="请输入手机号码" />
-            </Group>
-          )}
+              {getFieldDecorator('mobile', {
+                rules: [{ required: true, message: '请输入手机号' }],
+              })(
+                <Input style={{ width: '72%' }} size="large" placeholder="请输入手机号码" />
+              )}
+            </Group>       
         </Item>
         <Item label="验证码">
           {getFieldDecorator('code', {
@@ -175,11 +185,11 @@ const mapDispatchToProps = (dispatch) => {
                 type: `${namespace}/closeBsmd`
             });
         },
-        login(parma) {
-            console.log(parma);
+        login(param) {
+            console.log(param);
             dispatch({
                 type: 'global/login',
-                payload: parma
+                payload: param
             });
         }
     };
@@ -220,7 +230,7 @@ class Loginmd extends Component {
           <div className={isAcc ? "loginBar" : "loginBar loginBar1"} onClick={this.changeType}></div>
           <div className="loginBox">
             <h2 className="loginTitle"><strong>{opts.title}</strong><small>{opts.small}</small></h2>
-            {isAcc? <WrappedNormalLoginForm options={opts} tologin={(parma) => {this.props.login(parma)}} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} />}
+            {isAcc? <WrappedNormalLoginForm options={opts} tologin={(param) => {this.props.login(param)}} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} tologin={(parma) => {this.props.login(parma)}} />}
           </div>
         </Modal>
 

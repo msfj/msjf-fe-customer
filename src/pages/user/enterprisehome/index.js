@@ -6,6 +6,8 @@ import EnterpriseInfoComponent from './component/EnterpriseInfoComponent/index';
 import EnterpriseEstablishComponent from './component/EnterpriseEstablishComponent/index';
 import MessageComponent from './component/Meassage/index';
 import PersonInfo from './component/PersonInfo/index';
+import EstablishmentComponent from './component/EstablishmentComponent';
+import EstlCfmComponent from './component/EstlCfmComponent';
 
 const {
   Sider, Content,
@@ -41,7 +43,7 @@ export default class Enterprise extends Component {
         <Layout>
           <Sider width={this.state.sideBarWidth}><SiderNode /></Sider>
           <Layout>
-            <Content><PersonInfo /></Content>
+            <Content><EstlCfmComponent /></Content>
           </Layout>
         </Layout>
       </div>

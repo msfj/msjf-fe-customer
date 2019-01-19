@@ -26,5 +26,12 @@ export default {
   alias: {
     image: path.resolve(__dirname, 'src/assets/'),
     component: path.resolve(__dirname, 'src/component')
+  },
+  proxy: {
+    "/api": {
+      target: "http://localhost:91/",
+      changeOrigin: true,
+      // pathRewrite: { "^/api" : "" }
+    }
   }
 }

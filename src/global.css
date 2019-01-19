@@ -69,10 +69,25 @@ a{
 }
 
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.hide { display: none; }
 
 .fc-gray { color: #91989E !important; }
 .fc-primary { color: #0072D2 !important; }
+.fc-warning { color: rgb(247, 210, 89) !important;}
 
-.text-center { text-align: center; }
+.fs-12 { font-size: 12px !important; }
 
+.text-center { text-align: center !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
 
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-24 { margin-top: 24px; }
+.mt-40 { margin-top: 40px; }
+.mr-10 { margin-right: 10px; }
+.mr-20 { margin-right: 20px; }
+
+.btn-lg { min-width: 184px; }
+
+.bd-bm { border-bottom: 1px dashed #D0D3D5; }

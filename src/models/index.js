@@ -1,4 +1,4 @@
-import Service from '../util/Service';
+import { Service } from '../util/Service';
 
 export default {
     namespace: 'index',

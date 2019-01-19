@@ -140,3 +140,87 @@
         }
     }
 }
+
+.form-table {
+    border-top: 1px solid #91989E;
+    border-bottom: 1px solid #C2C2C2;
+    width: 100%;
+    thead {
+        border-bottom: 1px solid #C2C2C2;
+        th {
+            padding: 6px 0 6px 20px;
+            font-size: 12px;
+            color: #91989E;
+            font-weight: normal;
+            .form-table-th {
+                display: inline-block; 
+                padding-left: 10px;
+                border-left: 1px solid #D0D3D5;
+            }
+        }
+    }
+    tbody {
+        tr {
+            border-bottom: 1px solid #C2C2C2;
+        }
+        td {
+            padding: 6px 0 6px 20px;
+        }
+    }
+    tfoot {
+        tr {
+            border-bottom: 1px solid #C2C2C2;
+        }
+        td {
+            padding: 6px 0;
+        }
+    }
+}
+
+i.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    &.checking {
+        background: url(image/icon/checking.svg);
+    }
+
+    &.unsubmit {
+        background: url(image/icon/unsubmit.svg);
+    }
+
+    &.checked {
+        background: url(image/icon/checked.svg);
+    }
+
+    &.done {
+        background: url(image/icon/done.svg);
+    }
+
+    &.checkin {
+        background: url(image/icon/checkin.svg);
+    }
+}
+
+.ant-form.estl-form {
+    label {
+        font-size: 12px;
+        line-height: 40px;
+    }
+    .ant-btn-block.estl-form-add {
+        height: 93.2px;
+        background: #FAFAFA;
+    }
+    .estl-form-item {
+        width: 50%;
+        padding: 0 8px 10px;
+        float: left;
+    }
+    .ant-upload-list-item {
+        width: 23%;
+        float: left;
+        margin-right: 20px;
+    }
+}
