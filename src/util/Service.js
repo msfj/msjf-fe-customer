@@ -3,8 +3,9 @@ import request from './request';
 const apisfx = '/api';
 
 const Api = {
-    user_login_by_acc: '/userLoginByAcc',
-    userLoginByMbl: 'get_cust_login/queryOrganInfoList'
+    userLoginByMbl: 'get_cust_login/queryOrganInfoList',
+    // 企业注册
+    inserRegister: 'setRegister/inserRegister'
 };
 
 const Service = {};
@@ -23,14 +24,14 @@ Object.keys(Api).forEach((key) => {
             method,
             state: opts.state || 'oauth',
             timestamp: +new Date(),
-            params: JSON.stringify(opts.param || {})
+            params: JSON.stringify([opts.param || {}])
         };
         
         opts = {
             method: 'POST',
             body: param
         }
-        request(apisfx, opts);
+        return request(apisfx, opts);
     };
 });
 

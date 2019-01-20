@@ -268,4 +268,4 @@ class Loginmd extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Loginmd);;
+export default connect(mapStateToProps, mapDispatchToProps)(Loginmd);
