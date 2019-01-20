@@ -6,7 +6,7 @@ const { inserRegister } = Service;
 const state = 'open';
 
 export default {
-    namespace: 'enterprisemd',
+    namespace: 'personmd',
     state: {
         login: false,
         step: 0

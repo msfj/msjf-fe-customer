@@ -23,11 +23,12 @@ class NormalLoginForm extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const opts = this.props.options;
+    const imgcode = this.props.imgcode;
 
     return (
       <Form onSubmit={this.handleSubmit} className="loginForm" layout="vertical">
         <Item label={opts.accLabel}>
-          {getFieldDecorator('cardID', {
+          {getFieldDecorator('loginName', {
             rules: [{ required: true, message: opts.accMsg }],
           })(
             <Input placeholder={opts.accMsg} size="large" />
@@ -42,10 +43,10 @@ class NormalLoginForm extends Component {
           )}
         </Item>
         <Item label="验证码">
-          {getFieldDecorator('code', {
+          {getFieldDecorator('inputValidecode', {
             rules: [{ required: true, message: '请输入图形验证码' }],
           })(
-            <Input placeholder="请输入图形验证码" size="large" />
+            <Input placeholder="请输入图形验证码" size="large" suffix={imgcode} />
           )}
         </Item>
         <Item>
@@ -72,7 +73,8 @@ class MobileLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        this.props.tologin({"username":"mobile","password":"mobile"});
+        values.password = 'q111111';
+        this.props.tologin(values);
       }
     });
     // this.props.bschioce();
@@ -97,7 +99,7 @@ class MobileLoginForm extends Component {
                 <Option value="86">+86</Option>
                 <Option value="87">+87</Option>
               </Select>
-              {getFieldDecorator('mobile', {
+              {getFieldDecorator('loginName', {
                 rules: [{ required: true, message: '请输入手机号' }],
               })(
                 <Input style={{ width: '72%' }} size="large" placeholder="请输入手机号码" />
@@ -105,7 +107,7 @@ class MobileLoginForm extends Component {
             </Group>       
         </Item>
         <Item label="验证码">
-          {getFieldDecorator('code', {
+          {getFieldDecorator('msgCode', {
             rules: [{ required: true, message: '请输入手机验证码' }],
           })(
             <Input placeholder="请输入手机验证码" size="large" />
@@ -154,7 +156,8 @@ const lgobj = {
 const namespace = 'index';
 
 const mapStateToProps = (state) => {
-    return state[namespace];
+    const { imgCode } = state.global;
+    return { ...state[namespace], imgCode };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -174,7 +177,7 @@ const mapDispatchToProps = (dispatch) => {
                 type: `${namespace}/openBsmd`
             });
         },
-        bsSelect(i) {
+        bsSelect(i, n) {
             dispatch({
                 type: `${namespace}/bsSelect`,
                 payload: i
@@ -191,11 +194,27 @@ const mapDispatchToProps = (dispatch) => {
                 type: 'global/login',
                 payload: param
             });
+        },
+        queryAcc(param) {
+          console.log(param);
+          dispatch({
+              type: 'global/queryAcc',
+              payload: param
+          });
         }
     };
 };
 
 class Loginmd extends Component {
+  state = {
+    data: {}
+  };
+
+  componentWillUnmount = () => {
+    this.setState = (state, callback)=>{
+      return;
+    };
+  }
 
   handleCancel = () => {
     this.props.closeLogin();
@@ -211,6 +230,28 @@ class Loginmd extends Component {
 
   bsSelect = (i) => {
     this.props.bsSelect(i);
+  }
+
+  toLogin = (param={}) => {
+    const { loginType='0', loginModel, login, queryAcc, bslist, bsindex } = this.props;
+    let data = { ...this.state.data, ...param, loginsource: '1' };
+    if(param.secd) {
+      data.loginName = bslist[bsindex].loginName;
+    }
+    this.setState({
+      data
+    });
+    if(param.secd != 'true' && loginType == '1' && loginModel == '1') {
+      queryAcc(data);
+    } else {
+      login(data);
+    }
+  }
+
+  imgcode = ()=>{
+    return (
+      <img src={this.props.imgCode.validcode} alt="" />
+    );
   }
 
   render() {
@@ -230,7 +271,7 @@ class Loginmd extends Component {
           <div className={isAcc ? "loginBar" : "loginBar loginBar1"} onClick={this.changeType}></div>
           <div className="loginBox">
             <h2 className="loginTitle"><strong>{opts.title}</strong><small>{opts.small}</small></h2>
-            {isAcc? <WrappedNormalLoginForm options={opts} tologin={(param) => {this.props.login(param)}} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} tologin={(parma) => {this.props.login(parma)}} />}
+            {isAcc? <WrappedNormalLoginForm options={opts} tologin={(param) => {this.toLogin(param)}} imgcode={this.imgcode()} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} tologin={(parma) => {this.toLogin(parma)}} />}
           </div>
         </Modal>
 
@@ -248,19 +289,19 @@ class Loginmd extends Component {
               (() => {
                 // while (++i < 10) {
                 let rows = [];
-                for(let i = 0; i < 10; i++) {
-                 rows.push(
-                 <li className={i===bsindex?'loginbsLi loginbsSel':'loginbsLi'} key={i} onClick={()=>{this.bsSelect(i)}}>
-                  <div className="loginbsTx">梅山（宁波）金服科技有限公司</div>
-                  <div className="loginbsSm">123456789123456789</div>
-                </li>
-               )
-                }
+                this.props.bslist.forEach((el, i) => {
+                  rows.push(
+                    <li className={i===bsindex?'loginbsLi loginbsSel':'loginbsLi'} key={i} onClick={()=>{this.bsSelect(i, el.loginName)}}>
+                      <div className="loginbsTx">{el.membername}</div>
+                      <div className="loginbsSm">{el.loginName}</div>
+                    </li>
+                  )
+                });
                 return rows;
                })()
             }
             </ul>
-            <Link to="/user/personInfo"><Button type="primary" className="loginBtn">确定</Button></Link>
+            <Button type="primary" className="loginBtn" onClick={()=>{this.toLogin({secd: 'true'})}}>确定</Button>
           </div>
         </Modal>
       </div>

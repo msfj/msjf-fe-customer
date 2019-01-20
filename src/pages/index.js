@@ -13,9 +13,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    openLogin: (t) => {
+    openLogin: (t, m) => {
       dispatch({
-		type: `${namespace}/openLogin`,
+		type: `${namespace}/loginInit`,
 		payload: t
       });
     },

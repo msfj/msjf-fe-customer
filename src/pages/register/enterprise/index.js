@@ -200,7 +200,7 @@ class StepTwoForm extends Component {
           >
             <Group compact>
               {getFieldDecorator('corcardtype', {
-                  rules: [{ required: true, message: '请输入身份证' }],
+                  rules: [{ required: true, message: '请选择证件类型' }],
               })(
                 <Select className={styles.select} style={{ width: '28%' }} size="large" initialValue="身份证">
                   <Option value="0">身份证</Option>

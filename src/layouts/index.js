@@ -47,10 +47,12 @@ function Header(props) {
     <div className={`${css.head} ${props.headerStyle && `addbackground`}`}>
       <div className={css.headContainer}>
         <div className={css.logo}>
-          <i className={`${css.iconLogo} ${props.headerStyle && css.color}`}></i>
-          <span>宁波梅山金服科技</span>
-          <span className={`${css.break} ${props.headerStyle && `lineGray`}`}></span>
-          <span>宁波市类金融企业管理服务平台</span>
+          <Link to="/">
+            <i className={`${css.iconLogo} ${props.headerStyle && css.color}`}></i>
+            <span>宁波梅山金服科技</span>
+            <span className={`${css.break} ${props.headerStyle && `lineGray`}`}></span>
+            <span>宁波市类金融企业管理服务平台</span>
+          </Link>
         </div>
         {
           !props.isLoginPage && <ul className={css.nav}>
@@ -88,9 +90,9 @@ function Footer() {
           <div className={css.footertitle}>电话&邮箱<i className={css.footerline}></i></div>
           <div className={css.footercontent}>
             <img className={css.footericon} src={require("../assets/ic-phone.svg")} alt="" />
-            <span>0574-86708719</span>
+            <a href="tel:0574-86708719">0574-86708719</a>
             <img className={`${css.footericon} ${css.ml28}`} src={require("../assets/ic-email.svg")} alt="" />
-            <span>jinfu512@163.com</span>
+            <a href="mailto:jinfu512@163.com">jinfu512@163.com</a>
           </div>
           <div className={`${css.footertitle} ${css.mt30}`}>地址<i className={css.footerline}></i></div>
           <div className={css.footercontent}>
