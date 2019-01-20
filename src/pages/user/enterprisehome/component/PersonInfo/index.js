@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import classNames from 'classnames'
 import { Form, Input, Icon, message, Select, Row, Col, Radio, Upload, Button } from 'antd';
+import { ModifyModal } from './component/modal';
 import styles from './index.scss';
 import outStyles from '../../index.scss';
 
-const { Group, TextArea } = Input;
+const { TextArea } = Input;
 const { Option } = Select;
 const { Item } = Form;
 const RadioGroup = Radio.Group;
@@ -139,14 +140,14 @@ class Edit extends Component {
         </Row>
         <Item label="证件照片">
           <span className="fc-gray">请上传基本信息中对应的证件照片（可添加JPG、PNG、PDF 档案格式）</span>
-          <div style={{display:'flex'}}>
+          <div style={{ display: 'flex' }}>
             <Avatar ldtx="上传证件（正面）" />
             <Avatar ldtx="上传证件（背面）" />
           </div>
         </Item>
-        <div style={{display:'flex'}}>
-          <Button style={{width:'184px',marginRight:'20px'}} size="large" htmlType="submit">取消</Button>
-          <Button style={{width:'184px',backgroundColor:'#0072D2'}} type="primary" size="large" htmlType="submit">保存</Button>
+        <div style={{ display: 'flex' }}>
+          <Button style={{ width: '184px', marginRight: '20px' }} size="large" htmlType="submit">取消</Button>
+          <Button style={{ width: '184px', backgroundColor: '#0072D2' }} type="primary" size="large" htmlType="submit">保存</Button>
         </div>
       </Fragment>
     );
@@ -198,7 +199,7 @@ function Info() {
 
 function InfoTitle(props) {
   return (
-    <div style={props.style} className={classNames(styles.infoTitle,props.className)}>
+    <div style={props.style} className={classNames(styles.infoTitle, props.className)}>
       <span className={outStyles.font18}>{props.type}</span>
       {props.leftNode}
     </div>
@@ -209,10 +210,21 @@ function InfoTitle(props) {
 
 export default class PersonInfoComponent extends Component {
 
+  modifyModalRef = React.createRef();
+
   render() {
     return (
       <div className={styles.personInfo}>
-        <div className={classNames('font24', "mb20")}>个人中心<div></div></div>
+        <ModifyModal ref={this.modifyModalRef} />
+        <div className={classNames('font24', "mb-20", styles.topTitle)}>
+          个人中心
+          <div style={{ display: 'flex' }}>
+            <i className={classNames(styles.edit, styles.icon)} />
+            <span onClick={() => {
+              this.modifyModalRef.current.modifyModal();
+            }} className={styles.underline}>修改密码</span>
+          </div>
+        </div>
         <div className={styles.detailContent}>
           <InfoTitle type={"登记申请信息"} />
           <Row gutter={20} className={styles.row}>
@@ -226,18 +238,20 @@ export default class PersonInfoComponent extends Component {
             </Col>
             <Col className={styles.col} span={6}>
               <div>手机号：</div>
-              <div className={styles.right}>18788889097 <small style={{marginLeft:"10px"}} className={styles.underline}>换绑</small></div>
+              <div className={styles.right}>18788889097 <small onClick={() => {
+                
+              }} style={{ marginLeft: "10px" }} className={styles.underline}>换绑</small></div>
             </Col>
             <Col className={styles.col} span={6}>
               <div>银行卡号：</div>
               <div className={styles.right}>6898999999998987</div>
             </Col>
           </Row>
-          <InfoTitle 
-            type={"其他信息"} 
-            style={{ paddingTop: '20px' }} 
-            className={styles.rowBorder} 
-            leftNode={<Fragment><i className={styles.edit} /><small className={styles.underline}>编辑</small></Fragment>}/>
+          <InfoTitle
+            type={"其他信息"}
+            style={{ paddingTop: '20px' }}
+            className={styles.rowBorder}
+            leftNode={<Fragment><i className={classNames(styles.edit, styles.icon)} /><small className={styles.underline}>编辑</small></Fragment>} />
           <EditWrapper />
         </div>
       </div>

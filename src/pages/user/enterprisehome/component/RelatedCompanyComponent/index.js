@@ -1,9 +1,8 @@
 import React, { Component, PureComponent } from 'react';
+import { Row, Col, Form, Input, Tabs } from 'antd';
+import CustomModal from 'component/CustomModal/index';
 import outStyles from '../../index.scss'
 import styles from './index.scss';
-import { Tabs } from 'antd';
-import CustomModal from 'component/CustomModal/index';
-import { Row, Col, Form, Input } from 'antd';
 
 const TabPane = Tabs.TabPane;
 const { Item } = Form;
@@ -100,12 +99,12 @@ export default class RelatedCompanyComponent extends Component {
           okText={"关注认证"}
           cancelText={"取消"}
         >
-          <div className={styles.modalContent}>
-            <Form className={styles.formExtend} >
+          <div className='modalContent'>
+            <Form className='formExtend' >
               <Item
                 label="企业名称"
                 colon={false}
-                className={styles.formExtend}
+                className='formExtend'
               >
                 <Input size="large" placeholder="请输入企业名称" />
               </Item>
