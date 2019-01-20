@@ -127,9 +127,16 @@ export default function request(url, option) {
             // DELETE and 204 do not return data by default
             // using .json will report an error.
             if (newOptions.method === 'DELETE' || response.status === 204) {
-            return response.text();
+                return response.text();
             }
-            return response.json();
+            let responseJson = { flag: '0', msg: '连接超时，请稍后重试' };
+            try {
+                responseJson = response.json();
+            } catch (error) {
+                
+            }
+            
+            return responseJson;
         })
         .catch(e => {
             const status = e.name;
