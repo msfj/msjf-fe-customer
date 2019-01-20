@@ -43,7 +43,7 @@ export default class Enterprise extends Component {
         <Layout>
           <Sider width={this.state.sideBarWidth}><SiderNode /></Sider>
           <Layout>
-            <Content><EstlCfmComponent /></Content>
+            <Content><PersonInfo /></Content>
           </Layout>
         </Layout>
       </div>

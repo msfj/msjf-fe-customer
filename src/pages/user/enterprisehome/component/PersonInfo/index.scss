@@ -7,6 +7,26 @@
       font-size: 14px;
       color: #0072D2;
       text-decoration: underline;
+      cursor: pointer;
+    }
+
+    i.icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      margin-left: 20px;
+      &.edit {
+        background: url(image/icon/edit-active.svg);
+      }
+      &.password {
+        background: url(image/icon/password.svg);
+      }
+    }
+
+    .topTitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .detailContent {
@@ -21,16 +41,6 @@
             margin-bottom: 20px;
             align-items: center;
 
-            i {
-                width: 20px;
-                height: 20px;
-                &.edit {
-                  background: url(image/icon/edit-active.svg);
-                  margin-right: 10px;
-                  margin-left: 20px;
-                }
-            }
-
             span {
                 color: #212121;
                 line-height: 24px;
@@ -38,7 +48,6 @@
                 margin-right: 10px;
                 padding-left: 10px;
             }
-
         }
 
         .row {
