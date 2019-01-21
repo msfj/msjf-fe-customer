@@ -3,7 +3,8 @@ import { connect } from 'dva';
 import Link from 'umi/link';
 import { Modal, Form, Input, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete} from 'antd';
 import './login.scss';
-import PasswordInput from './PasswordInput'
+import PasswordInput from './PasswordInput';
+import Msgcode from './Msgcode';
 
 const { Group } = Input;
 const { Option } = Select;
@@ -46,7 +47,7 @@ class NormalLoginForm extends Component {
           {getFieldDecorator('inputValidecode', {
             rules: [{ required: true, message: '请输入图形验证码' }],
           })(
-            <Input placeholder="请输入图形验证码" size="large" suffix={imgcode} />
+            <Input placeholder="请输入图形验证码" size="large" suffix={imgcode} maxLength={4} />
           )}
         </Item>
         <Item>
@@ -80,6 +81,10 @@ class MobileLoginForm extends Component {
     // this.props.bschioce();
   }
 
+  getMbl = (e) => {
+    this.props.setMbl(e.target.value);
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const opts = this.props.options;
@@ -102,7 +107,7 @@ class MobileLoginForm extends Component {
               {getFieldDecorator('loginName', {
                 rules: [{ required: true, message: '请输入手机号' }],
               })(
-                <Input style={{ width: '72%' }} size="large" placeholder="请输入手机号码" />
+                <Input style={{ width: '72%' }} size="large" placeholder="请输入手机号码" onBlur={this.getMbl} />
               )}
             </Group>       
         </Item>
@@ -110,7 +115,7 @@ class MobileLoginForm extends Component {
           {getFieldDecorator('msgCode', {
             rules: [{ required: true, message: '请输入手机验证码' }],
           })(
-            <Input placeholder="请输入手机验证码" size="large" />
+            <Input placeholder="请输入手机验证码" size="large" suffix={<Msgcode/>} />
           )}
         </Item>
         <Item>
@@ -201,6 +206,12 @@ const mapDispatchToProps = (dispatch) => {
               type: 'global/queryAcc',
               payload: param
           });
+        },
+        setMbl(val) {
+          dispatch({
+            type: 'global/setMsgCode',
+            payload: { mobile: val }
+        });
         }
     };
 };
@@ -234,7 +245,7 @@ class Loginmd extends Component {
 
   toLogin = (param={}) => {
     const { loginType='0', loginModel, login, queryAcc, bslist, bsindex } = this.props;
-    let data = { ...this.state.data, ...param, loginsource: '1' };
+    let data = { ...this.state.data, ...param, loginsource: '0' };
     if(param.secd) {
       data.loginName = bslist[bsindex].loginName;
     }
@@ -249,8 +260,12 @@ class Loginmd extends Component {
   }
 
   imgcode = ()=>{
+    const { uniqueID, validcode } = this.props.imgCode;
     return (
-      <img src={this.props.imgCode.validcode} alt="" />
+      <span>
+        <input type="hidden" value={uniqueID} name="uniqueID" id="uniqueID"/>
+        <img src={validcode} alt="" className="imgCode" />
+      </span>
     );
   }
 
@@ -271,7 +286,10 @@ class Loginmd extends Component {
           <div className={isAcc ? "loginBar" : "loginBar loginBar1"} onClick={this.changeType}></div>
           <div className="loginBox">
             <h2 className="loginTitle"><strong>{opts.title}</strong><small>{opts.small}</small></h2>
-            {isAcc? <WrappedNormalLoginForm options={opts} tologin={(param) => {this.toLogin(param)}} imgcode={this.imgcode()} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} tologin={(parma) => {this.toLogin(parma)}} />}
+            {isAcc? 
+            <WrappedNormalLoginForm options={opts} tologin={(param) => {this.toLogin(param)}} imgcode={this.imgcode()} /> : 
+            <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} tologin={(parma) => {this.toLogin(parma)}}
+            setMbl={(parma) => {this.props.setMbl(parma)}} />}
           </div>
         </Modal>
 

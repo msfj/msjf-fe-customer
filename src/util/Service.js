@@ -12,7 +12,9 @@ const Api = {
     // 通过法人手机号查询登录账户
     getCorporationLogin: 'get_cust_login/getCorporationCompany',
     // 企业法人登录
-    corporationLogin: 'get_cust_login/corporationLogin'
+    corporationLogin: 'get_cust_login/corporationLogin',
+    // 发送短信验证码
+    getMsgCode: 'setSendVerificationCode/SendRegisterVerificationCode'
 };
 
 let Service = {};
