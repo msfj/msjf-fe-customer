@@ -1,0 +1,110 @@
+.userBoard {
+    .sideContent {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        align-items: center;
+        padding-top: 40px;
+        height: 100%;
+
+        .imgBlock {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: azure;
+            margin-bottom: 15px;
+        }
+
+        p {
+            padding: 10px 0 51px 0;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            ul > li {
+                background: #FAFAFA;
+
+                > img:first-child {
+                    height: 0px;
+                }
+
+                &:last-child {
+                    border-bottom: 0px;
+                }
+            }
+
+            li {
+                border-top: 1px #D0D3D5 solid;
+
+                &:last-child {
+                    border-bottom: 1px #D0D3D5 solid;
+                }
+            }
+
+            li, .panel {
+                display: flex;
+                width: 100%;
+                height: 60px;
+                align-items: center;
+                padding: 0 40px 0 40px;
+                position: relative;
+
+                span {
+                    flex: auto;
+                    padding-left: 20px;
+
+                    &.active {
+                        color: #0072D2;
+                    }
+                }
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .activeTags {
+                    background-image: linear-gradient(-132deg, #008DE1 0%, #0054C0 100%);
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 8px;
+                }
+            }
+        }
+
+        :global {
+            .ant-collapse .ant-collapse-item .ant-collapse-header .anticon {
+                left: initial;
+                right: 43px;
+                font-size: 20px;
+            }
+
+            .ant-collapse {
+                background-color: #fff;
+                border-radius: 0px;
+                border: 0;
+
+                .ant-collapse-item {
+                    border-bottom: 0px;
+
+                    .ant-collapse-header {
+                        padding: 0px;
+                    }
+
+                    .ant-collapse-content {
+                        border-top: 0px;
+
+                        .ant-collapse-content-box {
+                            padding: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

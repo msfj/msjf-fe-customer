@@ -60,17 +60,33 @@
     .modalContent {
         display: flex;
         align-items: center;
+
         &.modal-column {
             flex-direction: column;
         }
+
+
         //modal内图标
         i {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-
             &.warn {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
                 background: url(image/icon/warn.svg);
+            }
+
+            &.check {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                background: url(image/icon/check.svg);
+            }
+
+            &.warn-red {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                background: url(image/icon/warn-red.svg);
             }
         }
 
@@ -86,7 +102,5 @@
                 line-height: 20px;
             }
         }
-
-        
     }
 }
