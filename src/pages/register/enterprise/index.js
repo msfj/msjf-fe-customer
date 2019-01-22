@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import styles from './index.scss';
 import { Button, Steps, Input, Select, Checkbox, Form } from 'antd';
+import C from '../../../util/common';
 
 import PasswordInput from '../components/PasswordInput';
 import SuccessBlock from '../components/SuccessBlock';
+import Msgcode from '../../../component/Msgcode';
 
 const { Step } = Steps;
 const { Group } = Input;
@@ -31,7 +33,14 @@ const mapDispatchToProps = (dispatch) => {
           type: `${namespace}/setStep`,
           payload: { flag: -1 }
         });
-      }
+      },
+
+      setMbl(mobile) {
+        dispatch({
+            type: 'msgcode/setMsgCode',
+            payload: { mobile }
+        });
+      },
   };
 };
 class EnterpriseRegisterComponent extends Component {
@@ -98,7 +107,7 @@ class EnterpriseRegisterComponent extends Component {
               {/* 表单部分-step1 */}
               <StepOne visible={step === 0} wrappedComponentRef={(form) => this.step1Form = form} />
               {/* 表单部分-step2 */}
-              <StepTwo visible={step === 1} wrappedComponentRef={(form) => this.step2Form = form} />
+              <StepTwo visible={step === 1} wrappedComponentRef={(form) => this.step2Form = form}  setMbl={(parma) => {this.props.setMbl(parma)}} />
               {/* 表单部分-step3 */}
               <StepThree visible={step === 2} wrappedComponentRef={(form) => this.step3Form = form} />
               {/* 按钮及协议部分 */}
@@ -157,7 +166,7 @@ class StepOneForm extends Component {
           className={styles.formExtend}
         >
           {getFieldDecorator('certificateno', {
-            rules: [{ required: true, message: '请输入企业营业执照号码' }],
+            rules: [{ required: true, message: '请输入企业营业执照号码' }, { pattern: C.Regep.certificateno, message: '营业执照格式不正确' }],
           })(
             <Input size="large" placeholder="请输入企业营业执照号码" />
           )}
@@ -171,11 +180,20 @@ const StepOne = Form.create()(StepOneForm);
 
 // step2
 class StepTwoForm extends Component {
-  
+  getMbl = (e) => {
+    this.props.setMbl(e.target.value);
+  }
   render() {
     const { visible } = this.props;
     const { getFieldDecorator } = this.props.form;
     const style = visible ? { display: 'block' } : { display: 'none' };
+    const prefixSelector = getFieldDecorator('corcardtype', {
+      initialValue: '0',
+    })(
+      <Select className={styles.select} style={{ width: 100 }} size="large">
+        <Option value="0">身份证</Option>
+      </Select>
+    );
 
     return (
       <Form className={styles.formBlock} style={style}>
@@ -199,17 +217,10 @@ class StepTwoForm extends Component {
             style={{ display: "inline-block" }}
           >
             <Group compact>
-              {getFieldDecorator('corcardtype', {
-                  rules: [{ required: true, message: '请选择证件类型' }],
-              })(
-                <Select className={styles.select} style={{ width: '28%' }} size="large" initialValue="身份证">
-                  <Option value="0">身份证</Option>
-                </Select>
-              )}
               {getFieldDecorator('corcardno', {
-                rules: [{ required: true, message: '请输入身份证' }],
+                rules: [{ required: true, message: '请输入身份证' }, { pattern: C.Regep.cardID, message: '身份证格式不正确' }],
               })(
-                <Input className={styles.noLeftBorder} style={{ width: '72%' }} size="large" placeholder="请输入身份证" />
+                <Input addonBefore={prefixSelector} className={styles.noLeftBorder} size="large" placeholder="请输入身份证" />
               )}
             </Group>
           </Item>
@@ -238,9 +249,9 @@ class StepTwoForm extends Component {
               <Option value="+86">+86</Option>
             </Select>
             {getFieldDecorator('mobile', {
-              rules: [{ required: true, message: '请输入手机号码' }],
+              rules: [{ required: true, message: '请输入手机号码' }, { pattern: C.Regep.mobile, message: '请输入正确的手机号' }],
             })(
-              <Input className={styles.noLeftBorder} style={{ width: '72%' }} size="large" placeholder="请输入手机号码" />
+              <Input className={styles.noLeftBorder} style={{ width: '72%' }} maxLength={11} size="large" placeholder="请输入手机号码" onBlur={this.getMbl} />
             )}
           </Group>
         </Item>
@@ -253,7 +264,7 @@ class StepTwoForm extends Component {
           {getFieldDecorator('msgcode', {
             rules: [{ required: true, message: '请输入短信验证码' }],
           })(
-            <Input size="large" placeholder="请输入短信验证码" suffix={<MSGCode />} />
+            <Input size="large" placeholder="请输入短信验证码" maxLength={4} suffix={<Msgcode />} />
           )}
         </Item>
         </div>

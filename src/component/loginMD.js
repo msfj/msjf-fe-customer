@@ -5,6 +5,7 @@ import { Modal, Form, Input, Icon, Cascader, Select, Row, Col, Checkbox, Button,
 import './login.scss';
 import PasswordInput from './PasswordInput';
 import Msgcode from './Msgcode';
+import C from '../util/common';
 
 const { Group } = Input;
 const { Option } = Select;
@@ -30,7 +31,7 @@ class NormalLoginForm extends Component {
       <Form onSubmit={this.handleSubmit} className="loginForm" layout="vertical">
         <Item label={opts.accLabel}>
           {getFieldDecorator('loginName', {
-            rules: [{ required: true, message: opts.accMsg }],
+            rules: [{ required: true, message: opts.accMsg }, { pattern: opts.accReg, message: '账号格式不正确' }],
           })(
             <Input placeholder={opts.accMsg} size="large" />
           )}
@@ -47,7 +48,7 @@ class NormalLoginForm extends Component {
           {getFieldDecorator('inputValidecode', {
             rules: [{ required: true, message: '请输入图形验证码' }],
           })(
-            <Input placeholder="请输入图形验证码" size="large" suffix={imgcode} maxLength={4} />
+            <Input placeholder="请输入图形验证码" maxLength={4} size="large" suffix={imgcode} maxLength={4} />
           )}
         </Item>
         <Item>
@@ -105,9 +106,9 @@ class MobileLoginForm extends Component {
                 <Option value="87">+87</Option>
               </Select>
               {getFieldDecorator('loginName', {
-                rules: [{ required: true, message: '请输入手机号' }],
+                rules: [{ required: true, message: '请输入手机号' }, { pattern: C.Regep.mobile, message: '请输入正确的手机号' }],
               })(
-                <Input style={{ width: '72%' }} size="large" placeholder="请输入手机号码" onBlur={this.getMbl} />
+                <Input style={{ width: '72%' }} size="large" maxLength={11} placeholder="请输入手机号码" onBlur={this.getMbl} />
               )}
             </Group>       
         </Item>
@@ -115,7 +116,7 @@ class MobileLoginForm extends Component {
           {getFieldDecorator('msgCode', {
             rules: [{ required: true, message: '请输入手机验证码' }],
           })(
-            <Input placeholder="请输入手机验证码" size="large" suffix={<Msgcode/>} />
+            <Input placeholder="请输入手机验证码" size="large" maxLength={4} suffix={<Msgcode/>} />
           )}
         </Item>
         <Item>
@@ -146,7 +147,8 @@ const lgobj = {
         accLabel: '证件号',
         accMsg: '请输入身份证/港澳通行证/护照/台胞证号码',
         mbLabel: '手机号',
-        link: '/register/person'
+        link: '/register/person',
+        accReg: C.Regep.cardID
     },
     '1': {
         title: '企业账户登录',
@@ -154,7 +156,8 @@ const lgobj = {
         accLabel: '企业证件号',
         accMsg: '请输入企业统一信用代码',
         mbLabel: '企业法人手机号',
-        link: '/register/enterprise'
+        link: '/register/enterprise',
+        accReg: C.Regep.certificateno
     }
 };
 
@@ -207,11 +210,16 @@ const mapDispatchToProps = (dispatch) => {
               payload: param
           });
         },
-        setMbl(val) {
+        setMbl(mobile) {
           dispatch({
-            type: 'global/setMsgCode',
-            payload: { mobile: val }
-        });
+              type: 'msgcode/setMsgCode',
+              payload: { mobile }
+          });
+        },
+        getImg() {
+          dispatch({
+              type: `${namespace}/getImg`
+          });
         }
     };
 };
@@ -260,11 +268,10 @@ class Loginmd extends Component {
   }
 
   imgcode = ()=>{
-    const { uniqueID, validcode } = this.props.imgCode;
+    const { imgCode, getImg } = this.props;
     return (
       <span>
-        <input type="hidden" value={uniqueID} name="uniqueID" id="uniqueID"/>
-        <img src={validcode} alt="" className="imgCode" />
+        <img src={imgCode.validcode} alt="" className="imgCode" onClick={getImg} />
       </span>
     );
   }

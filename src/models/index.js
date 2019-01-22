@@ -67,16 +67,17 @@ export default {
                 return state.index.loginModel;
             });
             if(loginModel == '0') {
-                const lgk = yield call(Service.getImgCode, {});
-                if(lgk && lgk.flag === C.Constant.SUCFLAG ) {
-                    yield put({ type:'global/setImgCode', payload: lgk.data || {} });
-                    yield put({ type:'openLogin', payload: loginType });
-                } else {
-                    message.error((lgk && lgk.msg) || C.Constant.DFTERMSG);
-                }
-            } else {
-                yield put({ type:'openLogin', payload: loginType });
+                yield put({ type: 'getImg' });
             }
+            yield put({ type:'openLogin', payload: loginType });
         },
+        *getImg(_, { call, put }) {
+            const lgk = yield call(Service.getImgCode, {});
+            if(lgk && lgk.flag === C.Constant.SUCFLAG ) {
+                yield put({ type: 'global/setImgCode', payload: lgk.data || {} });
+            } else {
+                message.error((lgk && lgk.msg) || C.Constant.DFTERMSG);
+            }
+        }
     },
 }

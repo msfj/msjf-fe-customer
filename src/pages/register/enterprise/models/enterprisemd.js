@@ -13,16 +13,9 @@ export default {
     },
     reducers: {
         setStep(state, { payload: res}) {    
-            if((res.flag === -1) || (res.res && res.res.flag === C.Constant.SUCFLAG)) {
-                return {
-                    ...state,
-                    step: state.step + res.flag
-                }
-            } else {
-                message.error(res.msg);
-                return {
-                    step: state.step
-                };
+            return {
+                ...state,
+                step: state.step + res.flag
             }
         },
         
@@ -30,7 +23,12 @@ export default {
     effects: {
         *emitStep({ payload: param }, { call, put }) {
             const res =  yield call(inserRegister, { param, state });
-            yield put({ type: 'setStep', payload: { res, flag: 1 } });
+            if(res && res.flag === C.Constant.SUCFLAG) {
+                yield put({ type: 'setStep', payload: { flag: 1 } });
+            } else {
+                message.error(res.msg || C.Constant.DFTERMSG);
+            }
+            
         },
     },
 }
