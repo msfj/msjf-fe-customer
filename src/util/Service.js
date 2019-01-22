@@ -3,12 +3,21 @@ import request from './request';
 const apisfx = '/api';
 
 const Api = {
-    userLoginByMbl: 'get_cust_login/queryOrganInfoList',
-    // 企业注册
-    inserRegister: 'setRegister/inserRegister'
+    // 获取图形验证码
+    getImgCode: 'getImageValidcode/getBase64ImageValidecode',
+    // 注册
+    inserRegister: 'setRegister/inserRegister',
+    // 登录
+    memberLogin: 'get_cust_login/memberLogin',
+    // 通过法人手机号查询登录账户
+    getCorporationLogin: 'get_cust_login/getCorporationCompany',
+    // 企业法人登录
+    corporationLogin: 'get_cust_login/corporationLogin',
+    // 发送短信验证码
+    getMsgCode: 'setSendVerificationCode/SendRegisterVerificationCode'
 };
 
-const Service = {};
+let Service = {};
 
 Object.keys(Api).forEach((key) => {
     // let ar = key.split('_');
@@ -24,7 +33,7 @@ Object.keys(Api).forEach((key) => {
             method,
             state: opts.state || 'oauth',
             timestamp: +new Date(),
-            params: JSON.stringify([opts.param || {}])
+            params: JSON.stringify(opts.param || {})
         };
         
         opts = {

@@ -1,35 +1,71 @@
 import Service from '../util/Service';
+import C from '../util/common';
+import { message } from 'antd';
+import router from 'umi/router';
+
+const state = 'open';
 
 export default {
     namespace: 'global',
     state: {
-        text: 'hello umi+dva',
         login: false,
+        loginType: '0',
+        imgCode: {},
     },
     reducers: {
-        setText(state) {
+        signin(state, { payload: res }) {
+            const login = res.login;
+            const { loginType='0' } = res.res.data;
+            
             return {
                 ...state,
-                text: 'setted dva',
+                login,
+                loginType
             };
         },
-        signin(state, { payload: lgk }) {
-            console.log(lgk)
+        setImgCode(state, { payload: imgCode }) {
             return {
                 ...state,
-                login: true,
+                imgCode
             };
-        },
+        }
     },
     effects: {
-        *login({payload: param}, { call, put }) {
+        *login({ payload: param }, { call, put, select }) {
+            
+            const req = param.secd ? 'corporationLogin' : 'memberLogin';
+            if(!param.secd) {
+                param.uniqueID = yield select(state => {
+                    return state.global.imgCode.uniqueID;
+                });
+            }
             console.log(param);
-            const lgk = yield call(Service.userLoginByMbl, {param});
-            yield put({ type: 'signin', payload: lgk });
+            const res = yield call(Service[req], { param, state });
+            const login = res && res.flag === C.Constant.SUCFLAG;
+            
+            if(login) {
+                // membertype
+                const pt = res.data.membertype === '0' ? '/user/personInfo' : '/user/enterprisehome';
+                router.push(pt);
+                yield put({ type:'index/closeLogin' });
+                yield put({ type: 'signin', payload: { res, login }});
+            } else {
+                message.error((res && res.msg) || C.Constant.DFTERMSG);
+            }
+            
             // yield put({ type: 'signin' });
         },
-        *throwError() {
-            throw new Error('hi error');
+        *queryAcc({ payload: param }, { call, put }) {
+            param.mobile = param.loginName;
+            delete param.loginName;
+            const lgk = yield call(Service.getCorporationLogin, { param, state });
+            if(lgk && lgk.flag === C.Constant.SUCFLAG ) {
+                // window.g_app._store.dispatch({ type:'index/closeLogin' });
+                yield put({ type:'index/setBslist', payload: lgk.data || [] });
+            } else {
+                message.error((lgk && lgk.msg) || C.Constant.DFTERMSG);
+            }
+            // yield put({ type: 'signin', payload: lgk });
         }
     },
 }

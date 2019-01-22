@@ -3,7 +3,9 @@ import { connect } from 'dva';
 import Link from 'umi/link';
 import { Modal, Form, Input, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete} from 'antd';
 import './login.scss';
-import PasswordInput from './PasswordInput'
+import PasswordInput from './PasswordInput';
+import Msgcode from './Msgcode';
+import C from '../util/common';
 
 const { Group } = Input;
 const { Option } = Select;
@@ -23,12 +25,13 @@ class NormalLoginForm extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const opts = this.props.options;
+    const imgcode = this.props.imgcode;
 
     return (
       <Form onSubmit={this.handleSubmit} className="loginForm" layout="vertical">
         <Item label={opts.accLabel}>
-          {getFieldDecorator('cardID', {
-            rules: [{ required: true, message: opts.accMsg }],
+          {getFieldDecorator('loginName', {
+            rules: [{ required: true, message: opts.accMsg }, { pattern: opts.accReg, message: '账号格式不正确' }],
           })(
             <Input placeholder={opts.accMsg} size="large" />
           )}
@@ -42,10 +45,10 @@ class NormalLoginForm extends Component {
           )}
         </Item>
         <Item label="验证码">
-          {getFieldDecorator('code', {
+          {getFieldDecorator('inputValidecode', {
             rules: [{ required: true, message: '请输入图形验证码' }],
           })(
-            <Input placeholder="请输入图形验证码" size="large" />
+            <Input placeholder="请输入图形验证码" maxLength={4} size="large" suffix={imgcode} maxLength={4} />
           )}
         </Item>
         <Item>
@@ -72,10 +75,15 @@ class MobileLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        this.props.tologin({"username":"mobile","password":"mobile"});
+        values.password = 'q111111';
+        this.props.tologin(values);
       }
     });
     // this.props.bschioce();
+  }
+
+  getMbl = (e) => {
+    this.props.setMbl(e.target.value);
   }
 
   render() {
@@ -97,18 +105,18 @@ class MobileLoginForm extends Component {
                 <Option value="86">+86</Option>
                 <Option value="87">+87</Option>
               </Select>
-              {getFieldDecorator('mobile', {
-                rules: [{ required: true, message: '请输入手机号' }],
+              {getFieldDecorator('loginName', {
+                rules: [{ required: true, message: '请输入手机号' }, { pattern: C.Regep.mobile, message: '请输入正确的手机号' }],
               })(
-                <Input style={{ width: '72%' }} size="large" placeholder="请输入手机号码" />
+                <Input style={{ width: '72%' }} size="large" maxLength={11} placeholder="请输入手机号码" onBlur={this.getMbl} />
               )}
             </Group>       
         </Item>
         <Item label="验证码">
-          {getFieldDecorator('code', {
+          {getFieldDecorator('msgCode', {
             rules: [{ required: true, message: '请输入手机验证码' }],
           })(
-            <Input placeholder="请输入手机验证码" size="large" />
+            <Input placeholder="请输入手机验证码" size="large" maxLength={4} suffix={<Msgcode/>} />
           )}
         </Item>
         <Item>
@@ -139,7 +147,8 @@ const lgobj = {
         accLabel: '证件号',
         accMsg: '请输入身份证/港澳通行证/护照/台胞证号码',
         mbLabel: '手机号',
-        link: '/register/person'
+        link: '/register/person',
+        accReg: C.Regep.cardID
     },
     '1': {
         title: '企业账户登录',
@@ -147,14 +156,16 @@ const lgobj = {
         accLabel: '企业证件号',
         accMsg: '请输入企业统一信用代码',
         mbLabel: '企业法人手机号',
-        link: '/register/enterprise'
+        link: '/register/enterprise',
+        accReg: C.Regep.certificateno
     }
 };
 
 const namespace = 'index';
 
 const mapStateToProps = (state) => {
-    return state[namespace];
+    const { imgCode } = state.global;
+    return { ...state[namespace], imgCode };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -174,7 +185,7 @@ const mapDispatchToProps = (dispatch) => {
                 type: `${namespace}/openBsmd`
             });
         },
-        bsSelect(i) {
+        bsSelect(i, n) {
             dispatch({
                 type: `${namespace}/bsSelect`,
                 payload: i
@@ -191,11 +202,38 @@ const mapDispatchToProps = (dispatch) => {
                 type: 'global/login',
                 payload: param
             });
+        },
+        queryAcc(param) {
+          console.log(param);
+          dispatch({
+              type: 'global/queryAcc',
+              payload: param
+          });
+        },
+        setMbl(mobile) {
+          dispatch({
+              type: 'msgcode/setMsgCode',
+              payload: { mobile }
+          });
+        },
+        getImg() {
+          dispatch({
+              type: `${namespace}/getImg`
+          });
         }
     };
 };
 
 class Loginmd extends Component {
+  state = {
+    data: {}
+  };
+
+  componentWillUnmount = () => {
+    this.setState = (state, callback)=>{
+      return;
+    };
+  }
 
   handleCancel = () => {
     this.props.closeLogin();
@@ -211,6 +249,31 @@ class Loginmd extends Component {
 
   bsSelect = (i) => {
     this.props.bsSelect(i);
+  }
+
+  toLogin = (param={}) => {
+    const { loginType='0', loginModel, login, queryAcc, bslist, bsindex } = this.props;
+    let data = { ...this.state.data, ...param, loginsource: '0' };
+    if(param.secd) {
+      data.loginName = bslist[bsindex].loginName;
+    }
+    this.setState({
+      data
+    });
+    if(param.secd != 'true' && loginType == '1' && loginModel == '1') {
+      queryAcc(data);
+    } else {
+      login(data);
+    }
+  }
+
+  imgcode = ()=>{
+    const { imgCode, getImg } = this.props;
+    return (
+      <span>
+        <img src={imgCode.validcode} alt="" className="imgCode" onClick={getImg} />
+      </span>
+    );
   }
 
   render() {
@@ -230,7 +293,10 @@ class Loginmd extends Component {
           <div className={isAcc ? "loginBar" : "loginBar loginBar1"} onClick={this.changeType}></div>
           <div className="loginBox">
             <h2 className="loginTitle"><strong>{opts.title}</strong><small>{opts.small}</small></h2>
-            {isAcc? <WrappedNormalLoginForm options={opts} tologin={(param) => {this.props.login(param)}} /> : <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} tologin={(parma) => {this.props.login(parma)}} />}
+            {isAcc? 
+            <WrappedNormalLoginForm options={opts} tologin={(param) => {this.toLogin(param)}} imgcode={this.imgcode()} /> : 
+            <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} tologin={(parma) => {this.toLogin(parma)}}
+            setMbl={(parma) => {this.props.setMbl(parma)}} />}
           </div>
         </Modal>
 
@@ -248,19 +314,19 @@ class Loginmd extends Component {
               (() => {
                 // while (++i < 10) {
                 let rows = [];
-                for(let i = 0; i < 10; i++) {
-                 rows.push(
-                 <li className={i===bsindex?'loginbsLi loginbsSel':'loginbsLi'} key={i} onClick={()=>{this.bsSelect(i)}}>
-                  <div className="loginbsTx">梅山（宁波）金服科技有限公司</div>
-                  <div className="loginbsSm">123456789123456789</div>
-                </li>
-               )
-                }
+                this.props.bslist.forEach((el, i) => {
+                  rows.push(
+                    <li className={i===bsindex?'loginbsLi loginbsSel':'loginbsLi'} key={i} onClick={()=>{this.bsSelect(i, el.loginName)}}>
+                      <div className="loginbsTx">{el.membername}</div>
+                      <div className="loginbsSm">{el.loginName}</div>
+                    </li>
+                  )
+                });
                 return rows;
                })()
             }
             </ul>
-            <Link to="/user/personInfo"><Button type="primary" className="loginBtn">确定</Button></Link>
+            <Button type="primary" className="loginBtn" onClick={()=>{this.toLogin({secd: 'true'})}}>确定</Button>
           </div>
         </Modal>
       </div>
