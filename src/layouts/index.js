@@ -124,7 +124,7 @@ function Footer() {
           <div className={`${css.footertitle} ${css.mt30}`}>地址<i className={css.footerline}></i></div>
           <div className={css.footercontent}>
             <img className={css.footericon} src={require("../assets/ic-location.svg")} alt="" />
-            <span>浙江省·宁波市北仑区梅山保税港区行政商务中心512室</span>
+            <span>浙江省宁波市北仑区梅山大道商务中心八号办公楼1560室</span>
           </div>
         </div>
         <div className={css.footercol2}>
@@ -148,12 +148,7 @@ function Footer() {
             <li className={css.li}>
               <a to="http://www.amac.org.cn/" target="_blank"  rel="noopener noreferrer">中国证券投资基金业协会</a>
             </li>
-            <li className={css.li}>
-              <a to="#" target="_blank"  rel="noopener noreferrer">宁波市类金融企业服务管理平台</a>
-            </li>
-            <li className={css.li}>
-              <a to="#" target="_blank"  rel="noopener noreferrer">壹融通云私募管理平台</a>
-            </li>
+            
           </ul>
         </div>
         <div className={css.footercol3}>
