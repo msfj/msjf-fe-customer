@@ -53,7 +53,7 @@ export default class Person extends Component {
     if(this.state.activeItem === "establish") {contentNode = <EnterpriseEstablishComponent />}
     if(this.state.activeItem === "message") {contentNode = <MessageComponent />}
     if(this.state.activeItem === "personcenter") {contentNode = <PersonInfo />}
-    if(this.state.activeItem === "establish") {contentNode = <EnterpriseEstablishComponent />}
+    if(this.state.activeItem === "relatecpy") {contentNode = <RelatedCompanyComponent />}
     return (
       <div
         className={classNames(styles.enterpriseHome, 'userBoard')}
@@ -68,7 +68,8 @@ export default class Person extends Component {
           </Sider>
           <Layout>
             <Content>
-              {contentNode}
+              <EstablishmentComponent />
+              {/* {contentNode} */}
             </Content>
           </Layout>
         </Layout>
@@ -83,13 +84,13 @@ class SiderNode extends Component {
     const activeTgas = (
       <Fragment>
         <img alt="" src={require('image/icon/right.svg')} />
-        <div className={styles.activeTags} />
+        <div className='activeTags' />
       </Fragment>
     );
     return (
       <Fragment>
         <div className="sideContent">
-          <div className={styles.imgBlock} />
+          <div className="imgBlock" />
           <span className={styles.font24}>张家辉</span>
           <p className={styles.font10}>个人账户</p>
           <ul>

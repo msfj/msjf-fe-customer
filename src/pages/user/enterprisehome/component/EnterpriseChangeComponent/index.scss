@@ -1,19 +1,40 @@
-.establish {
-    padding: 30px 50px 0 50px;
+.etpchange {
+    padding: 30px 16px 0 16px;
     display: flex;
     flex-direction: column;
 
-    .tabName {
-        font-size: 18px;
-        color: #212121;
-        padding-right: 5px;
-    }
+    .etpHead {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px #D0D3D5 solid;
+        p {
+            margin: 0;
+            flex: 1;
+        }
+        .searchInput {
+            width: 280px !important;
+        }
 
-    .tabNameNum {
-        font-size: 14px;
-        color: #91989E;
-        border-right: 1px #D0D3D5 solid;
-        padding-right: 15px;
+        .searchInput > input {
+            border: 1px solid #D0D3D5;
+            border-radius: 20px;
+            background-color: transparent;
+            width: 280px;
+            height: 40px;
+        }
+        button {
+            width: 148px;
+            height: 40px;
+            background: #0072D2;
+            border-radius: 4px;
+            margin-left: 20px;
+            opacity: 0.85;
+            font-size: 16px;
+            color: #FFFFFF;
+            line-height: 24px;
+        }
     }
 
     .col {

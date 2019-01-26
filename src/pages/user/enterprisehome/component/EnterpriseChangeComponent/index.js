@@ -2,43 +2,13 @@ import React, { Component, PureComponent } from 'react';
 import styles from './index.scss';
 import outStyles from '../../index.scss'
 import { Tabs } from 'antd';
-import { Row, Col } from 'antd';
+import { Row, Col, Input, Icon, Button } from 'antd';
 import { Steps } from 'antd';
 import CustomModal from 'component/CustomModal/index';
 import { Popover } from 'antd';
 
-const TabPane = Tabs.TabPane;
 const Step = Steps.Step;
 
-function TabName(props) {
-  return (
-    <div><span className={styles.tabName}>{props.type}</span><span className={styles.tabNameNum}>({props.num})</span></div>
-  );
-}
-
-function TabContent(props) {
-  return (
-    <div>
-      <Row gutter={40}>
-        <Col className={styles.col} span={24}>
-          <div className={styles.tabContent}><TabContentInside {...props} type={'unsubmit'} /></div>
-        </Col>
-        <Col className={styles.col} span={24}>
-          <div className={styles.tabContent}><TabContentInside type={'checking'} /></div>
-        </Col>
-        <Col className={styles.col} span={24}>
-          <div className={styles.tabContent}><TabContentInside type={'checkin'} /></div>
-        </Col>
-        <Col className={styles.col} span={24}>
-          <div className={styles.tabContent}><TabContentInside type={'checked'} /></div>
-        </Col>
-        <Col className={styles.col} span={24}>
-          <div className={styles.tabContent}><TabContentInside type={'done'} /></div>
-        </Col>
-      </Row>
-    </div>
-  );
-}
 
 class TabContentInside extends PureComponent {
 
@@ -87,27 +57,41 @@ class TabContentInside extends PureComponent {
     return typeObj[type]
   }
 
+  getTypeName = (type) => {
+    const typeObj = {
+      'unsubmit': "未提交",
+      'checking': "审批中",
+      'checkin': "登记办理",
+      'done': "变更完成"
+    }
+    return typeObj[type]
+  }
+
+  getEtpImg = (etpType) => {
+    const typeObj = {
+      'limitedPtn' : <img src={require("image/limited-partner.png")} alt="有限合伙"/>,
+      'normalPtn' : <img src={require("image/normal-partner.png")} alt="有限合伙"/>,
+      'limitedCmp' : <img src={require("image/limited-company.png")} alt="有限合伙"/>,
+    }
+    return typeObj[etpType];
+  }
+
   render() {
-    const { type } = this.props;
-    const companyType = "normal";
+    const { getOperateBlock, getTypeName, getEtpImg } = this;
+    const { type,etpType } = this.props;
     return (
       <div className={styles.tabContentInside}>
-        {
-          companyType === "normal" ?
-            <img src={require("image/normal-partner.png")} alt="" />
-            :
-            <img src={require("image/limited-partner.png")} alt="" />
-        }
+        {getEtpImg(etpType)}
         <div className={styles.tabContentInsideRight}>
           <div className={styles.tabContentInsideTop}>
             <span className={styles.titleName}>公司名称公司名称公司名称</span>
             <i className={styles[type]} />
-            <span className={`${styles[type]} ${styles.statusText}`}>审批中</span>
+            <span className={`${styles[type]} ${styles.statusText}`}>{getTypeName(type)}</span>
           </div>
           <div className={styles.tabContentInsideBottom}>
-            <button>拟设立</button>
+            <button>企业变更</button>
             {
-              this.getOperateBlock(type)
+              getOperateBlock(type)
             }
           </div>
         </div>
@@ -120,13 +104,13 @@ class TabContentInside extends PureComponent {
 class Flow extends Component {
 
   flowTitle = () => {
-    return(
+    return (
       <div className={styles.flowTitle}>提交拟设立申请【张家辉】<span>2018/12/18 09:40:38</span></div>
     );
   }
 
   flowDes = () => {
-    return(
+    return (
       <div className={styles.flowDes}><i className={styles.checking}></i><span>提交拟设立申请【张家辉】</span></div>
     );
   }
@@ -165,14 +149,35 @@ export default class EnterpriseInfoComponent extends Component {
     const deleteModal = this.deleteModal
     const modalActionCol = { deleteModal };
     return (
-      <div className={styles.establish}>
-        <div className={outStyles.font24}>拟设立详情内容</div>
-        <Tabs defaultActiveKey="1">
-          <TabPane tab={<TabName type={"全部"} num={"14"} />} key="1"><TabContent {...modalActionCol} /></TabPane>
-          <TabPane tab={<TabName type={"拟设立"} num={"4"} />} key="2">Content of Tab Pane 2</TabPane>
-          <TabPane tab={<TabName type={"确认设立"} num={"4"} />} key="3">Content of Tab Pane 3</TabPane>
-          <TabPane tab={<TabName type={"完成设立"} num={"4"} />} key="4">Content of Tab Pane 3</TabPane>
-        </Tabs>
+      <div className={styles.etpchange}>
+        <div className={styles.etpHead}>
+          <p className='fs-24 '>企业变更</p>
+          <Input
+            className={styles.searchInput}
+            placeholder="请输入公司名称"
+            suffix={<Icon type="search" />}
+          />
+          <Button type="primary" icon="file-done">变更记录</Button>
+        </div>
+        <div>
+          <Row gutter={40}>
+            <Col className={styles.col} span={24}>
+              <div className={styles.tabContent}><TabContentInside etpType={'limitedPtn'} type={'unsubmit'} /></div>
+            </Col>
+            <Col className={styles.col} span={24}>
+              <div className={styles.tabContent}><TabContentInside etpType={'limitedCmp'} type={'checking'} /></div>
+            </Col>
+            <Col className={styles.col} span={24}>
+              <div className={styles.tabContent}><TabContentInside etpType={'limitedPtn'} type={'checkin'} /></div>
+            </Col>
+            <Col className={styles.col} span={24}>
+              <div className={styles.tabContent}><TabContentInside etpType={'normalPtn'} type={'done'} /></div>
+            </Col>
+            <Col className={styles.col} span={24}>
+              <div className={styles.tabContent}><TabContentInside etpType={'limitedCmp'} type={'done'} /></div>
+            </Col>
+          </Row>
+        </div>
         <CustomModal
           title="Basic Modal"
           visible={this.state.deleteModal}

@@ -74,7 +74,9 @@ class TabContentInside extends PureComponent {
           <i className={styles.info} />
           <span>详情</span>
           <i className={styles.query} />
-          <span>流程查询</span>
+          <Popover trigger="click" placement="right" content={<Flow />}>
+            <span>流程查询</span>
+          </Popover>
           <i className={styles.refuse} />
           <span>申请退回</span>
         </div>
@@ -135,6 +137,7 @@ class TabContentInside extends PureComponent {
 }
 
 class Flow extends Component {
+
   flowTitle = () => {
     return (
       <div className={styles.flowTitle}>
@@ -153,21 +156,13 @@ class Flow extends Component {
   };
 
   render() {
-    const data = [
-      {
-        title: '提交拟设立申请【张家辉】',
-        des: '',
-        data: '2018/12/18 09:40:38',
-      },
-      { title: '提交拟设立申请【张家辉】', des: '', data: '2018/12/18 09:40:38' },
-    ];
 
     return (
       <div className={styles.flowContent}>
         <Steps direction="vertical" progressDot current={1}>
           <Step title={<this.flowTitle />} description={<this.flowDes />} />
-          <Step title="In Progress" description="This is a description." />
-          <Step title="Waiting" description="This is a description." />
+          <Step title={<this.flowTitle />} description={<this.flowDes />} />
+          <Step title={<this.flowTitle />} description={<this.flowDes />} />
         </Steps>
         ,
       </div>
@@ -208,7 +203,6 @@ export default class EnterpriseInfoComponent extends Component {
         <div className={outStyles.font24}>企业设立</div>
         <Tabs
           tabBarExtraContent={<SearchInput />}
-          // renderTabBar={(DefaultTabBarProps, DefaultTabBar) => <DefaultTabBar />}
           defaultActiveKey="1"
         >
           <TabPane tab={<TabName type={'全部'} num={'14'} />} key="1">
@@ -225,15 +219,15 @@ export default class EnterpriseInfoComponent extends Component {
           </TabPane>
         </Tabs>
         <CustomModal
-          title="Basic Modal"
+          title="删除提示"
           visible={this.state.deleteModal}
           onOk={this.deleteModal}
           onCancel={this.deleteModal}
           okText={'删除'}
           cancelText={'取消'}
         >
-          <div className={styles.modalContent}>
-            <i className={styles.warn} />
+          <div className="modalContent">
+            <i className="m-warn" />
             确定要删除未提交的申请内容吗？
           </div>
         </CustomModal>
