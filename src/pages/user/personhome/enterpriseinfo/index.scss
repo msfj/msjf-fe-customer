@@ -1,4 +1,4 @@
-.insideContent {
+.newEtpInfo {
   padding: 30px 50px 0 50px;
   display: flex;
   flex-direction: column;
@@ -107,13 +107,12 @@
       }
 
       .staffBlock {
-          display: flex;
           margin-bottom: 20px;
 
           .staffItem {
-              display: 'flex';
-              flex-direction: 'column';
-              margin-right: 20px;
+              display: flex;
+              flex-direction: column;
+              margin-bottom: 20px;
 
               p {
                   margin-bottom: 10px;
@@ -148,8 +147,8 @@
       .grayBlock {
           padding: 20px 20px 0 20px;
           background: #F5F5F5;
-          margin-bottom: 20px;
-      }
+          margin: 10px 0 20px 0;
+        }
 
       .rowBorder {
           border-top: 1px #D0D3D5 solid;

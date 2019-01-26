@@ -220,7 +220,7 @@ export default class PersonInfoComponent extends Component {
         <ModifyModal ref={this.modifyModalRef} />
         {/*换绑弹出框*/}
         <ChangePhoneModal ref={this.changePhoneModalRef} />
-        <div className={classNames('font24', "mb-20", styles.topTitle)}>
+        <div className={classNames('fs-24', "mb-20", styles.topTitle)}>
           个人中心
           <div style={{ display: 'flex' }}>
             <i className={classNames(styles.edit, styles.icon)} />

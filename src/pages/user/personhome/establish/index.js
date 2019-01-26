@@ -1,10 +1,9 @@
 import React, { Component, PureComponent } from 'react';
 import classNames from 'classnames';
 import styles from './index.scss';
-import outStyles from '../../index.scss';
-import { Tabs, Row, Col, Steps, Input, Icon, Button } from 'antd';
+import { Tabs, Row, Col, Steps, Input, Icon, Button, Popover } from 'antd';
 import CustomModal from 'component/CustomModal/index';
-import { Popover } from 'antd';
+import Link from 'umi/link';
 
 const TabPane = Tabs.TabPane;
 const Step = Steps.Step;
@@ -72,7 +71,9 @@ class TabContentInside extends PureComponent {
       checking: (
         <div className={styles.operateBlock}>
           <i className={styles.info} />
-          <span>详情</span>
+          <span>
+            <Link to="/user/personhome/enterpriseinfo">详情</Link>
+          </span>
           <i className={styles.query} />
           <Popover trigger="click" placement="right" content={<Flow />}>
             <span>流程查询</span>
@@ -118,8 +119,8 @@ class TabContentInside extends PureComponent {
         {companyType === 'normal' ? (
           <img src={require('image/normal-partner.png')} alt="" />
         ) : (
-            <img src={require('image/limited-partner.png')} alt="" />
-          )}
+          <img src={require('image/limited-partner.png')} alt="" />
+        )}
         <div className={styles.tabContentInsideRight}>
           <div className={styles.tabContentInsideTop}>
             <span className={styles.titleName}>公司名称公司名称公司名称</span>
@@ -137,33 +138,86 @@ class TabContentInside extends PureComponent {
 }
 
 class Flow extends Component {
-
   render() {
-
-    const data = [{
-      title: "提交拟设立申请", highlight: "【张家辉】", des: "", desIcon: "", date: "2018/12/18 09:40:38"
-    }, {
-      title: "招商部门对接人确认", highlight: "", des: "确认意见：内容准确无误，通过审核", desIcon: "done", date: "2018/12/18 09:40:38"
-    }, {
-      title: "招商部门分管领导确认", highlight: "", des: "确认意见：内容准确无误，通过审核", desIcon: "done", date: "2018/12/18 09:40:38"
-    }, {
-      title: "金融服务管理部确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
-    }, {
-      title: "金融服务管理部确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
-    }, {
-      title: "市场监督管理觉确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
-    }, {
-      title: "市场监督管理觉确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
-    },{
-      title: "审核完成", highlight: "", des: "", desIcon: "", date: ""
-    }]
+    const data = [
+      {
+        title: '提交拟设立申请',
+        highlight: '【张家辉】',
+        des: '',
+        desIcon: '',
+        date: '2018/12/18 09:40:38',
+      },
+      {
+        title: '招商部门对接人确认',
+        highlight: '',
+        des: '确认意见：内容准确无误，通过审核',
+        desIcon: 'done',
+        date: '2018/12/18 09:40:38',
+      },
+      {
+        title: '招商部门分管领导确认',
+        highlight: '',
+        des: '确认意见：内容准确无误，通过审核',
+        desIcon: 'done',
+        date: '2018/12/18 09:40:38',
+      },
+      {
+        title: '金融服务管理部确认',
+        highlight: '',
+        des: '等待审核',
+        desIcon: 'checking',
+        date: '',
+      },
+      {
+        title: '金融服务管理部确认',
+        highlight: '',
+        des: '等待审核',
+        desIcon: 'checking',
+        date: '',
+      },
+      {
+        title: '市场监督管理觉确认',
+        highlight: '',
+        des: '等待审核',
+        desIcon: 'checking',
+        date: '',
+      },
+      {
+        title: '市场监督管理觉确认',
+        highlight: '',
+        des: '等待审核',
+        desIcon: 'checking',
+        date: '',
+      },
+      {
+        title: '审核完成',
+        highlight: '',
+        des: '',
+        desIcon: '',
+        date: '',
+      },
+    ];
 
     const flowContent = data.map((item, index) => {
       return (
         <Step
-          title={<div className={'flowTitle'}><div>{item.title}<strong>{item.highlight}</strong></div><span>{item.date}</span></div>}
-          description={<div className={'flowDes'}>{item.desIcon && <i className={item.desIcon}></i>}<span>{item.des}</span></div>} />
-      )
+          title={
+            <div className={'flowTitle'}>
+              <div>
+                {item.title}
+                <strong>{item.highlight}</strong>
+              </div>
+              <span>{item.date}</span>
+            </div>
+          }
+          description={
+            <div className={'flowDes'}>
+              {item.desIcon && <i className={item.desIcon} />}
+              <span>{item.des}</span>
+            </div>
+          }
+        />
+      );
     });
 
     return (
@@ -171,7 +225,7 @@ class Flow extends Component {
         <Steps direction="vertical" progressDot current={1}>
           {flowContent}
         </Steps>
-    </div>
+      </div>
     );
   }
 }
@@ -184,8 +238,9 @@ function SearchInput() {
         placeholder="请输入公司名称"
         suffix={<Icon type="search" />}
       />
-      <Button type="primary" icon="plus">新增企业设立</Button>
-
+      <Button type="primary" icon="plus">
+        新增企业设立
+      </Button>
     </div>
   );
 }
@@ -206,11 +261,8 @@ export default class EnterpriseInfoComponent extends Component {
     const modalActionCol = { deleteModal };
     return (
       <div className={styles.establish}>
-        <div className={outStyles.font24}>企业设立</div>
-        <Tabs
-          tabBarExtraContent={<SearchInput />}
-          defaultActiveKey="1"
-        >
+        <div className="fs-24">企业设立</div>
+        <Tabs tabBarExtraContent={<SearchInput />} defaultActiveKey="1">
           <TabPane tab={<TabName type={'全部'} num={'14'} />} key="1">
             <TabContent {...modalActionCol} />
           </TabPane>

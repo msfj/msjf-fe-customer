@@ -34,7 +34,7 @@ export default class MessageComponent extends Component {
 
     return (
       <div className={styles.message}>
-        <div className={outStyles.font24}>我的消息</div>
+        <div className='fs-24'>我的消息</div>
         <div className={styles.messageBlock}>共<span>2</span>条，其中未读消息<span>1</span>条</div>
         <Collapse style={{ backgroundColor: '#f0f2f5' }} bordered={false} defaultActiveKey={['1']}>
           <Panel header={<PanelHeader />} key="1" style={customPanelStyle}>

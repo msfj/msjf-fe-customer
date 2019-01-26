@@ -81,6 +81,7 @@ a{
 
 .fs-12 { font-size: 12px !important; }
 .fs-14 { font-size: 14px !important; }
+.fs-16 { font-size: 16px !important; }
 .fs-18 { font-size: 18px !important; }
 .fs-24 { font-size: 24px !important; }
 
@@ -94,6 +95,7 @@ a{
 .mt-40 { margin-top: 40px; }
 .mr-10 { margin-right: 10px; }
 .mr-20 { margin-right: 20px; }
+.mb-10 { margin-bottom: 10px; }
 .mb-20 { margin-bottom: 20px; }
 
 
