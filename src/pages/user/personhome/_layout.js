@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Layout } from 'antd';
 import classNames from 'classnames';
-import EnterpriseInfoComponent from './component/EnterpriseInfoComponent/index';
-import EstablishmentComponent from './component/EstablishmentComponent';
-import EstlCfmComponent from './component/EstlCfmComponent';
 import styles from './index.scss';
 import '../index.scss';
 import Link from 'umi/link';

@@ -238,9 +238,11 @@ function SearchInput() {
         placeholder="请输入公司名称"
         suffix={<Icon type="search" />}
       />
+      <Link to="/user/personhome/newestablishmentstep">
       <Button type="primary" icon="plus">
         新增企业设立
       </Button>
+      </Link>
     </div>
   );
 }

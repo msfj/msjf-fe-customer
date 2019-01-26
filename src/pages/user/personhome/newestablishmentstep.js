@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import styles from './EnterpriseInfoComponent/index.scss';
-import hmcss from '../index.scss';
+import styles from './enterpriseinfo/index.scss';
+import './index.scss';
 import { Row, Col, Steps, Form, Input, Select, Button, Upload, Icon } from 'antd';
 import Link from 'umi/link';
 
@@ -550,7 +550,7 @@ class EstablishmentComponent extends Component {
             return this.state.step === i ? '' : 'hide';
         };
         return (
-            <div className={styles.insideContent}>
+            <div className={styles.newEtpInfo}>
                 <div className={styles.tips}>
                     <img alt="" src={require("image/icon/back.svg")} />
                     <span className={styles.font14}>返回 / 新增企业设立</span>
