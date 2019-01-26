@@ -138,34 +138,40 @@ class TabContentInside extends PureComponent {
 
 class Flow extends Component {
 
-  flowTitle = () => {
-    return (
-      <div className={styles.flowTitle}>
-        提交拟设立申请【张家辉】<span>2018/12/18 09:40:38</span>
-      </div>
-    );
-  };
-
-  flowDes = () => {
-    return (
-      <div className={styles.flowDes}>
-        <i className={styles.checking} />
-        <span>提交拟设立申请【张家辉】</span>
-      </div>
-    );
-  };
-
   render() {
 
+    const data = [{
+      title: "提交拟设立申请", highlight: "【张家辉】", des: "", desIcon: "", date: "2018/12/18 09:40:38"
+    }, {
+      title: "招商部门对接人确认", highlight: "", des: "确认意见：内容准确无误，通过审核", desIcon: "done", date: "2018/12/18 09:40:38"
+    }, {
+      title: "招商部门分管领导确认", highlight: "", des: "确认意见：内容准确无误，通过审核", desIcon: "done", date: "2018/12/18 09:40:38"
+    }, {
+      title: "金融服务管理部确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
+    }, {
+      title: "金融服务管理部确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
+    }, {
+      title: "市场监督管理觉确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
+    }, {
+      title: "市场监督管理觉确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
+    },{
+      title: "审核完成", highlight: "", des: "", desIcon: "", date: ""
+    }]
+
+    const flowContent = data.map((item, index) => {
+      return (
+        <Step
+          title={<div className={'flowTitle'}><div>{item.title}<strong>{item.highlight}</strong></div><span>{item.date}</span></div>}
+          description={<div className={'flowDes'}>{item.desIcon && <i className={item.desIcon}></i>}<span>{item.des}</span></div>} />
+      )
+    });
+
     return (
-      <div className={styles.flowContent}>
+      <div className={'flowContentPop'}>
         <Steps direction="vertical" progressDot current={1}>
-          <Step title={<this.flowTitle />} description={<this.flowDes />} />
-          <Step title={<this.flowTitle />} description={<this.flowDes />} />
-          <Step title={<this.flowTitle />} description={<this.flowDes />} />
+          {flowContent}
         </Steps>
-        ,
-      </div>
+    </div>
     );
   }
 }
