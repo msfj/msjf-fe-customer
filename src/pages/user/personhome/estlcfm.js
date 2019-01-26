@@ -88,7 +88,7 @@ class EstlCfmComponent extends Component {
 
     render() {
         return (
-            <div className={styles.insideContent}>
+            <div className={styles.newEtpInfo}>
                 <div className={styles.tips}>
                     <img alt="" src={require("image/icon/back.svg")} />
                     <span className={styles.font14}>返回 / 确认设立</span>
