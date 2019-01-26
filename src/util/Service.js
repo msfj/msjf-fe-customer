@@ -41,7 +41,7 @@ Object.keys(Api).forEach((key) => {
             version: opts.version || '1.0.0',
             api_name,
             method,
-            state: opts.state || 'oauth',
+            status: opts.status || 'oauth',
             timestamp: +new Date(),
             params: JSON.stringify(opts.param || {})
         };

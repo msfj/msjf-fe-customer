@@ -3,7 +3,7 @@ import C from './common';
 import { message } from 'antd';
 import { delay } from 'redux-saga';
 
-const state = 'open';
+const status = 'open';
 
 const msgmd = (options={}) => {
     const { namespace='msgcode' } = options;
@@ -27,7 +27,7 @@ const msgmd = (options={}) => {
                 param.templateId = '2031012026749';
                 // verificateType
 
-                const res = yield call(Service.getMsgCode, { param, state });
+                const res = yield call(Service.getMsgCode, { param, status });
                 if(res && res.flag === C.Constant.SUCFLAG ) {
                     // yield put({ type: 'setMsgCode', payload: { isget: true } });
                     let count = C.Constant.MSGTM;

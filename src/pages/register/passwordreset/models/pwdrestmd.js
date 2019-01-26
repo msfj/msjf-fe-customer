@@ -4,7 +4,7 @@ import { message } from 'antd';
 import { delay } from 'redux-saga';
 
 const { changePwd, echoMobile } = Service;
-const state = 'open';
+const status = 'open';
 
 export default {
     namespace: 'pwdrestmd',
@@ -43,7 +43,7 @@ export default {
     effects: {
         *emitStep({ payload: param }, { call, put }) {
             // const skey = param.step == '1' ? 'checkMsgCode' : 'changePwd';
-            const res =  yield call(changePwd, { param, state });
+            const res =  yield call(changePwd, { param, status });
             if(res && res.flag === C.Constant.SUCFLAG) {
                 yield put({ type: 'setStep', payload: { flag: 1 } });
             } else {
@@ -52,7 +52,7 @@ export default {
             
         },
         *getMsg({ payload: param }, { call, put }) {
-            const res =  yield call(echoMobile, { param, state });
+            const res =  yield call(echoMobile, { param, status });
             if(res && res.flag === C.Constant.SUCFLAG) {
                 // yield put({ type: 'msgcode/setMsgCode', payload: { mobile: 1 } });
                 yield put({ type: 'setMbl', payload: res.data.mobile });
