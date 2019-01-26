@@ -72,8 +72,8 @@ export default class Enterprise extends Component {
           </Sider>
           <Layout>
             <Content>
-              <EstablishmentComponent />
-              {/* {contentNode} */}
+              {/* <EstablishmentComponent /> */}
+              {contentNode}
             </Content>
           </Layout>
         </Layout>
