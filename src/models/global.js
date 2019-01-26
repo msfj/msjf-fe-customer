@@ -80,7 +80,8 @@ export default {
             const lgk = yield call(Service.logout, { state });
             if(lgk && lgk.flag === C.Constant.SUCFLAG ) {
                 // window.g_app._store.dispatch({ type:'index/closeLogin' });
-                yield put({ type:'setLogout', payload: lgk.data || [] });
+                yield put({ type:'setLogout' });
+                yield call(()=>{router.push('/');});
             } else {
                 message.error((lgk && lgk.msg) || C.Constant.DFTERMSG);
             }

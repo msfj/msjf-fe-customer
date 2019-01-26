@@ -1,8 +1,13 @@
 import css from './index.scss';
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Popover } from 'antd';
+import { LocaleProvider, Popover } from 'antd';
 import Link from 'umi/link';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+
+moment.locale('zh-cn');
 
 const namespace = 'global';
 const mapStateToProps = (state) => {
@@ -40,15 +45,17 @@ class BasicLayout extends Component {
     const { login, user, logout, location, children } = this.props;
     const isLoginPage = !['/', '/about'].includes(location.pathname);
     return (
-      <div className={`${css.main} root`}>
-        <Header isLoginPage={isLoginPage} headerStyle={this.state.headerStyle || location.pathname !== "/"} 
-          pathname={location.pathname} isLogin={login} user={user} logout={logout}
-        />
-        {children}
-        {
-          isLoginPage ? <SimpleFooter /> : <Footer />
-        }
-      </div>
+      <LocaleProvider locale={zh_CN}>
+        <div className={`${css.main} root`}>
+          <Header isLoginPage={isLoginPage} headerStyle={this.state.headerStyle || location.pathname !== "/"} 
+            pathname={location.pathname} isLogin={login} user={user} logout={logout}
+          />
+          {children}
+          {
+            isLoginPage ? <SimpleFooter /> : <Footer />
+          }
+        </div>
+      </LocaleProvider>
     )
   }
 }
@@ -90,7 +97,7 @@ function Header(props) {
               <span>指南</span>
               <span className={`${css.break} ${props.headerStyle && `lineGray`}`}></span>
               <i className={css.close} />
-              <span>退出</span>
+              <span onClick={()=>{props.logout()}}>退出</span>
             </div> : <Popover placement="bottom" content={<img className={css.hoverPic} src={require("../assets/qrcode.png")} alt="" />}>
                 <img src={pic} alt="" />
                 <span>关注二维码</span>

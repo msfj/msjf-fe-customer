@@ -32,6 +32,10 @@ export default {
       target: "http://localhost:91/",
       changeOrigin: true,
       // pathRewrite: { "^/api" : "" }
+    },
+    '/logout': {
+      target: "http://localhost:91/",
+      changeOrigin: true,
     }
   }
 }
