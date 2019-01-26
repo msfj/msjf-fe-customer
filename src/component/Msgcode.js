@@ -11,16 +11,16 @@ window.g_app.model(msgmap);
 class Msgcode extends Component {
 
   getCode = () => {
-    const { mobile, getCode } = this.props;
+    const { mobile, getCode, msgName='msgcode', msgType='4' } = this.props;
     if(!mobile) {
       message.error('请先输入手机号码');
       return;
     }
     const param = {
       mobile,
-      verificateType: '4'
+      verificateType: msgType
     };
-    getCode(param);
+    getCode(param, msgName);
   };
 
   render() {
@@ -40,9 +40,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCode(param) {
+    getCode(param, msgName) {
       dispatch({
-          type: 'msgcode/getMsgCode',
+          type: `${msgName}/getMsgCode`,
           payload: param
       });
     }

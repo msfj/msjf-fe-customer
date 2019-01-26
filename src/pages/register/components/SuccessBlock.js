@@ -27,12 +27,12 @@ export default class SuccessBlock extends PureComponent {
     }, 1000);
   }
   render() {
-    const { visible } = this.props;
+    const { visible, msg='恭喜您，注册完成' } = this.props;
     const style = visible ? { display: 'block' } : { display: 'none' };
     return (
       <div className={styles.successBlock} style={style}>
         <i />
-        <span className={styles.successBlockTitle}>恭喜您，注册完成</span>
+        <span className={styles.successBlockTitle}>{msg}</span>
         <p>{this.state.bs}S后自动跳转回登录页面</p>
         <div className={styles.buttonBlock}>
           <Button style={{ width: '184px', marginTop: '112px' }} className={styles.button} type="primary"

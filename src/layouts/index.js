@@ -1,8 +1,25 @@
 import css from './index.scss';
 import React, { Component } from 'react';
+import { connect } from 'dva';
 import { Popover } from 'antd';
 import Link from 'umi/link';
 
+const namespace = 'global';
+const mapStateToProps = (state) => {
+  return state[namespace];
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout(param) {
+      dispatch({
+          type: `${namespace}/logout`,
+          payload: param
+      });
+    },
+
+  };
+};
 class BasicLayout extends Component {
 
   state = {
@@ -20,11 +37,14 @@ class BasicLayout extends Component {
     });
   }
   render() {
-    const isLoginPage = !['/', '/about'].includes(this.props.location.pathname);
+    const { login, user, logout, location, children } = this.props;
+    const isLoginPage = !['/', '/about'].includes(location.pathname);
     return (
       <div className={`${css.main} root`}>
-        <Header isLoginPage={isLoginPage} headerStyle={this.state.headerStyle || this.props.location.pathname !== "/"} pathname={this.props.location.pathname} />
-        {this.props.children}
+        <Header isLoginPage={isLoginPage} headerStyle={this.state.headerStyle || location.pathname !== "/"} 
+          pathname={location.pathname} isLogin={login} user={user} logout={logout}
+        />
+        {children}
         {
           isLoginPage ? <SimpleFooter /> : <Footer />
         }
@@ -64,8 +84,8 @@ function Header(props) {
         }
         <div className={css.right}>
           {
-            props.isLoginPage ? <div className={css.headInfo}>
-              <div>您好，<span className={css.blueFont}>张家辉</span>梅山金服欢迎您！</div>
+            props.isLogin ? <div className={css.headInfo}>
+              <div>您好，<span className={css.blueFont}>{props.user.membername}</span>梅山金服欢迎您！</div>
               <i className={css.compass} />
               <span>指南</span>
               <span className={`${css.break} ${props.headerStyle && `lineGray`}`}></span>
@@ -154,4 +174,4 @@ function Footer() {
   );
 }
 
-export default BasicLayout;
+export default connect(mapStateToProps, mapDispatchToProps)(BasicLayout);

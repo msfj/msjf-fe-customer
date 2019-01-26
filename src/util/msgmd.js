@@ -11,7 +11,7 @@ const msgmd = (options={}) => {
         namespace,
         state: {
             isget: false,
-            count: 60,
+            count: C.Constant.MSGTM,
             mobile: ''
         },
         reducers: {

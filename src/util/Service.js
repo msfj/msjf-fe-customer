@@ -9,12 +9,20 @@ const Api = {
     inserRegister: 'setRegister/inserRegister',
     // 登录
     memberLogin: 'get_cust_login/memberLogin',
+    // 退出登录
+    logout: 'logout/logout',
     // 通过法人手机号查询登录账户
     getCorporationLogin: 'get_cust_login/getCorporationCompany',
     // 企业法人登录
     corporationLogin: 'get_cust_login/corporationLogin',
-    // 发送短信验证码
-    getMsgCode: 'setSendVerificationCode/SendRegisterVerificationCode'
+    // 发送注册短信验证码
+    getMsgCode: 'setSendVerificationCode/SendRegisterVerificationCode',
+    // 校验短信验证码
+    checkMsgCode: 'setSendVerificationCode/checkVerificationCode',
+    // 重置密码
+    changePwd: 'setChangePwd/changePwd',
+    // 忘记密码获取短信验证码
+    echoMobile: 'setChangePwd/echoMobile',
 };
 
 let Service = {};
