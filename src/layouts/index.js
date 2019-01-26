@@ -49,7 +49,7 @@ function Header(props) {
         <div className={css.logo}>
           <Link to="/">
             <i className={`${css.iconLogo} ${props.headerStyle && css.color}`}></i>
-            <span>宁波梅山金服科技</span>
+            <span style={{fontSize:'18px'}}>梅山金服</span>
             <span className={`${css.break} ${props.headerStyle && `lineGray`}`}></span>
             <span>宁波市类金融企业管理服务平台</span>
           </Link>
@@ -104,28 +104,28 @@ function Footer() {
           <div className={css.footertitle}>友情链接<i className={css.footerline}></i></div>
           <ul className={`${css.footercontent} clearfix`}>
             <li className={css.li}>
-              <Link to="#">中国证券监督管理委员会宁波监管局</Link>
+              <a href="http://www.csrc.gov.cn/pub/ningbo/" target="_blank"  rel="noopener noreferrer">中国证券监督管理委员会宁波监管局</a>
             </li>
             <li className={css.li}>
-              <Link to="#">宁波梅山保税港区管委会</Link>
+              <a to="http://xxgk.msd.gov.cn/" target="_blank"  rel="noopener noreferrer">宁波梅山保税港区管委会</a>
             </li>
             <li className={css.li}>
-              <Link to="#">宁波梅山国际物流产业集聚区管委会</Link>
+              <a to="http://www.msd.gov.cn/" target="_blank"  rel="noopener noreferrer">宁波梅山国际物流产业集聚区管委会</a>
             </li>
             <li className={css.li}>
-              <Link to="#">浙江政务服务网</Link>
+              <a to="http://www.zjzwfw.gov.cn/" target="_blank"  rel="noopener noreferrer">浙江政务服务网</a>
             </li>
             <li className={css.li}>
-              <Link to="#">宁波市证券投资基金业协会</Link>
+              <a to="http://www.aman.org.cn/" target="_blank"  rel="noopener noreferrer">宁波市证券投资基金业协会</a>
             </li>
             <li className={css.li}>
-              <Link to="#">中国证券投资基金业协会</Link>
+              <a to="http://www.amac.org.cn/" target="_blank"  rel="noopener noreferrer">中国证券投资基金业协会</a>
             </li>
             <li className={css.li}>
-              <Link to="#">宁波市类金融企业服务管理平台</Link>
+              <a to="#" target="_blank"  rel="noopener noreferrer">宁波市类金融企业服务管理平台</a>
             </li>
             <li className={css.li}>
-              <Link to="#">壹融通云私募管理平台</Link>
+              <a to="#" target="_blank"  rel="noopener noreferrer">壹融通云私募管理平台</a>
             </li>
           </ul>
         </div>

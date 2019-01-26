@@ -55,7 +55,9 @@
         .ant-tabs-nav .ant-tabs-tab {
             padding: 0px 1px 0px 16px;
             margin: 45px 0 30px 0px;
-
+            &:first-child {
+                padding: 0px 1px 0px 0px;
+            }
             &:last-child {
                 border-right: 0px #D0D3D5 solid;
 

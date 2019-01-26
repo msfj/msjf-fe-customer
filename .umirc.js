@@ -7,7 +7,7 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: true,
-      title: 'msjf-fe-customer',
+      title: '宁波类金融业务管理平台',
       dll: false,
       hardSource: false,
       routes: {
