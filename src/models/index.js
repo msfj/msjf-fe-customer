@@ -72,7 +72,7 @@ export default {
             yield put({ type:'openLogin', payload: loginType });
         },
         *getImg(_, { call, put }) {
-            const lgk = yield call(Service.getImgCode, {});
+            const lgk = yield call(Service.getImgCode, { status: 'open' });
             if(lgk && lgk.flag === C.Constant.SUCFLAG ) {
                 yield put({ type: 'global/setImgCode', payload: lgk.data || {} });
             } else {
