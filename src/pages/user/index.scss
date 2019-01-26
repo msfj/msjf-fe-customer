@@ -84,9 +84,11 @@
                 color: #6F7479;
                 opacity: 0.5;
             }
+
             .ant-collapse > .ant-collapse-item > .ant-collapse-header[aria-expanded='true'] .anticon-caret-up svg {
                 transform: rotate(180deg);
             }
+
             .ant-collapse > .ant-collapse-item > .ant-collapse-header .anticon-caret-up svg {
                 transform: rotate(0);
                 transition: transform 0.24s;
@@ -117,6 +119,11 @@
     }
 }
 
+.modifyRecord {
+    padding: 40px 30px 40px 30px;
+    width: 460px;
+}
+
 .flowContentPop {
     padding: 40px 30px 40px 30px;
     width: 460px;
@@ -134,8 +141,8 @@
             color: #91989E;
             letter-spacing: 0;
         }
-        
-        strong{
+
+        strong {
             font-size: 14px;
             color: #0072D2;
         }
@@ -145,7 +152,6 @@
         display: flex;
         font-size: 12px;
         color: #91989E;
-        letter-spacing: 0;
         align-items: center;
 
         i {
@@ -165,6 +171,11 @@
         }
     }
 
+    .modifyDes {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     :global {
         .ant-steps-dot .ant-steps-item-content {
             width: 374px;
@@ -177,6 +188,24 @@
 
             .ant-steps-item-description {
                 padding-bottom: 35px;
+            }
+        }
+
+        .ant-steps-dot .modifyRecodeStep {
+            .ant-steps-item-content .ant-steps-item-description {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                border-bottom: 1px #D0D3D5 solid;
+            }
+
+            &:last-child {
+                .ant-steps-item-content .ant-steps-item-description {
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                    margin-bottom: 0px;
+                    border-bottom: 0px;
+                }
             }
         }
     }

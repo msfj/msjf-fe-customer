@@ -68,7 +68,7 @@ export default class Person extends Component {
           </Sider>
           <Layout>
             <Content>
-              <EstablishmentComponent />
+              <EnterpriseInfoComponent />
               {/* {contentNode} */}
             </Content>
           </Layout>

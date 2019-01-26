@@ -1,4 +1,4 @@
-.insideContent {
+.changeEtpInfo {
   padding: 30px 50px 0 50px;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
       height: 110px;
       align-items: center;
       margin-top: 15px;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       background-color: #ffffff;
 
       img {
@@ -102,6 +102,10 @@
                   flex: 1;
                   color: #212121;
                   margin-left: 5px;
+              }
+              .agreementImg {
+                  height: 100px;
+                  width: 158px;
               }
           }
       }

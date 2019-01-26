@@ -103,43 +103,68 @@ class TabContentInside extends PureComponent {
 
 }
 
-class Flow extends Component {
+function ModifyRecord() {
+  const data = [{
+    title: "申请企业第三次变更", des: ["1、变更企业名称为：没闪金元宝科技有限公司","2、变更企业的执行董事为：张显明"], date: "2018/12/18 09:40:38",
+  }, {
+    title: "申请企业第二次变更", des: ["1、变更企业名称为：没闪金元宝科技有限公司","2、变更企业的执行董事为：张显明"], date: "2018/12/18 09:40:38",
+  },{
+    title: "申请企业第一次变更", des: ["1、变更企业名称为：没闪金元宝科技有限公司","2、变更企业的执行董事为：张显明"], date: "2018/12/18 09:40:38",
+  }];
 
-  render() {
-    const data = [{
-      title: "提交拟设立申请", highlight: "【张家辉】", des: "", desIcon: "", date: "2018/12/18 09:40:38"
-    }, {
-      title: "招商部门对接人确认", highlight: "", des: "确认意见：内容准确无误，通过审核", desIcon: "done", date: "2018/12/18 09:40:38"
-    }, {
-      title: "招商部门分管领导确认", highlight: "", des: "确认意见：内容准确无误，通过审核", desIcon: "done", date: "2018/12/18 09:40:38"
-    }, {
-      title: "金融服务管理部确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
-    }, {
-      title: "金融服务管理部确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
-    }, {
-      title: "市场监督管理觉确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
-    }, {
-      title: "市场监督管理觉确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
-    },{
-      title: "审核完成", highlight: "", des: "", desIcon: "", date: ""
-    }]
-
-    const flowContent = data.map((item, index) => {
-      return (
-        <Step
-          title={<div className={'flowTitle'}><div>{item.title}<strong>{item.highlight}</strong></div><span>{item.date}</span></div>}
-          description={<div className={'flowDes'}>{item.desIcon && <i className={item.desIcon}></i>}<span>{item.des}</span></div>} />
-      )
-    });
-
+  const flowContent = data.map((item, index) => {
     return (
-      <div className={'flowContentPop'}>
-        <Steps direction="vertical" progressDot current={1}>
-          {flowContent}
-        </Steps>
+      <Step className="modifyRecodeStep"
+        title={<div className={'flowTitle'}><div>{item.title}</div><span>{item.date}</span></div>}
+        description={<div className={'flowDes modifyDes'}>{item.des.map((desItem,index) => <Fragment><span>{desItem}</span></Fragment>)}</div>} />
+    )
+  });
+
+  return (
+    <div className={'flowContentPop'}>
+      <Steps direction="vertical" progressDot current={-1}>
+        {flowContent}
+      </Steps>
     </div>
-    );
-  }
+  )
+
+}
+
+function Flow() {
+
+  const data = [{
+    title: "提交拟设立申请", highlight: "【张家辉】", des: "", desIcon: "", date: "2018/12/18 09:40:38"
+  }, {
+    title: "招商部门对接人确认", highlight: "", des: "确认意见：内容准确无误，通过审核", desIcon: "done", date: "2018/12/18 09:40:38"
+  }, {
+    title: "招商部门分管领导确认", highlight: "", des: "确认意见：内容准确无误，通过审核", desIcon: "done", date: "2018/12/18 09:40:38"
+  }, {
+    title: "金融服务管理部确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
+  }, {
+    title: "金融服务管理部确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
+  }, {
+    title: "市场监督管理觉确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
+  }, {
+    title: "市场监督管理觉确认", highlight: "", des: "等待审核", desIcon: "checking", date: ""
+  }, {
+    title: "审核完成", highlight: "", des: "", desIcon: "", date: ""
+  }]
+
+  const flowContent = data.map((item, index) => {
+    return (
+      <Step
+        title={<div className={'flowTitle'}><div>{item.title}<strong>{item.highlight}</strong></div><span>{item.date}</span></div>}
+        description={<div className={'flowDes'}>{item.desIcon && <i className={item.desIcon}></i>}<span>{item.des}</span></div>} />
+    )
+  });
+
+  return (
+    <div className={'flowContentPop'}>
+      <Steps direction="vertical" progressDot current={1}>
+        {flowContent}
+      </Steps>
+    </div>
+  );
 }
 
 export default class EnterpriseInfoComponent extends Component {
@@ -162,8 +187,8 @@ export default class EnterpriseInfoComponent extends Component {
 
 
   render() {
-    const {deleteModal,refundModal} = this;
-    const modalActionCol = { deleteModal,refundModal };
+    const { deleteModal, refundModal } = this;
+    const modalActionCol = { deleteModal, refundModal };
     return (
       <div className={styles.etpchange}>
         <div className={styles.etpHead}>
@@ -173,7 +198,7 @@ export default class EnterpriseInfoComponent extends Component {
             placeholder="请输入公司名称"
             suffix={<Icon type="search" />}
           />
-          <Button type="primary" icon="file-done">变更记录</Button>
+          <Popover trigger="click" placement="bottom" content={<ModifyRecord />}><Button type="primary" icon="file-done">变更记录</Button></Popover>
         </div>
         <div>
           <Row gutter={40}>
@@ -209,9 +234,9 @@ export default class EnterpriseInfoComponent extends Component {
         </CustomModal>
         <CustomModal
           title="退回"
-          visible={this.state.deleteModal}
-          onOk={this.deleteModal}
-          onCancel={this.deleteModal}
+          visible={this.state.refundModal}
+          onOk={this.refundModal}
+          onCancel={this.refundModal}
           okText={'确定'}
           cancelText={'取消'}
         >
