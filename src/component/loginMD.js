@@ -25,7 +25,7 @@ class NormalLoginForm extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const opts = this.props.options;
-    const imgcode = this.props.imgcode;
+    const { imgCode, getImg } = this.props;
 
     return (
       <Form onSubmit={this.handleSubmit} className="loginForm" layout="vertical">
@@ -48,7 +48,7 @@ class NormalLoginForm extends Component {
           {getFieldDecorator('inputValidecode', {
             rules: [{ required: true, message: '请输入图形验证码' }],
           })(
-            <Input placeholder="请输入图形验证码" maxLength={4} size="large" suffix={imgcode} maxLength={4} />
+            <Input placeholder="请输入图形验证码" maxLength={4} size="large" suffix={<img src={imgCode.validcode} alt="" className="imgCode" onClick={getImg} />} maxLength={4} />
           )}
         </Item>
         <Item>
@@ -267,17 +267,8 @@ class Loginmd extends Component {
     }
   }
 
-  imgcode = ()=>{
-    const { imgCode, getImg } = this.props;
-    return (
-      <span>
-        <img src={imgCode.validcode} alt="" className="imgCode" onClick={getImg} />
-      </span>
-    );
-  }
-
   render() {
-    const { loginvs, loginModel, loginType=0, bsvisible, bsindex } = this.props;
+    const { loginvs, loginModel, loginType=0, bsvisible, bsindex, imgCode, getImg } = this.props;
     const isAcc = loginModel === 0;
     const opts = lgobj[loginType];
 
@@ -294,7 +285,7 @@ class Loginmd extends Component {
           <div className="loginBox">
             <h2 className="loginTitle"><strong>{opts.title}</strong><small>{opts.small}</small></h2>
             {isAcc? 
-            <WrappedNormalLoginForm options={opts} tologin={(param) => {this.toLogin(param)}} imgcode={this.imgcode()} /> : 
+            <WrappedNormalLoginForm options={opts} tologin={(param) => {this.toLogin(param)}} imgCode={imgCode} getImg={getImg} /> : 
             <WrappedMobileLoginForm options={opts} bschioce={this.bschioceShow} tologin={(parma) => {this.toLogin(parma)}}
             setMbl={(parma) => {this.props.setMbl(parma)}} />}
           </div>

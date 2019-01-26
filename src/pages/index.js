@@ -8,7 +8,7 @@ import Tagball from '../util/tag';
 const namespace = 'index';
 
 const mapStateToProps = (state) => {
-  return state[namespace];
+  return {...state[namespace], login: state.global.login};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -30,6 +30,7 @@ class Index extends Component {
 		}, 500);
 	}
 	render() {
+		const { login } = this.props;
 		return (
 			<Fragment>
 				<div className={styles.viewpage}>
@@ -43,8 +44,15 @@ class Index extends Component {
 									<span className={styles.samllFont}>打造产业与资本对接撮合的APP平台，形成私募基金管理人募投管退的生态圈</span>
 								</div>
 								<div className={styles.loginContainer}>
-									<a className={`${styles.indexButt} ${styles.personLogin}`} onClick={this.props.openLogin.bind(this, 0)}>个人账户登录</a>
-									<a className={styles.indexButt} onClick={this.props.openLogin.bind(this, 1)}>企业账户登录</a><br />
+									{ 
+										!login ?
+											<div>
+												<a className={`${styles.indexButt} ${styles.personLogin}`} onClick={this.props.openLogin.bind(this, 0)}>个人账户登录</a>
+												<a className={styles.indexButt} onClick={this.props.openLogin.bind(this, 1)}>企业账户登录</a><br />
+											</div>
+											: null
+									}
+									
 									<img alt="" className={styles.mouse} src={require("../assets/mouse.svg")} />
 								</div>
 								<div className={styles.itemBlock}>

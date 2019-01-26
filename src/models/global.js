@@ -11,6 +11,7 @@ export default {
         login: false,
         loginType: '0',
         imgCode: {},
+        user: {}
     },
     reducers: {
         signin(state, { payload: res }) {
@@ -20,7 +21,8 @@ export default {
             return {
                 ...state,
                 login,
-                loginType
+                loginType,
+                user: res.res.data
             };
         },
         setImgCode(state, { payload: imgCode }) {
@@ -28,6 +30,13 @@ export default {
                 ...state,
                 imgCode
             };
+        },
+        setLogout() {
+            return {
+                ...state,
+                login: false,
+                user: {}
+            }
         }
     },
     effects: {
@@ -66,6 +75,15 @@ export default {
                 message.error((lgk && lgk.msg) || C.Constant.DFTERMSG);
             }
             // yield put({ type: 'signin', payload: lgk });
+        },
+        *logout(_, { call, put }) {
+            const lgk = yield call(Service.logout, { state });
+            if(lgk && lgk.flag === C.Constant.SUCFLAG ) {
+                // window.g_app._store.dispatch({ type:'index/closeLogin' });
+                yield put({ type:'setLogout', payload: lgk.data || [] });
+            } else {
+                message.error((lgk && lgk.msg) || C.Constant.DFTERMSG);
+            }
         }
     },
 }

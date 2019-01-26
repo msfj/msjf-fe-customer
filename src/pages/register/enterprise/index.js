@@ -264,7 +264,7 @@ class StepTwoForm extends Component {
           {getFieldDecorator('msgcode', {
             rules: [{ required: true, message: '请输入短信验证码' }],
           })(
-            <Input size="large" placeholder="请输入短信验证码" maxLength={4} suffix={<Msgcode />} />
+            <Input size="large" placeholder="请输入短信验证码" maxLength={4} suffix={<Msgcode msgType="0" />} />
           )}
         </Item>
         </div>
