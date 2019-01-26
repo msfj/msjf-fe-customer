@@ -3,7 +3,7 @@ import C from '../../../../util/common';
 import { message } from 'antd';
 
 const { inserRegister } = Service;
-const state = 'open';
+const status = 'open';
 
 export default {
     namespace: 'personmd',
@@ -22,7 +22,7 @@ export default {
     },
     effects: {
         *emitStep({ payload: param }, { call, put }) {
-            const res =  yield call(inserRegister, { param, state });
+            const res =  yield call(inserRegister, { param, status });
             if(res && res.flag === C.Constant.SUCFLAG) {
                 yield put({ type: 'setStep', payload: { flag: 1 } });
             } else {

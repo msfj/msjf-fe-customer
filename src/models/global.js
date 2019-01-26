@@ -3,7 +3,7 @@ import C from '../util/common';
 import { message } from 'antd';
 import router from 'umi/router';
 
-const state = 'open';
+const status = 'open';
 
 export default {
     namespace: 'global',
@@ -31,7 +31,7 @@ export default {
                 imgCode
             };
         },
-        setLogout() {
+        setLogout(state) {
             return {
                 ...state,
                 login: false,
@@ -49,7 +49,7 @@ export default {
                 });
             }
             console.log(param);
-            const res = yield call(Service[req], { param, state });
+            const res = yield call(Service[req], { param, status });
             const login = res && res.flag === C.Constant.SUCFLAG;
             
             if(login) {
@@ -67,7 +67,7 @@ export default {
         *queryAcc({ payload: param }, { call, put }) {
             param.mobile = param.loginName;
             delete param.loginName;
-            const lgk = yield call(Service.getCorporationLogin, { param, state });
+            const lgk = yield call(Service.getCorporationLogin, { param, status });
             if(lgk && lgk.flag === C.Constant.SUCFLAG ) {
                 // window.g_app._store.dispatch({ type:'index/closeLogin' });
                 yield put({ type:'index/setBslist', payload: lgk.data || [] });
@@ -77,10 +77,11 @@ export default {
             // yield put({ type: 'signin', payload: lgk });
         },
         *logout(_, { call, put }) {
-            const lgk = yield call(Service.logout, { state });
+            const lgk = yield call(Service.logout, { status });
             if(lgk && lgk.flag === C.Constant.SUCFLAG ) {
                 // window.g_app._store.dispatch({ type:'index/closeLogin' });
-                yield put({ type:'setLogout', payload: lgk.data || [] });
+                yield put({ type:'setLogout' });
+                yield call(()=>{router.push('/');});
             } else {
                 message.error((lgk && lgk.msg) || C.Constant.DFTERMSG);
             }

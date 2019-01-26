@@ -1,8 +1,13 @@
 import css from './index.scss';
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Popover } from 'antd';
+import { LocaleProvider, Popover } from 'antd';
 import Link from 'umi/link';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+
+moment.locale('zh-cn');
 
 const namespace = 'global';
 const mapStateToProps = (state) => {
@@ -40,15 +45,17 @@ class BasicLayout extends Component {
     const { login, user, logout, location, children } = this.props;
     const isLoginPage = !['/', '/about'].includes(location.pathname);
     return (
-      <div className={`${css.main} root`}>
-        <Header isLoginPage={isLoginPage} headerStyle={this.state.headerStyle || location.pathname !== "/"} 
-          pathname={location.pathname} isLogin={login} user={user} logout={logout}
-        />
-        {children}
-        {
-          isLoginPage ? <SimpleFooter /> : <Footer />
-        }
-      </div>
+      <LocaleProvider locale={zh_CN}>
+        <div className={`${css.main} root`}>
+          <Header isLoginPage={isLoginPage} headerStyle={this.state.headerStyle || location.pathname !== "/"} 
+            pathname={location.pathname} isLogin={login} user={user} logout={logout}
+          />
+          {children}
+          {
+            isLoginPage ? <SimpleFooter /> : <Footer />
+          }
+        </div>
+      </LocaleProvider>
     )
   }
 }
@@ -90,7 +97,7 @@ function Header(props) {
               <span>指南</span>
               <span className={`${css.break} ${props.headerStyle && `lineGray`}`}></span>
               <i className={css.close} />
-              <span>退出</span>
+              <span onClick={()=>{props.logout()}}>退出</span>
             </div> : <Popover placement="bottom" content={<img className={css.hoverPic} src={require("../assets/qrcode.png")} alt="" />}>
                 <img src={pic} alt="" />
                 <span>关注二维码</span>
@@ -117,7 +124,7 @@ function Footer() {
           <div className={`${css.footertitle} ${css.mt30}`}>地址<i className={css.footerline}></i></div>
           <div className={css.footercontent}>
             <img className={css.footericon} src={require("../assets/ic-location.svg")} alt="" />
-            <span>浙江省·宁波市北仑区梅山保税港区行政商务中心512室</span>
+            <span>浙江省宁波市北仑区梅山大道商务中心八号办公楼1560室</span>
           </div>
         </div>
         <div className={css.footercol2}>
@@ -141,12 +148,7 @@ function Footer() {
             <li className={css.li}>
               <a to="http://www.amac.org.cn/" target="_blank"  rel="noopener noreferrer">中国证券投资基金业协会</a>
             </li>
-            <li className={css.li}>
-              <a to="#" target="_blank"  rel="noopener noreferrer">宁波市类金融企业服务管理平台</a>
-            </li>
-            <li className={css.li}>
-              <a to="#" target="_blank"  rel="noopener noreferrer">壹融通云私募管理平台</a>
-            </li>
+            
           </ul>
         </div>
         <div className={css.footercol3}>

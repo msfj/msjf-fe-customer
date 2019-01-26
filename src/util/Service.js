@@ -9,8 +9,6 @@ const Api = {
     inserRegister: 'setRegister/inserRegister',
     // 登录
     memberLogin: 'get_cust_login/memberLogin',
-    // 退出登录
-    logout: 'logout/logout',
     // 通过法人手机号查询登录账户
     getCorporationLogin: 'get_cust_login/getCorporationCompany',
     // 企业法人登录
@@ -25,7 +23,11 @@ const Api = {
     echoMobile: 'setChangePwd/echoMobile',
 };
 
-let Service = {};
+let Service = {
+    logout() {
+        return request('/logout');
+    }
+};
 
 Object.keys(Api).forEach((key) => {
     // let ar = key.split('_');
@@ -39,7 +41,7 @@ Object.keys(Api).forEach((key) => {
             version: opts.version || '1.0.0',
             api_name,
             method,
-            state: opts.state || 'oauth',
+            status: opts.status || 'oauth',
             timestamp: +new Date(),
             params: JSON.stringify(opts.param || {})
         };
