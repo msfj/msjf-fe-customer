@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './index.scss';
 import classNames from 'classnames';
 import { Row, Col } from 'antd';
+import router from 'umi/router';
 
 function InfoTitle(props) {
   return (
@@ -55,13 +56,17 @@ export default class EnterpriseInfoComponent extends Component {
       <div className={styles.changeEtpInfo}>
         <div className={styles.tips}>
           <img alt="" src={require('image/icon/back.svg')} />
-          <span className='fs-14'>退出/查看详情</span>
+          <span onClick={() => {
+            router.goBack();
+          }} className='fs-14 pointer'>退出 / 查看详情</span>
         </div>
         <div className={styles.titleBlock}>
           <img src={require('image/general-partner.png')} alt="" />
           <div className={styles.breakLine} />
           <span className='fs-24'>公司名称公司名称公司名称</span>
-          <button className={styles.shadowButt}>申请企业变更</button>
+          <button onClick={() => {
+            router.push("/user/enterprisehome/changeestablishmentstep");
+          }} className={styles.shadowButt}>申请企业变更</button>
         </div>
         <div className={styles.detailContent}>
           {/* 登记申请信息 */}

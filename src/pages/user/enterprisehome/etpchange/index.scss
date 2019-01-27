@@ -103,11 +103,15 @@
                         .statusText {
                             font-size: 16px;
 
+                            &.checkin {
+                                color: #FAAD14;
+                            }
+
                             &.checking {
                                 color: #FAAD14;
                             }
 
-                            &.unsubmit, &.checkin {
+                            &.unsubmit {
                                 color: #6F7479;
                             }
 

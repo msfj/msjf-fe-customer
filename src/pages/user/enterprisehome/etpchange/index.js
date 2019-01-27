@@ -1,11 +1,11 @@
 import React, { Component, PureComponent, Fragment } from 'react';
 import styles from './index.scss';
-import outStyles from '../../index.scss';
-import { Tabs } from 'antd';
-import { Row, Col, Input, Icon, Button } from 'antd';
+import { Row, Col, Input, Icon, Button, Popover } from 'antd';
 import { Steps } from 'antd';
 import CustomModal from 'component/CustomModal/index';
-import { Popover } from 'antd';
+import {  } from 'antd';
+import Link from 'umi/link';
+import router from 'umi/router';
 
 const Step = Steps.Step;
 
@@ -29,7 +29,9 @@ class TabContentInside extends PureComponent {
       checking: (
         <div className={styles.operateBlock}>
           <i className={styles.info} />
-          <span>详情</span>
+          <span>
+            <Link to="/user/enterprisehome/enterpriseinfo">详情</Link>
+          </span>
           <i className={styles.query} />
           <Popover trigger="click" placement="right" content={<Flow />}>
             <span>流程查询</span>
@@ -47,18 +49,24 @@ class TabContentInside extends PureComponent {
       checked: (
         <div className={styles.operateBlock}>
           <i className={styles.info} />
-          <span>详情</span>
+          <span>
+            <Link to="/user/enterprisehome/enterpriseinfo">详情</Link>
+          </span>
           <i className={styles.query} />
           <Popover trigger="click" placement="right" content={<Flow />}>
             <span>流程查询</span>
           </Popover>
-          <span className={styles.ensureButt}>申请确认设立</span>
+          <span onClick={() => {
+            router.push("/user/enterprisehome/changeestablishmentstep");
+          }} className={styles.ensureButt}>申请企业变更</span>
         </div>
       ),
       checkin: (
         <div className={styles.operateBlock}>
           <i className={styles.info} />
-          <span>详情</span>
+          <span>
+            <Link to="/user/enterprisehome/enterpriseinfo">详情</Link>
+          </span>
           <i className={styles.query} />
           <Popover trigger="click" placement="right" content={<Flow />}>
             <span>流程查询</span>
@@ -68,7 +76,12 @@ class TabContentInside extends PureComponent {
       done: (
         <div className={styles.operateBlock}>
           <i className={styles.info} />
-          <span>详情</span>
+          <span>
+            <Link to="/user/enterprisehome/enterpriseinfo">详情</Link>
+          </span>
+          <span onClick={() => {
+            router.push("/user/enterprisehome/changeestablishmentstep");
+          }} className={styles.ensureButt}>申请企业变更</span>
         </div>
       ),
     };
@@ -298,6 +311,11 @@ export default class EnterpriseInfoComponent extends Component {
           <Row gutter={40}>
             <Col className={styles.col} span={24}>
               <div className={styles.tabContent}>
+                <TabContentInside {...modalActionCol} etpType={'normalPtn'} type={'done'} />
+              </div>
+            </Col>
+            <Col className={styles.col} span={24}>
+              <div className={styles.tabContent}>
                 <TabContentInside {...modalActionCol} etpType={'limitedPtn'} type={'unsubmit'} />
               </div>
             </Col>
@@ -309,16 +327,6 @@ export default class EnterpriseInfoComponent extends Component {
             <Col className={styles.col} span={24}>
               <div className={styles.tabContent}>
                 <TabContentInside {...modalActionCol} etpType={'limitedPtn'} type={'checkin'} />
-              </div>
-            </Col>
-            <Col className={styles.col} span={24}>
-              <div className={styles.tabContent}>
-                <TabContentInside {...modalActionCol} etpType={'normalPtn'} type={'done'} />
-              </div>
-            </Col>
-            <Col className={styles.col} span={24}>
-              <div className={styles.tabContent}>
-                <TabContentInside {...modalActionCol} etpType={'limitedCmp'} type={'done'} />
               </div>
             </Col>
           </Row>

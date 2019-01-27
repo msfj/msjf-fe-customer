@@ -297,7 +297,7 @@ class PersonInfo extends Component {
             <div className="text-center">
               <div className="persif-btip">我们将为你提供多种服务能力，包括企业设立，相关企业等多种业务</div>
               <Button onClick={() => {
-                router.push('user/enterprisehome/etpchange');
+                router.push('/user/enterprisehome/etpchange');
               }} type="primary" size="large" htmlType="submit">提交基本信息</Button>
             </div>
           </Form>

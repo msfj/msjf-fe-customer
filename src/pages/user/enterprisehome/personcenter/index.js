@@ -155,24 +155,52 @@ class Edit extends Component {
 }
 const EditWrapper = Form.create()(Edit);
 
-function Info() {
+function OtherInfo() {
   return (
     <Fragment>
       <Row gutter={20} className={styles.row}>
-        <Col className={styles.col} span={5}>
-          <div>学历：</div>
-          <div className={styles.right}>本科</div>
-        </Col>
-        <Col className={styles.col} span={7}>
-          <div>邮箱：</div>
-          <div className={styles.right}>meishan@jinfu.com</div>
+        <Col className={styles.col} span={12}>
+          <div>联系人姓名：</div>
+          <div className={styles.right}>张晓</div>
         </Col>
         <Col className={styles.col} span={12}>
-          <div>是否拥有基金资格证：</div>
-          <div className={styles.right}>是 - 证书编码 8909009988</div>
+          <div>手机号：</div>
+          <div className={styles.right}>18702883201</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>联系人身份证号：</div>
+          <div className={styles.right}>4118888888888888888</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>成立时间：</div>
+          <div className={styles.right}>2019年1月23日</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>企业邮箱：</div>
+          <div className={styles.right}>1234456@123.com</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>币种：</div>
+          <div className={styles.right}>人民币</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>注册资金（万元）：</div>
+          <div className={styles.right}>100</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>经营范围：</div>
+          <div className={styles.right}>金融咨询</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>联系地址：</div>
+          <div className={styles.right}>广东省深圳市南山区南海大道粤海路动漫园2栋204-205室</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>注册地址：</div>
+          <div className={styles.right}>广东省深圳市南山区南海大道粤海路动漫园2栋204-205室</div>
         </Col>
       </Row>
-      <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>从业经历：</p>
+      <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>公司简介：</p>
       <div className={`${styles.grayBlock} fs-14`}>
         <Row gutter={20} className={styles.row}>
           <Col className={styles.col} span={24}>
@@ -180,17 +208,41 @@ function Info() {
             </Col>
         </Row>
       </div>
-      <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>从业经历：</p>
-      <div className={`${styles.grayBlock} fs-14`}>
-        <Row gutter={20} className={styles.row}>
-          <Col className={styles.col} span={24}>
-            具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
-            </Col>
-        </Row>
-      </div>
-      <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>证件照片：</p>
+    </Fragment>
+  );
+}
+
+function SubInfo() {
+  return (
+    <Fragment>
+      <Row gutter={20} className={styles.row}>
+        <Col className={styles.col} span={12}>
+          <div>挂牌情况：</div>
+          <div className={styles.right}>地方股权</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>投资来源：</div>
+          <div className={styles.right}>内容文本</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>企业成分：</div>
+          <div className={styles.right}>民营</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>盈利模式：</div>
+          <div className={styles.right}>基于广告的盈利模式</div>
+        </Col>
+        <Col className={styles.col} span={12}>
+          <div>资金来源：</div>
+          <div className={styles.right}>国家财政资金</div>
+        </Col>
+        <Col className={styles.col} span={24}>
+          <div>具体业务：</div>
+          <div className={styles.right}>内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本\u2028内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内</div>
+        </Col>
+      </Row>
+      <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>营业执照：</p>
       <div>
-        <div className={styles.idcard}></div>
         <div className={styles.idcard}></div>
       </div>
     </Fragment>
@@ -230,33 +282,47 @@ export default class PersonInfoComponent extends Component {
           </div>
         </div>
         <div className={styles.detailContent}>
-          <InfoTitle type={"登记申请信息"} />
+          <InfoTitle type={"企业账号信息"} />
           <Row gutter={20} className={styles.row}>
-            <Col className={styles.col} span={5}>
-              <div>姓名：</div>
-              <div className={styles.right}>张家辉</div>
+            <Col className={styles.col} span={12}>
+              <div>企业名称：</div>
+              <div className={styles.right}>企业名称文本企业名称文本</div>
             </Col>
-            <Col className={styles.col} span={7}>
-              <div>证件类型：</div>
-              <div className={styles.right}>身份证 - 411888888888888888</div>
+            <Col className={styles.col} span={12}>
+              <div>企业类型：</div>
+              <div className={styles.right}>有限公司</div>
             </Col>
-            <Col className={styles.col} span={6}>
+            <Col className={styles.col} span={12}>
+              <div>统一社会信用代码：</div>
+              <div className={styles.right}>123456789012345678</div>
+            </Col>
+            <Col className={styles.col} span={12}>
+              <div>法人姓名：</div>
+              <div className={styles.right}>李某某</div>
+            </Col>
+            <Col className={styles.col} span={12}>
               <div>手机号：</div>
               <div className={styles.right}>18788889097 <small onClick={() => {
                 this.changePhoneModalRef.current.displayModal();
               }} style={{ marginLeft: "10px" }} className={styles.underline}>换绑</small></div>
             </Col>
-            <Col className={styles.col} span={6}>
-              <div>银行卡号：</div>
-              <div className={styles.right}>6898999999998987</div>
+            <Col className={styles.col} span={12}>
+              <div>证件类型：</div>
+              <div className={styles.right}>身份证 - 411888888888888888</div>
             </Col>
           </Row>
           <InfoTitle
-            type={"其他信息"}
+            type={"企业其他信息"}
             style={{ paddingTop: '20px' }}
             className={styles.rowBorder}
             leftNode={<Fragment><i className={classNames(styles.edit, styles.icon)} /><small className={styles.underline}>编辑</small></Fragment>} />
-          <EditWrapper />
+          <OtherInfo />
+          <InfoTitle
+            type={"附属信息"}
+            style={{ paddingTop: '20px' }}
+            className={styles.rowBorder}
+            leftNode={<Fragment><i className={classNames(styles.edit, styles.icon)} /><small className={styles.underline}>编辑</small></Fragment>} />
+          <SubInfo />
         </div>
       </div>
     );

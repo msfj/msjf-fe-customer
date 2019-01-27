@@ -3,6 +3,7 @@ import styles from './enterpriseinfo/index.scss';
 import hmcss from '../index.scss';
 import { Row, Col, Steps, Form, Input, Select, Button, Upload, Icon, DatePicker, Radio } from 'antd';
 import Link from 'umi/link';
+import router from 'umi/router';
 
 const { Step } = Steps;
 const { Item } = Form;
@@ -559,7 +560,9 @@ class EstablishmentComponent extends Component {
             <div className={styles.changeEtpInfo}>
                 <div className={styles.tips}>
                     <img alt="" src={require("image/icon/back.svg")} />
-                    <span className='fs-14'>返回 / 申请企业变更</span>
+                    <span onClick={() => {
+                        router.goBack();
+                    }} className='fs-14 pointer'>返回 / 申请企业变更</span>
                 </div>
                 <div className={styles.detailContent}>
                     <Steps progressDot current={this.state.step}>
