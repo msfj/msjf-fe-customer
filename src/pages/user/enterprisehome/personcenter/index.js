@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import classNames from 'classnames'
+import classNames from 'classnames';
 import { Form, Input, Icon, message, Select, Row, Col, Radio, Upload, Button } from 'antd';
 import { ModifyModal, ChangePhoneModal } from './component/modal';
 import styles from './index.scss';
@@ -14,12 +14,12 @@ const getBase64 = (img, callback) => {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
-}
+};
 
-const beforeUpload = (file) => {
+const beforeUpload = file => {
   const imgar = ['image/jpeg', 'image/png', 'image/pdf'];
   const isImg = imgar.indexOf(file.type) === -1;
-  console.log(isImg)
+  console.log(isImg);
   if (isImg) {
     message.error('只能上传jpg、png、pdf格式图片');
   }
@@ -28,38 +28,40 @@ const beforeUpload = (file) => {
     message.error('图片必须小于2MB!');
   }
   return !isImg && isLt2M;
-}
+};
 
 class Avatar extends Component {
   state = {
     loading: false,
-    imageUrl: null
+    imageUrl: null,
   };
 
-  handleChange = (info) => {
-    console.log(info)
+  handleChange = info => {
+    console.log(info);
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });
       return;
     }
     if (info.file.status === 'done') {
       // Get this url from response in real world.
-      getBase64(info.file.originFileObj, imageUrl => this.setState({
-        imageUrl,
-        loading: false,
-      }));
+      getBase64(info.file.originFileObj, imageUrl =>
+        this.setState({
+          imageUrl,
+          loading: false,
+        })
+      );
     }
-  }
+  };
 
   render() {
-    const UploadButton = (props) => {
+    const UploadButton = props => {
       return (
         <div>
           <Icon type={this.state.loading ? 'loading' : 'plus'} style={{ fontSize: '40px' }} />
           <div className="ant-upload-text">{this.state.loading ? '正在上传' : props.text}</div>
         </div>
       );
-    }
+    };
     const imageUrl = this.state.imageUrl;
     return (
       <Upload
@@ -80,14 +82,14 @@ class Avatar extends Component {
 class Edit extends Component {
   state = {
     visible: false,
-    hasCfa: 1
+    hasCfa: 1,
   };
 
-  cfaChange = (e) => {
+  cfaChange = e => {
     this.setState({
-      hasCfa: e.target.value
-    })
-  }
+      hasCfa: e.target.value,
+    });
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -107,29 +109,36 @@ class Edit extends Component {
             <Item label="邮箱" colon={false}>
               {getFieldDecorator('email', {
                 rules: [{ required: false, message: '请输入邮箱地址' }],
-              })(
-                <Input size="large" placeholder="请输入邮箱地址" />
-              )}
+              })(<Input size="large" placeholder="请输入邮箱地址" />)}
             </Item>
           </Col>
         </Row>
         <Row gutter={16}>
           <Col span={12}>
             <Item label="是否拥有基金资格证" colon={false}>
-              <RadioGroup name="radiogroup" defaultValue={1} onChange={(e) => {
-                this.cfaChange(e);
-              }}>
+              <RadioGroup
+                name="radiogroup"
+                defaultValue={1}
+                onChange={e => {
+                  this.cfaChange(e);
+                }}
+              >
                 <Radio value={1}>是</Radio>
                 <Radio value={0}>否</Radio>
               </RadioGroup>
-              {this.state.hasCfa === 1 ? <Input size="large" placeholder="请输入基金资格证编码" /> : null}
+              {this.state.hasCfa === 1 ? (
+                <Input size="large" placeholder="请输入基金资格证编码" />
+              ) : null}
             </Item>
           </Col>
         </Row>
         <Row gutter={16}>
           <Col span={24}>
             <Item label="从业经历" colon={false}>
-              <TextArea rows={5} placeholder="请输入工作经历（如2018年，在**公司，主要从事相关的工作）" />
+              <TextArea
+                rows={5}
+                placeholder="请输入工作经历（如2018年，在**公司，主要从事相关的工作）"
+              />
             </Item>
           </Col>
           <Col span={24}>
@@ -139,15 +148,26 @@ class Edit extends Component {
           </Col>
         </Row>
         <Item label="证件照片">
-          <span className="fc-gray">请上传基本信息中对应的证件照片（可添加JPG、PNG、PDF 档案格式）</span>
+          <span className="fc-gray">
+            请上传基本信息中对应的证件照片（可添加JPG、PNG、PDF 档案格式）
+          </span>
           <div style={{ display: 'flex' }}>
             <Avatar ldtx="上传证件（正面）" />
             <Avatar ldtx="上传证件（背面）" />
           </div>
         </Item>
         <div style={{ display: 'flex' }}>
-          <Button style={{ width: '184px', marginRight: '20px' }} size="large" htmlType="submit">取消</Button>
-          <Button style={{ width: '184px', backgroundColor: '#0072D2' }} type="primary" size="large" htmlType="submit">保存</Button>
+          <Button style={{ width: '184px', marginRight: '20px' }} size="large" htmlType="submit">
+            取消
+          </Button>
+          <Button
+            style={{ width: '184px', backgroundColor: '#0072D2' }}
+            type="primary"
+            size="large"
+            htmlType="submit"
+          >
+            保存
+          </Button>
         </div>
       </Fragment>
     );
@@ -205,7 +225,7 @@ function OtherInfo() {
         <Row gutter={20} className={styles.row}>
           <Col className={styles.col} span={24}>
             具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
-            </Col>
+          </Col>
         </Row>
       </div>
     </Fragment>
@@ -238,12 +258,14 @@ function SubInfo() {
         </Col>
         <Col className={styles.col} span={24}>
           <div>具体业务：</div>
-          <div className={styles.right}>内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本\u2028内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内</div>
+          <div className={styles.right}>
+            内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本\u2028内容文本内容文本内容文内容文本本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内容文本内
+          </div>
         </Col>
       </Row>
       <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>营业执照：</p>
       <div>
-        <div className={styles.idcard}></div>
+        <div className={styles.idcard} />
       </div>
     </Fragment>
   );
@@ -252,16 +274,13 @@ function SubInfo() {
 function InfoTitle(props) {
   return (
     <div style={props.style} className={classNames(styles.infoTitle, props.className)}>
-      <span className='fs-16-t'>{props.type}</span>
+      <span className="fs-16-t">{props.type}</span>
       {props.leftNode}
     </div>
   );
 }
 
-
-
 export default class PersonInfoComponent extends Component {
-
   modifyModalRef = React.createRef();
   changePhoneModalRef = React.createRef();
 
@@ -272,17 +291,32 @@ export default class PersonInfoComponent extends Component {
         <ModifyModal ref={this.modifyModalRef} />
         {/*换绑弹出框*/}
         <ChangePhoneModal ref={this.changePhoneModalRef} />
-        <div className={classNames('fs-24', "mb-20", styles.topTitle)}>
+        <div className={classNames('fs-24', 'mb-20', styles.topTitle)}>
           个人中心
           <div style={{ display: 'flex' }}>
             <i className={classNames(styles.edit, styles.icon)} />
-            <span onClick={() => {
-              this.modifyModalRef.current.modifyModal();
-            }} className={styles.underline}>修改密码</span>
+            <span
+              onClick={() => {
+                this.modifyModalRef.current.modifyModal();
+              }}
+              className={styles.underline}
+            >
+              修改密码
+            </span>
           </div>
         </div>
         <div className={styles.detailContent}>
-          <InfoTitle type={"企业账号信息"} />
+          <InfoTitle
+            type={'企业账号信息'}
+            style={{ border: 0 }}
+            className={styles.rowBorder}
+            leftNode={
+              <Fragment>
+                <i className={classNames(styles.edit, styles.icon)} />
+                <small className={styles.underline}>编辑</small>
+              </Fragment>
+            }
+          />
           <Row gutter={20} className={styles.row}>
             <Col className={styles.col} span={12}>
               <div>企业名称：</div>
@@ -302,9 +336,18 @@ export default class PersonInfoComponent extends Component {
             </Col>
             <Col className={styles.col} span={12}>
               <div>手机号：</div>
-              <div className={styles.right}>18788889097 <small onClick={() => {
-                this.changePhoneModalRef.current.displayModal();
-              }} style={{ marginLeft: "10px" }} className={styles.underline}>换绑</small></div>
+              <div className={styles.right}>
+                18788889097{' '}
+                <small
+                  onClick={() => {
+                    this.changePhoneModalRef.current.displayModal();
+                  }}
+                  style={{ marginLeft: '10px' }}
+                  className={styles.underline}
+                >
+                  换绑
+                </small>
+              </div>
             </Col>
             <Col className={styles.col} span={12}>
               <div>证件类型：</div>
@@ -312,16 +355,28 @@ export default class PersonInfoComponent extends Component {
             </Col>
           </Row>
           <InfoTitle
-            type={"企业其他信息"}
+            type={'企业其他信息'}
             style={{ paddingTop: '20px' }}
             className={styles.rowBorder}
-            leftNode={<Fragment><i className={classNames(styles.edit, styles.icon)} /><small className={styles.underline}>编辑</small></Fragment>} />
+            leftNode={
+              <Fragment>
+                <i className={classNames(styles.edit, styles.icon)} />
+                <small className={styles.underline}>编辑</small>
+              </Fragment>
+            }
+          />
           <OtherInfo />
           <InfoTitle
-            type={"附属信息"}
+            type={'附属信息'}
             style={{ paddingTop: '20px' }}
             className={styles.rowBorder}
-            leftNode={<Fragment><i className={classNames(styles.edit, styles.icon)} /><small className={styles.underline}>编辑</small></Fragment>} />
+            leftNode={
+              <Fragment>
+                <i className={classNames(styles.edit, styles.icon)} />
+                <small className={styles.underline}>编辑</small>
+              </Fragment>
+            }
+          />
           <SubInfo />
         </div>
       </div>
