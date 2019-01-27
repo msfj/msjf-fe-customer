@@ -13,7 +13,7 @@ const InfoTitle = props => {
     return (
         <div style={props.style} className={`${styles.infoTitle} ${props.className}`}>
             <i />
-            <span className='fs-18'>{props.type}</span>
+            <span className='fs-16-t'>{props.type}</span>
         </div>
     )
 };

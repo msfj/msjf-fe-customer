@@ -14,7 +14,7 @@ const InfoTitle = props => {
     return (
         <div style={props.style} className={`${styles.infoTitle} ${props.className}`}>
             <i />
-            <span className='fs-18'>{props.type}</span>
+            <span className='fs-16-t'>{props.type}</span>
         </div>
     )
 };
@@ -405,7 +405,7 @@ const Step2Form = props => {
         <Fragment>
             <InfoTitle type={"邀请认证"} className="mt-40" />
             <FormTable columns={columns} datas={data} className="mt-20"/>
-            <div className="mt-20 fs-12" >
+            <div className="mt-20 fs-14-t" >
                 是否存在董事会：
                 <RadioGroup>
                     <Radio value={1} className="ml-10">是</Radio>
@@ -413,7 +413,7 @@ const Step2Form = props => {
                 </RadioGroup>
             </div>
             <FormTable columns={columns} datas={[]} className="mt-20"/>
-            <div className="mt-20 fs-12" >
+            <div className="mt-20 fs-14-t" >
                 是否存在监事会：
                 <RadioGroup>
                     <Radio value={1} className="ml-10">是</Radio>
@@ -423,7 +423,7 @@ const Step2Form = props => {
             <FormTable columns={columns} datas={[]} className="mt-20"/>
             <InfoTitle type={"投资人信息"} className="mt-40" />
             <FormTable columns={cols2} datas={data2} className="mt-20" style={{ width: 1800 }}/>
-            <div className="mt-20"><Icon type="exclamation-circle" theme="filled" className="fc-warning mr-10" /><span className="fc-gray fs-12">温馨提示：邀请认证阶段需要所有邀请人注册各自的账号并登录到宁波市类金融企业服务管理平台完成“关注认证”后才能往下继续申请，请联系相关人员完成“关注认证”操作</span></div>
+            <div className="mt-20"><Icon type="exclamation-circle" theme="filled" className="fc-warning mr-10" /><span className="fc-gray fs-14-t">温馨提示：邀请认证阶段需要所有邀请人注册各自的账号并登录到宁波市类金融企业服务管理平台完成“关注认证”后才能往下继续申请，请联系相关人员完成“关注认证”操作</span></div>
             <div className="mt-24">
                 <Button size="large" className="btn-lg mr-20" onClick={props.goback}>上一步</Button>
                 <Button size="large" className="btn-lg mr-20">保存</Button>

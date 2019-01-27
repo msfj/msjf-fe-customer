@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import styles from './index.scss';
 import { Row, Col } from 'antd';
 import classNames from 'classnames';
+import router from 'umi/router';
 
 function InfoTitle(props) {
   return (
     <div style={props.style} className={classNames(styles.infoTitle, props.className)}>
       <i />
-      <span className="fs-18">{props.type}</span>
+      <span className="fs-16-t">{props.type}</span>
     </div>
   );
 }
@@ -54,7 +55,9 @@ export default class EnterpriseInfoComponent extends Component {
       <div className={styles.newEtpInfo}>
         <div className={styles.tips}>
           <img alt="" src={require('image/icon/back.svg')} />
-          <span className="fs-14">退出/查看详情</span>
+          <span onClick={() => {
+            router.goBack();
+          }} className="fs-14 pointer">退出 / 查看详情</span>
         </div>
         <div className={styles.titleBlock}>
           <img src={require('image/general-partner.png')} alt="" />
@@ -220,12 +223,12 @@ export default class EnterpriseInfoComponent extends Component {
             </Col>
             <Col className={styles.col} span={24}>
               <div style={{ width: '168px' }}>附件：</div>
-              <div className={classNames(styles.right,styles.attachment)}>
+              <div className={classNames(styles.right, styles.attachment)}>
                 <Row gutter={20}>
-                  <Col span={6}><img src={require("image/static/static-attachment.jpg")} alt="附件"/></Col>
-                  <Col span={6}><span className={styles.attachmentName}><i className={styles.word}/>文档.doc</span></Col>
-                  <Col span={6}><span className={styles.attachmentName}><i className={styles.pdf}/>文档.pdf</span></Col>
-                  <Col span={6}><span className={styles.attachmentName}><i className={styles.xls}/>文档.xls</span></Col>
+                  <Col span={6}><img src={require("image/static/static-attachment.jpg")} alt="附件" /></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.word} />文档.doc</span></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.pdf} />文档.pdf</span></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.xls} />文档.xls</span></Col>
                 </Row>
               </div>
             </Col>

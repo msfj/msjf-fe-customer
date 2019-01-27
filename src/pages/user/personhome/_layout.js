@@ -89,26 +89,26 @@ class SiderNode extends Component {
                       : require('image/icon/setup-company.svg')
                   }
                 />
-                <span className={classNames('fs-18', activeItem === 'establish' && 'fc-primary')}>
+                <span className={classNames('fs-16-t', activeItem === 'establish' && 'fc-primary')}>
                   企业设立
               </span>
                 {activeItem === 'establish' && activeTgas}
               </Link>
             </li>
             <li>
-              <Link to="/user/personhome/relatecompany">
+              <Link to="/user/personhome/relatecpy">
                 <img
                   alt=""
                   src={
-                    activeItem === 'relatecompany'
+                    activeItem === 'relatecpy'
                       ? require('image/icon/relate-company-active.svg')
                       : require('image/icon/relate-company.svg')
                   }
                 />
-                <span className={classNames('fs-18', activeItem === 'relatecompany' && 'fc-primary')}>
+                <span className={classNames('fs-16-t', activeItem === 'relatecpy' && 'fc-primary')}>
                   相关企业
               </span>
-                {activeItem === 'relatecompany' && activeTgas}
+                {activeItem === 'relatecpy' && activeTgas}
               </Link>
             </li>
             <li>
@@ -121,7 +121,7 @@ class SiderNode extends Component {
                       : require('image/icon/message.svg')
                   }
                 />
-                <span className={classNames('fs-18', activeItem === 'message' && 'fc-primary')}>
+                <span className={classNames('fs-16-t', activeItem === 'message' && 'fc-primary')}>
                   我的消息
               </span>
                 {activeItem === 'message' && activeTgas}
@@ -137,7 +137,7 @@ class SiderNode extends Component {
                       : require('image/icon/person.svg')
                   }
                 />
-                <span className={classNames('fs-18', activeItem === 'personcenter' && 'fc-primary')}>
+                <span className={classNames('fs-16-t', activeItem === 'personcenter' && 'fc-primary')}>
                   个人中心
               </span>
                 {activeItem === 'personcenter' && activeTgas}

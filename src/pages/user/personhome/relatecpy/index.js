@@ -29,16 +29,20 @@ class TabContentInside extends PureComponent {
         <div className={styles.tabContentInsideRight}>
           <div className={styles.tabContentInsideTop}>
             <span className={styles.titleName}>公司名称公司名称公司名称</span>
-            <button onClick={() => {
-              this.props.deleteModal();
-            }} className={styles.buttonTwo}>已关注</button>
+            {
+              this.props.hasFollow ? 
+              <button onClick={this.props.followModal} className={styles.buttonOne}>已关注</button>
+              :
+              <button onClick={this.props.followModal} className={styles.buttonTwo}>关注认证</button>
+            }
           </div>
           <div className={styles.tabContentInsideBottom}>
-
-            <div style={{ flex: 1 }} className={styles.items}>身&nbsp;&nbsp;&nbsp;&nbsp;份：<span>联络员</span></div>
-            <div style={{ flex: 1 }} className={styles.items}>姓&nbsp;&nbsp;&nbsp;&nbsp;名：<span>联络员</span></div>
-            <div style={{ flex: 1 }} className={styles.items}>手机号：<span>18702883201</span></div>
-            <div style={{ flex: 2 }} className={styles.items}>证件类型：<span>身份证 - 411888888888888888</span></div>
+            <Row gutter={20}>
+              <Col span={8}><div className={styles.items}>身&nbsp;&nbsp;&nbsp;&nbsp;份：<span>联络员</span></div></Col>
+              <Col span={8}><div className={styles.items}>姓&nbsp;&nbsp;&nbsp;&nbsp;名：<span>联络员</span></div></Col>
+              <Col span={8}><div className={styles.items}>手机号：<span>18702883201</span></div></Col>
+              <Col span={8}><div style={{ paddingBottom: '0px' }} className={styles.items}>证件类型：<span>身份证 - 411888888888888888</span></div></Col>
+            </Row>
           </div>
         </div>
       </div>
@@ -73,29 +77,31 @@ function TabContent(props) {
 
 export default class RelatedCompanyComponent extends Component {
   state = {
-    deleteModal: false
+    followModal: false
   }
 
-  deleteModal = () => {
+  followModal = () => {
     this.setState((previousState) => ({
-      deleteModal: !previousState.deleteModal
+      followModal: !previousState.followModal
     }));
   }
   render() {
-    const deleteModal = this.deleteModal
-    const modalActionCol = { deleteModal };
+    const followModal = this.followModal
+    const modalActionCol = { followModal };
+    const tabOneProps = {...modalActionCol,hasFollow:true};
+    const tabTwoProps = {...modalActionCol,hasFollow:false};
     return (
       <div className={styles.related}>
         <div className='fs-24'>相关企业</div>
         <Tabs defaultActiveKey="1">
-          <TabPane tab={<TabName type={"已关注"} num={"14"} />} key="1"><TabContent {...modalActionCol} /></TabPane>
-          <TabPane tab={<TabName type={"待处理"} num={"4"} />} key="2"><TabContent {...modalActionCol} /></TabPane>
+          <TabPane tab={<TabName type={"已关注"} num={"14"} />} key="1"><TabContent {...tabOneProps} /></TabPane>
+          <TabPane tab={<TabName type={"待处理"} num={"4"} />} key="2"><TabContent {...tabTwoProps} /></TabPane>
         </Tabs>
         <CustomModal
           title="关注认证"
-          visible={this.state.deleteModal}
-          onOk={this.deleteModal}
-          onCancel={this.deleteModal}
+          visible={this.state.followModal}
+          onOk={this.followModal}
+          onCancel={this.followModal}
           okText={"关注认证"}
           cancelText={"取消"}
         >

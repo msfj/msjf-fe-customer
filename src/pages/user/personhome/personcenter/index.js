@@ -146,8 +146,12 @@ class Edit extends Component {
           </div>
         </Item>
         <div style={{ display: 'flex' }}>
-          <Button style={{ width: '184px', marginRight: '20px' }} size="large" htmlType="submit">取消</Button>
-          <Button style={{ width: '184px', backgroundColor: '#0072D2' }} type="primary" size="large" htmlType="submit">保存</Button>
+          <Button onClick={() => {
+            this.props.edit();
+          }} style={{ width: '184px', marginRight: '20px' }} size="large" htmlType="submit">取消</Button>
+          <Button onClick={() => {
+            this.props.edit();
+          }} style={{ width: '184px', backgroundColor: '#0072D2' }} type="primary" size="large" htmlType="submit">保存</Button>
         </div>
       </Fragment>
     );
@@ -200,7 +204,7 @@ function Info() {
 function InfoTitle(props) {
   return (
     <div style={props.style} className={classNames(styles.infoTitle, props.className)}>
-      <span className='fs-18'>{props.type}</span>
+      <span className='fs-16-t'>{props.type}</span>
       {props.leftNode}
     </div>
   );
@@ -210,8 +214,18 @@ function InfoTitle(props) {
 
 export default class PersonInfoComponent extends Component {
 
+  state = {
+    isEdit : false
+  }
+
   modifyModalRef = React.createRef();
   changePhoneModalRef = React.createRef();
+
+  edit = () => {
+    this.setState({
+      isEdit : false
+    });
+  }
 
   render() {
     return (
@@ -232,21 +246,21 @@ export default class PersonInfoComponent extends Component {
         <div className={styles.detailContent}>
           <InfoTitle type={"登记申请信息"} />
           <Row gutter={20} className={styles.row}>
-            <Col className={styles.col} span={5}>
+            <Col className={styles.col} span={12}>
               <div>姓名：</div>
               <div className={styles.right}>张家辉</div>
             </Col>
-            <Col className={styles.col} span={7}>
+            <Col className={styles.col} span={12}>
               <div>证件类型：</div>
               <div className={styles.right}>身份证 - 411888888888888888</div>
             </Col>
-            <Col className={styles.col} span={6}>
+            <Col className={styles.col} span={12}>
               <div>手机号：</div>
               <div className={styles.right}>18788889097 <small onClick={() => {
                 this.changePhoneModalRef.current.displayModal();
               }} style={{ marginLeft: "10px" }} className={styles.underline}>换绑</small></div>
             </Col>
-            <Col className={styles.col} span={6}>
+            <Col className={styles.col} span={12}>
               <div>银行卡号：</div>
               <div className={styles.right}>6898999999998987</div>
             </Col>
@@ -255,8 +269,14 @@ export default class PersonInfoComponent extends Component {
             type={"其他信息"}
             style={{ paddingTop: '20px' }}
             className={styles.rowBorder}
-            leftNode={<Fragment><i className={classNames(styles.edit, styles.icon)} /><small className={styles.underline}>编辑</small></Fragment>} />
-          <EditWrapper />
+            leftNode={<Fragment><i className={classNames(styles.edit, styles.icon)} /><small onClick={() => {
+              this.setState({
+                isEdit : true
+              });
+            }} className={classNames(styles.underline,'pointer')}>编辑</small></Fragment>} />
+            {
+              this.state.isEdit ? <EditWrapper edit={this.edit}/> : <Info />
+            }
         </div>
       </div>
     );

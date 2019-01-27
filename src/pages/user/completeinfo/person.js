@@ -1,6 +1,7 @@
 import './personInfo.scss';
 import React, { Fragment, Component, PureComponent } from 'react';
 import { Form, Input, Icon, message, Select, Row, Col, Radio, Upload, Button } from 'antd';
+import router from 'umi/router';
 
 const { Group, TextArea } = Input;
 const { Option } = Select;
@@ -200,7 +201,9 @@ class PersonInfo extends Component {
                         </Item>
                         <div className="text-center">
                             <div className="persif-btip">我们将为你提供多种服务能力，包括企业设立，相关企业等多种业务</div>
-                            <Button type="primary" size="large" htmlType="submit">提交基本信息</Button>
+                            <Button onClick={() => {
+                                router.push('/user/personhome/establish');
+                            }} type="primary" size="large" htmlType="submit">提交基本信息</Button>
                         </div>
                     </Form>
                 </div>

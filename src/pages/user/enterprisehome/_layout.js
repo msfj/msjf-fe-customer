@@ -85,7 +85,7 @@ class SiderNode extends Component {
                 header={
                   <div className="panel">
                     <img alt="" src={require('image/icon/relate-company.svg')} />
-                    <span className='fs-18'>企业服务</span>
+                    <span className='fs-16-t'>企业服务</span>
                     <Icon type="caret-up" />
                   </div>
                 }
@@ -96,7 +96,7 @@ class SiderNode extends Component {
                     <Link to="/user/enterprisehome/etpchange">
                     <img alt="" />
                     <span
-                      className={classNames('fs-18', activeItem === 'etpchange' && 'fc-primary')}
+                      className={classNames('fs-16-t', activeItem === 'etpchange' && 'fc-primary')}
                     >
                       企业变更
                     </span>
@@ -107,7 +107,7 @@ class SiderNode extends Component {
                     <Link to="/user/enterprisehome/etpsettle">
                     <img alt="" />
                     <span
-                      className={classNames('fs-18', activeItem === 'etpsettle' && 'fc-primary')}
+                      className={classNames('fs-16-t', activeItem === 'etpsettle' && 'fc-primary')}
                     >
                       企业迁入
                     </span>
@@ -117,7 +117,7 @@ class SiderNode extends Component {
                   <li>
                     <Link to="/user/enterprisehome/etpoff">
                     <img alt="" />
-                    <span className={classNames('fs-18', activeItem === 'etpoff' && 'fc-primary')}>
+                    <span className={classNames('fs-16-t', activeItem === 'etpoff' && 'fc-primary')}>
                       企业注销
                     </span>
                     {activeItem === 'etpoff' && activeTgas}
@@ -136,7 +136,7 @@ class SiderNode extends Component {
                     : require('image/icon/relate-company.svg')
                 }
               />
-              <span className={classNames('fs-18', activeItem === 'relatecpy' && 'fc-primary')}>
+              <span className={classNames('fs-16-t', activeItem === 'relatecpy' && 'fc-primary')}>
                 相关企业
               </span>
               {activeItem === 'relatecpy' && activeTgas}
@@ -152,7 +152,7 @@ class SiderNode extends Component {
                     : require('image/icon/message.svg')
                 }
               />
-              <span className={classNames('fs-18', activeItem === 'message' && 'fc-primary')}>
+              <span className={classNames('fs-16-t', activeItem === 'message' && 'fc-primary')}>
                 我的消息
               </span>
               {activeItem === 'message' && activeTgas}
@@ -168,7 +168,7 @@ class SiderNode extends Component {
                     : require('image/icon/person.svg')
                 }
               />
-              <span className={classNames('fs-18', activeItem === 'personcenter' && 'fc-primary')}>
+              <span className={classNames('fs-16-t', activeItem === 'personcenter' && 'fc-primary')}>
                 个人中心
               </span>
               {activeItem === 'personcenter' && activeTgas}

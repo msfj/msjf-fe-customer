@@ -4,6 +4,8 @@ import styles from './index.scss';
 import { Tabs, Row, Col, Steps, Input, Icon, Button, Popover } from 'antd';
 import CustomModal from 'component/CustomModal/index';
 import Link from 'umi/link';
+import router from 'umi/router';
+
 
 const TabPane = Tabs.TabPane;
 const Step = Steps.Step;
@@ -85,16 +87,24 @@ class TabContentInside extends PureComponent {
       checked: (
         <div className={styles.operateBlock}>
           <i className={styles.info} />
-          <span>详情</span>
+          <span>
+            <Link to="/user/personhome/enterpriseinfo">详情</Link>
+          </span>
           <i className={styles.query} />
-          <span>流程查询</span>
-          <span className={styles.ensureButt}>申请确认设立</span>
+          <Popover trigger="click" placement="right" content={<Flow />}>
+            <span>流程查询</span>
+          </Popover>
+          <span onClick={() => {
+            router.push('/user/personhome/estlcfm');
+          }} className={styles.ensureButt}>申请确认设立</span>
         </div>
       ),
       checkin: (
         <div className={styles.operateBlock}>
           <i className={styles.info} />
-          <span>详情</span>
+          <span>
+            <Link to="/user/personhome/enterpriseinfo">详情</Link>
+          </span>
           <i className={styles.query} />
           <Popover trigger="click" placement="right" content={<Flow />}>
             <span>流程查询</span>
@@ -104,7 +114,9 @@ class TabContentInside extends PureComponent {
       done: (
         <div className={styles.operateBlock}>
           <i className={styles.info} />
-          <span>详情</span>
+          <span>
+            <Link to="/user/personhome/enterpriseinfo">详情</Link>
+          </span>
         </div>
       ),
     };
@@ -207,13 +219,13 @@ class Flow extends Component {
                 {item.title}
                 <strong>{item.highlight}</strong>
               </div>
-              <span>{item.date}</span>
+              <span className='fs-14'>{item.date}</span>
             </div>
           }
           description={
             <div className={'flowDes'}>
               {item.desIcon && <i className={item.desIcon} />}
-              <span>{item.des}</span>
+              <span className='fs-14'>{item.des}</span>
             </div>
           }
         />

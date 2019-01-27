@@ -3,6 +3,7 @@ import styles from './enterpriseinfo/index.scss';
 import './index.scss';
 import { Row, Col, Steps, Form, Input, Select, Button, Upload, Icon } from 'antd';
 import Link from 'umi/link';
+import router from 'umi/router';
 
 const { Step } = Steps;
 const { Item } = Form;
@@ -13,7 +14,7 @@ const InfoTitle = props => {
     return (
         <div style={props.style} className={`${styles.infoTitle} ${props.className}`}>
             <i />
-            <span className='fs-18'>{props.type}</span>
+            <span className='fs-16-t'>{props.type}</span>
         </div>
     )
 };
@@ -417,7 +418,7 @@ const Step3Form = props => {
             <FormTable columns={columns} datas={data} className="mt-20"/>
             <InfoTitle type={"投资人信息"} className="mt-20" />
             <FormTable columns={cols2} datas={data2} className="mt-20"/>
-            <div className="mt-20"><Icon type="exclamation-circle" theme="filled" className="fc-warning mr-10" /><span className="fc-gray fs-12">温馨提示：邀请认证阶段需要所有邀请人注册各自的账号并登录到宁波市类金融企业服务管理平台完成“关注认证”后才能往下继续申请，请联系相关人员完成“关注认证”操作</span></div>
+            <div className="mt-20"><Icon type="exclamation-circle" theme="filled" className="fc-warning mr-10" /><span className="fc-gray fs-14-t">温馨提示：邀请认证阶段需要所有邀请人注册各自的账号并登录到宁波市类金融企业服务管理平台完成“关注认证”后才能往下继续申请，请联系相关人员完成“关注认证”操作</span></div>
             <div className="mt-24">
                 <Button size="large" className="btn-lg mr-20" onClick={props.goback}>上一步</Button>
                 <Button size="large" className="btn-lg mr-20">保存</Button>
@@ -553,7 +554,9 @@ class EstablishmentComponent extends Component {
             <div className={styles.newEtpInfo}>
                 <div className={styles.tips}>
                     <img alt="" src={require("image/icon/back.svg")} />
-                    <span className='fs-14'>返回 / 新增企业设立</span>
+                    <span onClick={() => {
+                        router.goBack();
+                    }}  className='fs-14 pointer'>返回 / 新增企业设立</span>
                 </div>
                 <div className={styles.detailContent}>
                     <Steps progressDot current={this.state.step}>

@@ -200,7 +200,7 @@ function Info() {
 function InfoTitle(props) {
   return (
     <div style={props.style} className={classNames(styles.infoTitle, props.className)}>
-      <span className='fs-18'>{props.type}</span>
+      <span className='fs-16-t'>{props.type}</span>
       {props.leftNode}
     </div>
   );

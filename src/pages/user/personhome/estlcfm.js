@@ -3,6 +3,7 @@ import styles from './enterpriseinfo/index.scss';
 import './index.scss';
 import { Row, Col, Steps, Form, Input, Select, Button, Upload, Icon } from 'antd';
 import Link from 'umi/link';
+import router from 'umi/router';
 
 const { Step } = Steps;
 const { Item } = Form;
@@ -13,7 +14,7 @@ const InfoTitle = props => {
     return (
         <div style={props.style} className={`${styles.infoTitle} ${props.className}`}>
             <i />
-            <span className='fs-18'>{props.type}</span>
+            <span className='fs-16-t'>{props.type}</span>
         </div>
     )
 };
@@ -91,7 +92,9 @@ class EstlCfmComponent extends Component {
             <div className={styles.newEtpInfo}>
                 <div className={styles.tips}>
                     <img alt="" src={require("image/icon/back.svg")} />
-                    <span className='fs-14'>返回 / 确认设立</span>
+                    <span onClick={() => {
+                        router.goBack();
+                    }} className='fs-14 pointer'>返回 / 确认设立</span>
                 </div>
                 <div className={styles.detailContent}>
                     <EstlForm handleSubmit={this.handleSubmit}/>
