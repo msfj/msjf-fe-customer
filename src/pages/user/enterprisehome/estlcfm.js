@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import styles from './EnterpriseInfoComponent/index.scss';
+import styles from './enterpriseinfo/index.scss';
 import hmcss from '../index.scss';
 import { Row, Col, Steps, Form, Input, Select, Button, Upload, Icon } from 'antd';
 import Link from 'umi/link';

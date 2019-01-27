@@ -1,13 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Layout, Collapse, Icon } from 'antd';
+import Link from 'umi/link';
 import classNames from 'classnames';
-import RelatedCompanyComponent from './component/RelatedCompanyComponent/index';
-import EnterpriseInfoComponent from './component/EnterpriseInfoComponent/index';
-import EnterpriseChangeComponent from './component/EnterpriseChangeComponent/index';
-import MessageComponent from './component/Meassage/index';
-import PersonInfo from './component/PersonInfo/index';
-import EstablishmentComponent from './component/EstablishmentComponent';
-import EstlCfmComponent from './component/EstlCfmComponent';
 import styles from './index.scss';
 import '../index.scss';
 
@@ -17,7 +11,6 @@ const { Panel } = Collapse;
 export default class Enterprise extends Component {
   state = {
     sideBarWidth: 200,
-    activeItem: 'etpchange',
   };
 
   componentDidMount() {
@@ -38,42 +31,30 @@ export default class Enterprise extends Component {
     });
   };
 
-  changeActiveItem = item => {
-    this.setState({
-      activeItem: item,
-    });
-  };
+  actionWithPath = () => {
+    let pathname = this.props.location.pathname && this.props.location.pathname.split("/")[3];
+    if (pathname === "enterpriseinfo") {
+      pathname = "etpchange";
+    }
+    return pathname;
+  }
 
   render() {
-    let contentNode = <EnterpriseChangeComponent />;
-    if (this.state.activeItem === 'etpchange') {
-      contentNode = <EnterpriseChangeComponent />;
-    }
-    if (this.state.activeItem === 'message') {
-      contentNode = <MessageComponent />;
-    }
-    if (this.state.activeItem === 'personcenter') {
-      contentNode = <PersonInfo />;
-    }
-    if (this.state.activeItem === 'relatecpy') {
-      contentNode = <RelatedCompanyComponent />;
-    }
+    let activeItem = this.actionWithPath();
     return (
       <div
         className={classNames(styles.enterpriseHome, 'userBoard')}
         style={{ paddingTop: '60px' }}
       >
         <Layout>
-          <Sider width={this.state.sideBarWidth}>
+          <Sider width={276}>
             <SiderNode
-              changeActiveItem={this.changeActiveItem}
-              activeItem={this.state.activeItem}
+              activeItem={activeItem}
             />
           </Sider>
           <Layout>
             <Content>
-              {/* <EstablishmentComponent /> */}
-              {contentNode}
+              {this.props.children}
             </Content>
           </Layout>
         </Layout>
@@ -84,7 +65,7 @@ export default class Enterprise extends Component {
 
 class SiderNode extends Component {
   render() {
-    const { activeItem, changeActiveItem } = this.props;
+    const { activeItem } = this.props;
     const activeTgas = (
       <Fragment>
         <img alt="" src={require('image/icon/right.svg')} />
@@ -111,11 +92,8 @@ class SiderNode extends Component {
                 key="1"
               >
                 <ul>
-                  <li
-                    onClick={() => {
-                      changeActiveItem('etpchange');
-                    }}
-                  >
+                  <li>
+                    <Link to="/user/enterprisehome/etpchange">
                     <img alt="" />
                     <span
                       className={classNames('fs-18', activeItem === 'etpchange' && 'fc-primary')}
@@ -123,12 +101,10 @@ class SiderNode extends Component {
                       企业变更
                     </span>
                     {activeItem === 'etpchange' && activeTgas}
+                    </Link>
                   </li>
-                  <li
-                    onClick={() => {
-                      changeActiveItem('etpsettle');
-                    }}
-                  >
+                  <li>
+                    <Link to="/user/enterprisehome/etpsettle">
                     <img alt="" />
                     <span
                       className={classNames('fs-18', activeItem === 'etpsettle' && 'fc-primary')}
@@ -136,26 +112,22 @@ class SiderNode extends Component {
                       企业迁入
                     </span>
                     {activeItem === 'etpsettle' && activeTgas}
+                    </Link>
                   </li>
-                  <li
-                    onClick={() => {
-                      changeActiveItem('etpoff');
-                    }}
-                  >
+                  <li>
+                    <Link to="/user/enterprisehome/etpoff">
                     <img alt="" />
                     <span className={classNames('fs-18', activeItem === 'etpoff' && 'fc-primary')}>
                       企业注销
                     </span>
                     {activeItem === 'etpoff' && activeTgas}
+                    </Link>
                   </li>
                 </ul>
               </Panel>
             </Collapse>
-            <li
-              onClick={() => {
-                changeActiveItem('relatecpy');
-              }}
-            >
+            <li>
+              <Link to="/user/enterprisehome/relatecpy">
               <img
                 alt=""
                 src={
@@ -168,12 +140,10 @@ class SiderNode extends Component {
                 相关企业
               </span>
               {activeItem === 'relatecpy' && activeTgas}
+              </Link>
             </li>
-            <li
-              onClick={() => {
-                changeActiveItem('message');
-              }}
-            >
+            <li>
+              <Link to="/user/enterprisehome/message">
               <img
                 alt=""
                 src={
@@ -186,12 +156,10 @@ class SiderNode extends Component {
                 我的消息
               </span>
               {activeItem === 'message' && activeTgas}
+              </Link>
             </li>
-            <li
-              onClick={() => {
-                changeActiveItem('personcenter');
-              }}
-            >
+            <li>
+              <Link to="/user/enterprisehome/personcenter">
               <img
                 alt=""
                 src={
@@ -204,6 +172,7 @@ class SiderNode extends Component {
                 个人中心
               </span>
               {activeItem === 'personcenter' && activeTgas}
+              </Link>
             </li>
           </ul>
         </div>

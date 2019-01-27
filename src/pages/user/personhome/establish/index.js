@@ -269,13 +269,13 @@ export default class EnterpriseInfoComponent extends Component {
             <TabContent {...modalActionCol} />
           </TabPane>
           <TabPane tab={<TabName type={'拟设立'} num={'4'} />} key="2">
-            Content of Tab Pane 2
+            <TabContent {...modalActionCol} />
           </TabPane>
           <TabPane tab={<TabName type={'确认设立'} num={'4'} />} key="3">
-            Content of Tab Pane 3
+            <TabContent {...modalActionCol} />
           </TabPane>
           <TabPane tab={<TabName type={'完成设立'} num={'4'} />} key="4">
-            Content of Tab Pane 3
+            <TabContent {...modalActionCol} />
           </TabPane>
         </Tabs>
         <CustomModal

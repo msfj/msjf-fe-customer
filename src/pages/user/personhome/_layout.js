@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Layout } from 'antd';
+import Link from 'umi/link';
 import classNames from 'classnames';
 import styles from './index.scss';
 import '../index.scss';
-import Link from 'umi/link';
 
 const { Sider, Content } = Layout;
 
@@ -47,7 +47,7 @@ export default class Person extends Component {
         style={{ paddingTop: '60px' }}
       >
         <Layout>
-          <Sider width={this.state.sideBarWidth}>
+          <Sider width={276}>
             <SiderNode
               activeItem={activeItem}
             />

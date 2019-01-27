@@ -86,10 +86,10 @@ export default class RelatedCompanyComponent extends Component {
     const modalActionCol = { deleteModal };
     return (
       <div className={styles.related}>
-        <div className={outStyles.font24}>相关企业</div>
+        <div className='fs-24'>相关企业</div>
         <Tabs defaultActiveKey="1">
           <TabPane tab={<TabName type={"已关注"} num={"14"} />} key="1"><TabContent {...modalActionCol} /></TabPane>
-          <TabPane tab={<TabName type={"待处理"} num={"4"} />} key="2">Content of Tab Pane 2</TabPane>
+          <TabPane tab={<TabName type={"待处理"} num={"4"} />} key="2"><TabContent {...modalActionCol} /></TabPane>
         </Tabs>
         <CustomModal
           title="关注认证"

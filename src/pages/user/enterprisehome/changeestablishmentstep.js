@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import styles from './EnterpriseInfoComponent/index.scss';
+import styles from './enterpriseinfo/index.scss';
 import hmcss from '../index.scss';
 import { Row, Col, Steps, Form, Input, Select, Button, Upload, Icon, DatePicker, Radio } from 'antd';
 import Link from 'umi/link';
@@ -567,7 +567,7 @@ class EstablishmentComponent extends Component {
                         <Step title="第二步" description="邀请认证" />
                         <Step title="第三步" description="其他信息" />
                     </Steps>
-                    <img alt="" src={require('../../../../assets/register-separation.png')} />
+                    <img alt="" src={require('image/register-separation.png')} />
                     <div className={show(0)}><Step1 handleSubmit={this.nextStep} wrappedComponentRef={(inst) => this.formRef = inst} /></div> 
                     <div className={show(1)}><Step2 handleSubmit={this.nextStep} goback={this.perStep}/></div>
                     <div className={show(2)}><Step3 handleSubmit={this.nextStep} goback={this.perStep}/></div>
