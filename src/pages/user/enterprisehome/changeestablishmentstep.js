@@ -14,7 +14,7 @@ const InfoTitle = props => {
     return (
         <div style={props.style} className={`${styles.infoTitle} ${props.className}`}>
             <i />
-            <span className={styles.font18}>{props.type}</span>
+            <span className='fs-18'>{props.type}</span>
         </div>
     )
 };
@@ -559,7 +559,7 @@ class EstablishmentComponent extends Component {
             <div className={styles.changeEtpInfo}>
                 <div className={styles.tips}>
                     <img alt="" src={require("image/icon/back.svg")} />
-                    <span className={styles.font14}>返回 / 申请企业变更</span>
+                    <span className='fs-14'>返回 / 申请企业变更</span>
                 </div>
                 <div className={styles.detailContent}>
                     <Steps progressDot current={this.state.step}>

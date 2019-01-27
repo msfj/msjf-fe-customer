@@ -210,17 +210,24 @@ export default class EnterpriseInfoComponent extends Component {
               <div style={{ width: '168px' }}>从业人员数量：</div>
               <div className={styles.right}>235人</div>
             </Col>
-          </Row>
-          <Row gutter={20} className={styles.row}>
             <Col className={styles.col} span={24}>
               <div style={{ width: '168px' }}>投资所关注行业市场类型：</div>
               <div className={styles.right}>类型类型类型</div>
             </Col>
-          </Row>
-          <Row gutter={20} className={styles.row}>
             <Col className={styles.col} span={24}>
               <div style={{ width: '168px' }}>投资获得收益方式：</div>
               <div className={styles.right}>方式方式</div>
+            </Col>
+            <Col className={styles.col} span={24}>
+              <div style={{ width: '168px' }}>附件：</div>
+              <div className={classNames(styles.right,styles.attachment)}>
+                <Row gutter={20}>
+                  <Col span={6}><img src={require("image/static/static-attachment.jpg")} alt="附件"/></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.word}/>文档.doc</span></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.pdf}/>文档.pdf</span></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.xls}/>文档.xls</span></Col>
+                </Row>
+              </div>
             </Col>
           </Row>
           <p className={classNames('fs-16', 'mb-10')}>备注</p>

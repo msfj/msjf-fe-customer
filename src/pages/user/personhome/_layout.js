@@ -76,8 +76,8 @@ class SiderNode extends Component {
       <Fragment>
         <div className="sideContent">
           <div className="imgBlock" />
-          <span className={styles.font24}>张家辉</span>
-          <p className={styles.font10}>个人账户</p>
+          <span className='fs-24'>张家辉</span>
+          <p className='fs-10'>个人账户</p>
           <ul>
             <li>
               <Link to="/user/personhome/establish">

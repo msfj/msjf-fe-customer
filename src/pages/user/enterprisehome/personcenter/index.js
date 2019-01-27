@@ -172,23 +172,23 @@ function Info() {
           <div className={styles.right}>是 - 证书编码 8909009988</div>
         </Col>
       </Row>
-      <p className={classNames(outStyles.font14, outStyles.mb10, outStyles.shadowgray)}>从业经历：</p>
-      <div className={`${styles.grayBlock} ${outStyles.font14}`}>
+      <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>从业经历：</p>
+      <div className={`${styles.grayBlock} fs-14`}>
         <Row gutter={20} className={styles.row}>
           <Col className={styles.col} span={24}>
             具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
             </Col>
         </Row>
       </div>
-      <p className={classNames(outStyles.font14, outStyles.mb10, outStyles.shadowgray)}>从业经历：</p>
-      <div className={`${styles.grayBlock} ${outStyles.font14}`}>
+      <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>从业经历：</p>
+      <div className={`${styles.grayBlock} fs-14`}>
         <Row gutter={20} className={styles.row}>
           <Col className={styles.col} span={24}>
             具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域具体的介绍内容展示区域
             </Col>
         </Row>
       </div>
-      <p className={classNames(outStyles.font14, outStyles.mb10, outStyles.shadowgray)}>证件照片：</p>
+      <p className={classNames('fs-14', 'mb-10', outStyles.shadowgray)}>证件照片：</p>
       <div>
         <div className={styles.idcard}></div>
         <div className={styles.idcard}></div>
@@ -200,7 +200,7 @@ function Info() {
 function InfoTitle(props) {
   return (
     <div style={props.style} className={classNames(styles.infoTitle, props.className)}>
-      <span className={outStyles.font18}>{props.type}</span>
+      <span className='fs-18'>{props.type}</span>
       {props.leftNode}
     </div>
   );
@@ -220,7 +220,7 @@ export default class PersonInfoComponent extends Component {
         <ModifyModal ref={this.modifyModalRef} />
         {/*换绑弹出框*/}
         <ChangePhoneModal ref={this.changePhoneModalRef} />
-        <div className={classNames('font24', "mb-20", styles.topTitle)}>
+        <div className={classNames('fs-24', "mb-20", styles.topTitle)}>
           个人中心
           <div style={{ display: 'flex' }}>
             <i className={classNames(styles.edit, styles.icon)} />

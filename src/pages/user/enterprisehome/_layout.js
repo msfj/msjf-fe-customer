@@ -76,8 +76,8 @@ class SiderNode extends Component {
       <Fragment>
         <div className="sideContent">
           <div className='imgBlock' />
-          <span className={styles.font24}>张家辉</span>
-          <p className={styles.font10}>个人账户</p>
+          <span className='fs-24'>张家辉</span>
+          <p className='fs-10'>个人账户</p>
           <ul>
             <Collapse defaultActiveKey={['1']}>
               <Panel
@@ -85,7 +85,7 @@ class SiderNode extends Component {
                 header={
                   <div className="panel">
                     <img alt="" src={require('image/icon/relate-company.svg')} />
-                    <span className={styles.font18}>企业服务</span>
+                    <span className='fs-18'>企业服务</span>
                     <Icon type="caret-up" />
                   </div>
                 }

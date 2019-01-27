@@ -229,9 +229,9 @@ export default class EnterpriseInfoComponent extends Component {
               <div className={classNames(styles.right,styles.attachment)}>
                 <Row gutter={20}>
                   <Col span={6}><img src={require("image/static/static-attachment.jpg")} alt="附件"/></Col>
-                  <Col span={6}><span className={styles.attachmentName}><i className={styles.word}/>文档文档文档.doc</span></Col>
-                  <Col span={6}><span className={styles.attachmentName}><i className={styles.pdf}/>文档文档文档.pdf</span></Col>
-                  <Col span={6}><span className={styles.attachmentName}><i className={styles.xls}/>文档文档文档.xls</span></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.word}/>文档.doc</span></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.pdf}/>文档.pdf</span></Col>
+                  <Col span={6}><span className={styles.attachmentName}><i className={styles.xls}/>文档.xls</span></Col>
                 </Row>
               </div>
             </Col>
