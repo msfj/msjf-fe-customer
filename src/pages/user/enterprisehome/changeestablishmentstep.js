@@ -488,7 +488,7 @@ const Step3Form = props => {
                     <Col span={6}>
                         <Item label="投资所关注行业市场类型">
                             <Select size="large" placeholder="请选择">
-                                <Option value="0">眉山</Option>
+                                <Option value="0">梅山</Option>
                             </Select>
                         </Item>
                     </Col>

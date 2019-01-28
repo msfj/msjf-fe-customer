@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
 import { Form, Input, Icon, message, Select, Row, Col, Radio, Upload, Button } from 'antd';
 import { ModifyModal, ChangePhoneModal } from './component/modal';
+import BasicEdit from './component/BasicEdit';
+import OtherEdit from './component/OtherEdit';
 import styles from './index.scss';
 import outStyles from '../../index.scss';
 
@@ -292,7 +294,7 @@ export default class PersonInfoComponent extends Component {
         {/*换绑弹出框*/}
         <ChangePhoneModal ref={this.changePhoneModalRef} />
         <div className={classNames('fs-24', 'mb-20', styles.topTitle)}>
-          个人中心
+          账户中心
           <div style={{ display: 'flex' }}>
             <i className={classNames(styles.edit, styles.icon)} />
             <span
@@ -317,43 +319,46 @@ export default class PersonInfoComponent extends Component {
               </Fragment>
             }
           />
-          <Row gutter={20} className={styles.row}>
-            <Col className={styles.col} span={12}>
-              <div>企业名称：</div>
-              <div className={styles.right}>企业名称文本企业名称文本</div>
-            </Col>
-            <Col className={styles.col} span={12}>
-              <div>企业类型：</div>
-              <div className={styles.right}>有限公司</div>
-            </Col>
-            <Col className={styles.col} span={12}>
-              <div>统一社会信用代码：</div>
-              <div className={styles.right}>123456789012345678</div>
-            </Col>
-            <Col className={styles.col} span={12}>
-              <div>法人姓名：</div>
-              <div className={styles.right}>李某某</div>
-            </Col>
-            <Col className={styles.col} span={12}>
-              <div>手机号：</div>
-              <div className={styles.right}>
-                18788889097{' '}
-                <small
-                  onClick={() => {
-                    this.changePhoneModalRef.current.displayModal();
-                  }}
-                  style={{ marginLeft: '10px' }}
-                  className={styles.underline}
-                >
-                  换绑
+          {/* <BasicEdit /> */}
+          <Fragment>
+            <Row gutter={20} className={styles.row}>
+              <Col className={styles.col} span={12}>
+                <div>企业名称：</div>
+                <div className={styles.right}>企业名称文本企业名称文本</div>
+              </Col>
+              <Col className={styles.col} span={12}>
+                <div>企业类型：</div>
+                <div className={styles.right}>有限公司</div>
+              </Col>
+              <Col className={styles.col} span={12}>
+                <div>统一社会信用代码：</div>
+                <div className={styles.right}>123456789012345678</div>
+              </Col>
+              <Col className={styles.col} span={12}>
+                <div>法人姓名：</div>
+                <div className={styles.right}>李某某</div>
+              </Col>
+              <Col className={styles.col} span={12}>
+                <div>手机号：</div>
+                <div className={styles.right}>
+                  18788889097{' '}
+                  <small
+                    onClick={() => {
+                      this.changePhoneModalRef.current.displayModal();
+                    }}
+                    style={{ marginLeft: '10px' }}
+                    className={styles.underline}
+                  >
+                    换绑
                 </small>
-              </div>
-            </Col>
-            <Col className={styles.col} span={12}>
-              <div>证件类型：</div>
-              <div className={styles.right}>身份证 - 411888888888888888</div>
-            </Col>
-          </Row>
+                </div>
+              </Col>
+              <Col className={styles.col} span={12}>
+                <div>证件类型：</div>
+                <div className={styles.right}>身份证 - 411888888888888888</div>
+              </Col>
+            </Row>
+          </Fragment>
           <InfoTitle
             type={'企业其他信息'}
             style={{ paddingTop: '20px' }}
@@ -366,6 +371,7 @@ export default class PersonInfoComponent extends Component {
             }
           />
           <OtherInfo />
+          {/* <OtherEdit /> */}
           <InfoTitle
             type={'附属信息'}
             style={{ paddingTop: '20px' }}

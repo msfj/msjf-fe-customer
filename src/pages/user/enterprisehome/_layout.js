@@ -169,7 +169,7 @@ class SiderNode extends Component {
                 }
               />
               <span className={classNames('fs-16-t', activeItem === 'personcenter' && 'fc-primary')}>
-                个人中心
+                账户中心
               </span>
               {activeItem === 'personcenter' && activeTgas}
               </Link>

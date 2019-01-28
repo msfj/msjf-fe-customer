@@ -73,7 +73,7 @@ export default class EnterpriseInfoComponent extends Component {
           <InfoTitle type={'登记申请信息'} />
           <Row gutter={20} className={styles.row}>
             {this.setInfo([
-              ['企业地址选择：', '浙江省宁波市眉山区'],
+              ['企业地址选择：', '浙江省宁波市梅山区'],
               ['申请企业名称：', '我是申请企业的名称'],
               ['企业类型：', '有限'],
               ['企业分类：', '企业分类内容'],

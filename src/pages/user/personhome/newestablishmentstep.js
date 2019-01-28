@@ -139,7 +139,7 @@ class Step1Form extends Component {
                         <Col span={8}>
                             <Item label="企业地区选择">
                                 <Select size="large" placeholder="请选择地区">
-                                    <Option value="0">眉山</Option>
+                                    <Option value="0">梅山</Option>
                                 </Select>
                             </Item>
                         </Col>
@@ -183,7 +183,7 @@ const Step2Form = props => {
                     <Col span={6}>
                         <Item label="招商对接人">
                             <Select size="large" placeholder="请选择">
-                                <Option value="0">眉山</Option>
+                                <Option value="0">梅山</Option>
                             </Select>
                         </Item>
                     </Col>
@@ -402,14 +402,14 @@ const Step3Form = props => {
                     <Col span={6}>
                         <Item label="执行事务合伙人类型">
                             <Select size="large" placeholder="请选择">
-                                <Option value="0">眉山</Option>
+                                <Option value="0">梅山</Option>
                             </Select>
                         </Item>
                     </Col>
                     <Col span={6}>
                         <Item label="执行事务合伙人名称">
                             <Select size="large" placeholder="请选择">
-                                <Option value="0">眉山</Option>
+                                <Option value="0">梅山</Option>
                             </Select>
                         </Item>
                     </Col>
@@ -482,7 +482,7 @@ const Step4Form = props => {
                     <Col span={6}>
                         <Item label="投资所关注行业市场类型">
                             <Select size="large" placeholder="请选择">
-                                <Option value="0">眉山</Option>
+                                <Option value="0">梅山</Option>
                             </Select>
                         </Item>
                     </Col>

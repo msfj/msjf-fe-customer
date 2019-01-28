@@ -54,7 +54,7 @@ export default {
             
             if(login) {
                 // membertype
-                const pt = res.data.membertype === '0' ? '/user/completeinfo/person' : '/user/enterprisehome/enterprise';
+                const pt = res.data.membertype === '0' ? '/user/completeinfo/person' : '/user/completeinfo/enterprise';
                 router.push(pt);
                 yield put({ type:'index/closeLogin' });
                 yield put({ type: 'signin', payload: { res, login }});
