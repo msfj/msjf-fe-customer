@@ -78,7 +78,7 @@ function Header(props) {
             <i className={`${css.iconLogo} ${props.headerStyle && css.color}`}></i>
             <span style={{fontSize:'18px'}}>梅山金服</span>
             <span className={`${css.break} ${props.headerStyle && `lineGray`}`}></span>
-            <span>宁波市类金融企业管理服务平台</span>
+            <span>宁波市类金融企业大数据服务平台</span>
           </Link>
         </div>
         {
