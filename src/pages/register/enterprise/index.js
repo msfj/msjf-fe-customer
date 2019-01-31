@@ -97,7 +97,7 @@ class EnterpriseRegisterComponent extends Component {
               {/* 步骤条 */}
               <div className={styles.stepBlock}>
                 <Steps progressDot current={step}>
-                  <Step title="第一步" description="手机验证" />
+                  <Step title="第一步" description="填写基本信息" />
                   <Step title="第二步" description="实名认证" />
                   <Step title="第三步" description="密码设置" />
                   <Step title="第四步" description="注册完成" />
