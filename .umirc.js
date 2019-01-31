@@ -7,7 +7,7 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: true,
-      title: '宁波类金融业务管理平台',
+      title: '宁波市类金融企业大数据服务平台',
       dll: false,
       hardSource: false,
       routes: {
